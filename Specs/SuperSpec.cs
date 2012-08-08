@@ -1,5 +1,6 @@
 ﻿using System;
 using Blitline.Net;
+using Blitline.Net.Functions;
 using Machine.Specifications;
 using RestSharp;
 
@@ -14,8 +15,8 @@ namespace Specs
         Establish context = () =>
                                 {
                                     _client = new RestClient();
-                                    _blitline = new BlitlineApi(_client, "a5KqkemeX2RttyYdkOrdug");
-                                    var req = new BlitlineRequest("a5KqkemeX2RttyYdkOrdug", "https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40gdoubleu.co.uk-new.png");
+                                    _blitline = new BlitlineApi(_client);
+                                    var req = new BlitlineRequest("a5KqkemeX2RttyYdkOrduga", "https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40gdoubleu.co.uk-new.png");
                                     //var resizeToFitFunction = new ResizeToFitFunction(240, 140)
                                     //               {
                                     //                   save = new Save
