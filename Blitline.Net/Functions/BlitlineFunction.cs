@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Blitline.Net.Request;
 
 namespace Blitline.Net.Functions
 {

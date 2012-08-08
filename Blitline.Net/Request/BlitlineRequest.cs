@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Blitline.Net.Functions;
 
-namespace Blitline.Net
+namespace Blitline.Net.Request
 {
     public class BlitlineRequest
     {

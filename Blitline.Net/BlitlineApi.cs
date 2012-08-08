@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Blitline.Net.Request;
+using Blitline.Net.Response;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace Blitline.Net

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Blitline.Net
+namespace Blitline.Net.Response
 {
     public class Results
     {

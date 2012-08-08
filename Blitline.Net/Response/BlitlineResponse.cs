@@ -1,4 +1,4 @@
-namespace Blitline.Net
+namespace Blitline.Net.Response
 {
     public class BlitlineResponse
     {

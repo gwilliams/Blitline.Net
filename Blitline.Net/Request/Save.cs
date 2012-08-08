@@ -1,4 +1,4 @@
-namespace Blitline.Net
+namespace Blitline.Net.Request
 {
     public class Save
     {
