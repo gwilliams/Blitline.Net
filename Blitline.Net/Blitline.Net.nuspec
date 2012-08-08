@@ -2,13 +2,13 @@
 <package>
   <metadata>
     <id>Blitline.Net</id>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <authors>Gareth Williams</authors>
     <owners>Gareth Williams</owners>
     <projectUrl>https://github.com/gwilliams/Blitline.Net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A .Net wrapper for the Blitline Image Processing API</description>
-	<releaseNotes>Initial release. Only has 2 functions (crop and resize to fit)</releaseNotes>
+	<releaseNotes>Fit to typo in BlitlineRequest</releaseNotes>
     <tags>Blitline</tags>
   </metadata>
 </package>
