@@ -1,6 +1,25 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-bin
-obj
+obj/
+Obj/
+bin/
+Bin/
+_ReSharper.*
+*.csproj.user
+*.resharper.user
+*.ReSharper.user
+*.TeamCity.user
+*.DotSettings.user
+*.resharper
+*.suo
+*.swp
+*.cache
+_NCrunch_elevate/
+*.ncrunchproject
+*.ncrunchsolution*
+elevate.1.2.dotCover
+
+packages/*
+!packages/repositories.config
 
 # mstest test results
 TestResults
