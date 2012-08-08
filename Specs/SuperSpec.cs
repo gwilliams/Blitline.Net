@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Blitline.Net;
 using Machine.Specifications;
 using RestSharp;
@@ -18,7 +15,6 @@ namespace Specs
                                 {
                                     _client = new RestClient();
                                     _blitline = new BlitlineApi(_client, "a5KqkemeX2RttyYdkOrdug");
-                                    //var result1 = _blitline.ResizeImage("https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40gdoubleu.co.uk-new.png", 50, 50, "superduper").Content;
                                     var req = new BlitlineRequest("a5KqkemeX2RttyYdkOrdug", "https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40gdoubleu.co.uk-new.png");
                                     //var resizeToFitFunction = new ResizeToFitFunction(240, 140)
                                     //               {

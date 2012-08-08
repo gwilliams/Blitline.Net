@@ -68,8 +68,7 @@ namespace Blitline.Net
         {
             @params = new
                          {
-                             width = width,
-                             height = height
+                             width, height
                          };
         }
     }
@@ -87,10 +86,10 @@ namespace Blitline.Net
         {
             @params = new
                           {
-                              x = x,
-                              y = y,
-                              width = width,
-                              height = height
+                              x,
+                              y,
+                              width,
+                              height
                           };
         }
     }
@@ -100,19 +99,16 @@ namespace Blitline.Net
     public class BlitlineApi
     {
         readonly IRestClient _client;
-        readonly string _applicationId;
-        readonly string _rootUrl;
+        const string RootUrl = "http://api.blitline.com/job";
 
-        public BlitlineApi(IRestClient client, string applicationId)
+        public BlitlineApi(IRestClient client)
         {
             _client = client;
-            _applicationId = applicationId;
-            _rootUrl = "http://api.blitline.com/job";
         }
 
         public IRestResponse ProcessImages(BlitlineRequest blitlineRequest)
         {
-            _client.BaseUrl = _rootUrl;
+            _client.BaseUrl = RootUrl;
 
             var request = new RestRequest(Method.POST) {RequestFormat = DataFormat.Json};
             var payload = new
@@ -123,43 +119,6 @@ namespace Blitline.Net
             request.AddBody(payload);
 
             return _client.Post(request);
-        }
-
-        public IRestResponse ResizeImage(string imageUrl, int width, int height, string imageIdentifier)
-        {
-            _client.BaseUrl = _rootUrl;
-            var payload = new
-            
-                {
-                    json = new {
-                    application_id = _applicationId,
-                    version = 2,
-                    src = imageUrl,
-                    functions = new[]
-                                    {
-                                        new
-                                            {
-                                                name = "resize_to_fit",
-                                                @params = new {width = 240, height = 140},
-                                                save = new
-                                                           {
-                                                               image_identifier = imageIdentifier,
-                                                               s3_destination = new
-                                                                                    {
-                                                                                        bucket ="elevate-test-photos",
-                                                                                        key ="herp-derp.jpg"
-                                                                                    }
-                                                           }
-                                            }
-                                    }
-                    }
-
-            };
-
-            var restRequest = new RestRequest(Method.POST);
-            restRequest.RequestFormat = DataFormat.Json;
-            restRequest.AddBody(payload);
-            return _client.Post(restRequest);
         }
     }
 }
