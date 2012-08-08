@@ -7,8 +7,7 @@ namespace Blitline.Net.Request
 {
     public class BlitlineRequest
     {
-        [JsonProperty("application_id")]
-        public string ApplicationId { get; set; }
+        public string application_id { get; set; }
         public string src { get; set; }
         public string postback_url { get; set; }
         public ICollection<BlitlineFunction> functions { get; set; }
