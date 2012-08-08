@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlitlineApi.cs" />
+    <Compile Include="IBlitlineApi.cs" />
     <Compile Include="Request\BlitlineRequest.cs" />
     <Compile Include="Response\BlitlineResponse.cs" />
     <Compile Include="Functions\BlitlineFunction.cs" />

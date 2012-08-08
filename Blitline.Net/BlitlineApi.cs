@@ -3,7 +3,7 @@ using RestSharp;
 
 namespace Blitline.Net
 {
-    public class BlitlineApi
+    public class BlitlineApi : IBlitlineApi
     {
         readonly IRestClient _client;
         const string RootUrl = "http://api.blitline.com/job";

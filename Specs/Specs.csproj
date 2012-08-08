@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SuperSpec.cs" />
+    <Compile Include="cropping_an_image.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
