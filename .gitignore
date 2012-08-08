@@ -17,6 +17,7 @@ _NCrunch_elevate/
 *.ncrunchproject
 *.ncrunchsolution*
 elevate.1.2.dotCover
+*.nupkg
 
 packages/*
 !packages/repositories.config
