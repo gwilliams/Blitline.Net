@@ -1,5 +1,6 @@
 ﻿using Blitline.Net;
 using Blitline.Net.Functions;
+using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 using Machine.Specifications;
@@ -19,15 +20,23 @@ namespace Specs
                                 {
                                     _client = new RestClient();
                                     _blitline = new BlitlineApi(_client);
-                                    _request = new BlitlineRequest("SOME_API_KEY", "https://www.google.co.uk/intl/en_ALL/images/logos/images_logo_lg.gif");
+                                    _request = new BlitlineRequest("bqbTZJ-fe3sBFfJ2G0mKWw", "https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40elevatedirect.com-new.png");
 
-                                    var cropFunction = new CropFunction(155, 250, 240, 140)
+                                    var cropFunction = new CropFunction(51, 126, 457 - 126, 382 - 51)
                                                            {
                                                                save = new Save
                                                                           {
-                                                                              image_identifier = "test_image"
+                                                                              image_identifier = "profile",
+                                                                              s3_destination = new S3Destination
+                                                                                                   {
+                                                                                                       bucket =
+                                                                                                           "elevate-test-photos",
+                                                                                                       key =
+                                                                                                           "test_image.png"
+                                                                                                   }
                                                                           }
                                                            };
+
                                     _request.AddFunction(cropFunction);
 
                                 };
