@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BlitlineApi.cs" />
     <Compile Include="Functions\BlurFunction.cs" />
+    <Compile Include="Functions\ResizeToFillFunction.cs" />
     <Compile Include="ParamOptions\Gravity.cs" />
     <Compile Include="IBlitlineApi.cs" />
     <Compile Include="Request\BlitlineRequest.cs" />

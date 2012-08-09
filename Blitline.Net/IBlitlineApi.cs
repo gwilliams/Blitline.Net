@@ -1,3 +1,4 @@
+using System;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 

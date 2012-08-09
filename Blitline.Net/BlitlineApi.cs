@@ -1,4 +1,6 @@
-﻿using Blitline.Net.Request;
+﻿using System;
+using System.Threading.Tasks;
+using Blitline.Net.Request;
 using Blitline.Net.Response;
 using Newtonsoft.Json;
 using RestSharp;
@@ -27,7 +29,13 @@ namespace Blitline.Net
             
             request.AddBody(payload);
 
-            var response = _client.Execute(request);
+            var response = _client.Execute(request);//Async(request, restResponse => {});
+
+
+            //return Task.Factory.FromAsync<BlitlineResponse>(_client.ExecuteAsync(request, r => { }), callback)
+            
+            //_client.ExecuteAsync(request, r => callback(JsonConvert.DeserializeObject<BlitlineResponse>(r.Content)));
+            
 
             return JsonConvert.DeserializeObject<BlitlineResponse>(response.Content);
         }
