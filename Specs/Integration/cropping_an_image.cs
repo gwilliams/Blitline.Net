@@ -1,15 +1,15 @@
-﻿using Blitline.Net;
+﻿using System.Linq;
+using Blitline.Net;
 using Blitline.Net.Functions;
-using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 using Machine.Specifications;
 using RestSharp;
 
-namespace Specs
+namespace Specs.Integration
 {
-    [Subject("Can Crop Image")]
-    public class cropping_an_image
+    [Subject("Process an image")]
+    public class processing_an_image
     {
         static BlitlineApi _blitline;
         static RestClient _client;
@@ -26,14 +26,7 @@ namespace Specs
                                                            {
                                                                save = new Save
                                                                           {
-                                                                              image_identifier = "profile",
-                                                                              s3_destination = new S3Destination
-                                                                                                   {
-                                                                                                       bucket =
-                                                                                                           "elevate-test-photos",
-                                                                                                       key =
-                                                                                                           "test_image.png"
-                                                                                                   }
+                                                                              image_identifier = "image_identifier"
                                                                           }
                                                            };
 
@@ -43,6 +36,10 @@ namespace Specs
 
         Because of = () => _response = _blitline.ProcessImages(_request);
 
-        It it_should_not_resport_as_failed = () => _response.Failed.ShouldBeFalse();
+        It response_should_not_report_as_failed = () => _response.Failed.ShouldBeFalse();
+        It response_should_have_a_job_id = () => _response.Results.JobId.ShouldNotBeEmpty();
+
+        It response_should_have_image_identifier = () => _response.Results.Images.First().ImageIdentifier.ShouldNotBeEmpty();
+
     }
 }
