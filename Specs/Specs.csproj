@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Integration\resizing_an_image.cs" />
     <Compile Include="Integration\saving_to_s3.cs" />
     <Compile Include="Integration\when_an_error_occurs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
