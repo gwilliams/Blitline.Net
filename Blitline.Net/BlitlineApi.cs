@@ -1,43 +1,35 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace Blitline.Net
 {
     public class BlitlineApi : IBlitlineApi
     {
-        readonly IRestClient _client;
+        readonly HttpClient _client;
         const string RootUrl = "http://api.blitline.com/job";
 
-        public BlitlineApi(IRestClient client)
+        public BlitlineApi(HttpClient client)
         {
             _client = client;
         }
 
         public BlitlineResponse ProcessImages(BlitlineRequest blitlineRequest)
         {
-            _client.BaseUrl = RootUrl;
+            var uri = new Uri(RootUrl);
 
-            var request = new RestRequest(Method.POST) {RequestFormat = DataFormat.Json};
-            var payload = new
-                              {
-                                  json = blitlineRequest
-                              };
+            var request = new HttpRequestMessage(HttpMethod.Post, uri)
+                {
+                    //Content = new StringContent(JsonConvert.SerializeObject(payload))
+                };
             
-            request.AddBody(payload);
+//            var result = _client.SendAsync(request);
+            var result = _client.PostAsync(RootUrl, new StringContent(JsonConvert.SerializeObject("\"json\":\"" + JsonConvert.SerializeObject(blitlineRequest) + "\"")));
 
-            var response = _client.Execute(request);//Async(request, restResponse => {});
-
-
-            //return Task.Factory.FromAsync<BlitlineResponse>(_client.ExecuteAsync(request, r => { }), callback)
-            
-            //_client.ExecuteAsync(request, r => callback(JsonConvert.DeserializeObject<BlitlineResponse>(r.Content)));
-            
-
-            return JsonConvert.DeserializeObject<BlitlineResponse>(response.Content);
+            return JsonConvert.DeserializeObject<BlitlineResponse>(result.Result.Content.ReadAsStringAsync().Result);
         }
     }
 }
