@@ -19,17 +19,7 @@ namespace Blitline.Net
 
         public BlitlineResponse ProcessImages(BlitlineRequest blitlineRequest)
         {
-            var uri = new Uri(RootUrl);
-
-            var request = new HttpRequestMessage(HttpMethod.Post, uri)
-                {
-                    //Content = new StringContent(JsonConvert.SerializeObject(payload))
-                };
-            
-//            var result = _client.SendAsync(request);
-            var result = _client.PostAsync(RootUrl, new StringContent(JsonConvert.SerializeObject("\"json\":\"" + JsonConvert.SerializeObject(blitlineRequest) + "\"")));
-
-            return JsonConvert.DeserializeObject<BlitlineResponse>(result.Result.Content.ReadAsStringAsync().Result);
+            return null;
         }
     }
 }

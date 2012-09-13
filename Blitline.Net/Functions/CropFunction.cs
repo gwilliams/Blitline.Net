@@ -2,16 +2,16 @@ namespace Blitline.Net.Functions
 {
     public class CropFunction : BlitlineFunction
     {
-        public override string name
+        public override string Name
         {
             get { return "crop"; }
         }
 
-        public override object @params { get; set; }
+        public override object @Params { get; set; }
 
         public CropFunction(int x, int y, int width, int height)
         {
-            @params = new
+            @Params = new
                           {
                               x,
                               y,

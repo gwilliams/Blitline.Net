@@ -2,16 +2,16 @@
 {
     public class BlurFunction : BlitlineFunction
     {
-        public override string name
+        public override string Name
         {
             get { return "blur"; }
         }
 
-        public override object @params { get; set; }
+        public override object @Params { get; set; }
 
         public BlurFunction(decimal sigma, decimal radius)
         {
-            @params = new
+            @Params = new
                           {
                               sigma,
                               radius

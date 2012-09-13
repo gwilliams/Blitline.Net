@@ -22,9 +22,9 @@ namespace Specs.Integration
 
             var cropFunction = new CropFunction(51, 126, 457 - 126, 382 - 51)
             {
-                save = new Save
+                Save = new Save
                 {
-                    image_identifier = "image_identifier"
+                    ImageIdentifier = "image_identifier"
                 }
             };
 

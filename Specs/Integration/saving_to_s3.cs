@@ -25,13 +25,13 @@ namespace Specs.Integration
 
             var cropFunction = new CropFunction(51, 126, 457 - 126, 382 - 51)
             {
-                save = new Save
+                Save = new Save
                 {
-                    image_identifier = "image_identifier",
-                    s3_destination = new S3Destination
+                    ImageIdentifier = "image_identifier",
+                    S3Destination = new S3Destination
                                          {
-                                             bucket = "elevate-test-photos",
-                                             key = "blitline.png"
+                                             Bucket = "elevate-test-photos",
+                                             Key = "blitline.png"
                                          }
                 }
             };
