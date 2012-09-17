@@ -10,7 +10,7 @@ namespace Blitline.Net.Functions
         [JsonProperty("name")]
         public abstract string Name { get; }
         [JsonProperty("params")]
-        public abstract object @Params { get; set; }
+        public abstract object @Params { get; protected set; }
         [JsonProperty("save")]
         public Save Save { get; set; }
         [JsonProperty("functions")]

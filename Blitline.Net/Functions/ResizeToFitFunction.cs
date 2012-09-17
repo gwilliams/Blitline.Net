@@ -7,7 +7,7 @@ namespace Blitline.Net.Functions
             get { return "resize_to_fit"; }
         }
 
-        public override object @Params { get; set; }
+        public override object @Params { get; protected set; }
 
         public ResizeToFitFunction(int width, int height) : this(width, height, false) { }
 

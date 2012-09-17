@@ -9,7 +9,7 @@ namespace Blitline.Net.Functions
             get { return "resize_to_fill"; }
         }
 
-        public override object @Params { get; set; }
+        public override object @Params { get; protected set; }
 
         public ResizeToFillFunction(int width, int height, Gravity gravity)
         {

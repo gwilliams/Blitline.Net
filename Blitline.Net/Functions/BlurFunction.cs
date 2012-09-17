@@ -7,7 +7,7 @@
             get { return "blur"; }
         }
 
-        public override object @Params { get; set; }
+        public override object @Params { get; protected set; }
 
         public BlurFunction(decimal sigma, decimal radius)
         {
