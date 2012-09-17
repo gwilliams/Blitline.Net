@@ -7,21 +7,25 @@ namespace Blitline.Net.Request
 {
     public class BlitlineRequest
     {
-        public string application_id { get; set; }
-        public string src { get; set; }
-        public string postback_url { get; set; }
-        public ICollection<BlitlineFunction> functions { get; set; }
+        [JsonProperty("application_id")]
+        public string ApplicationId { get; set; }
+        [JsonProperty("src")]
+        public string SourceImage { get; set; }
+        [JsonProperty("postback_url")]
+        public string PostbackUrl { get; set; }
+        [JsonProperty("functions")]
+        public ICollection<BlitlineFunction> Functions { get; set; }
         
         public BlitlineRequest(string applicationId, string sourceImage)
         {
-            application_id = applicationId;
-            src = sourceImage;
-            functions = new Collection<BlitlineFunction>();
+            ApplicationId = applicationId;
+            SourceImage = sourceImage;
+            Functions = new Collection<BlitlineFunction>();
         }
 
         public void AddFunction(BlitlineFunction function)
         {
-            functions.Add(function);
+            Functions.Add(function);
         }
     }
 }

@@ -12,21 +12,19 @@ namespace Specs.Integration
     public class resizing_an_image
     {
         static BlitlineApi _blitline;
-        static RestClient _client;
         static BlitlineResponse _response;
         static BlitlineRequest _request;
 
         Establish context = () =>
         {
-            _client = new RestClient();
-            _blitline = new BlitlineApi(_client);
+            _blitline = new BlitlineApi();
             _request = new BlitlineRequest("bqbTZJ-fe3sBFfJ2G0mKWw", "http://www.savethestudent.org/uploads/photobox.jpg");
 
             var resizeFunction = new ResizeToFitFunction(100,100)
             {
-                save = new Save
+                Save = new Save
                 {
-                    image_identifier = "image_identifier"
+                    ImageIdentifier = "image_identifier"
                 }
             };
 

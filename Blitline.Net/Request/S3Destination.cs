@@ -1,8 +1,12 @@
+using Newtonsoft.Json;
+
 namespace Blitline.Net.Request
 {
     public class S3Destination
     {
-        public string bucket { get; set; }
-        public string key { get; set; }
+        [JsonProperty("bucket")]
+        public string Bucket { get; set; }
+        [JsonProperty("key")]
+        public string Key { get; set; }
     }
 }

@@ -1,30 +1,29 @@
-﻿using Blitline.Net;
+﻿using System.Net.Http;
+using Blitline.Net;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 using Machine.Specifications;
-using RestSharp;
 namespace Specs.Integration
 {
     [Subject("Handling an error")]
     public class when_an_error_occurs
     {
         static BlitlineApi _blitline;
-        static RestClient _client;
+        static HttpClient _client;
         static BlitlineResponse _response;
         static BlitlineRequest _request;
 
         Establish context = () =>
         {
-            _client = new RestClient();
-            _blitline = new BlitlineApi(_client);
+            _blitline = new BlitlineApi();
             _request = new BlitlineRequest("some_crap_key", "https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40elevatedirect.com-new.png");
 
             var cropFunction = new CropFunction(51, 126, 457 - 126, 382 - 51)
             {
-                save = new Save
+                Save = new Save
                 {
-                    image_identifier = "image_identifier"
+                    ImageIdentifier = "image_identifier"
                 }
             };
 

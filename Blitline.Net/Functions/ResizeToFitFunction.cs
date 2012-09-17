@@ -2,12 +2,12 @@ namespace Blitline.Net.Functions
 {
     public class ResizeToFitFunction : BlitlineFunction
     {
-        public override string name
+        public override string Name
         {
             get { return "resize_to_fit"; }
         }
 
-        public override object @params { get; set; }
+        public override object @Params { get; set; }
 
         public ResizeToFitFunction(int width, int height) : this(width, height, false) { }
 
@@ -19,7 +19,7 @@ namespace Blitline.Net.Functions
         /// <param name="onlyShrinkLarger">Don't upsize image</param>
         public ResizeToFitFunction(int width, int height, bool onlyShrinkLarger)
         {
-            @params = new
+            @Params = new
             {
                 width,
                 height,
