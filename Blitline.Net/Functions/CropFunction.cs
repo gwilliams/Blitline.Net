@@ -1,5 +1,9 @@
 namespace Blitline.Net.Functions
 {
+    /// <summary>
+    /// Crop an image to a specific size. 
+    /// Note: This is not used very often. You are probably looking for "resize_to_fill".
+    /// </summary>
     public class CropFunction : BlitlineFunction
     {
         public override string Name
@@ -9,6 +13,13 @@ namespace Blitline.Net.Functions
 
         public override object @Params { get; protected set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x">X offset</param>
+        /// <param name="y">Y offset</param>
+        /// <param name="width">Width of resulting image</param>
+        /// <param name="height">Height of resulting image</param>
         public CropFunction(int x, int y, int width, int height)
         {
             @Params = new

@@ -50,10 +50,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlitlineApi.cs" />
+    <Compile Include="Functions\AnnotateFunction.cs" />
+    <Compile Include="Functions\AppendFunction.cs" />
     <Compile Include="Functions\BlurFunction.cs" />
+    <Compile Include="Functions\DeskewFunction.cs" />
+    <Compile Include="Functions\EqualizeFunction.cs" />
+    <Compile Include="Functions\GammaChannelFunction.cs" />
+    <Compile Include="Functions\MedianFilterFunction.cs" />
+    <Compile Include="Functions\NoOpFunction.cs" />
+    <Compile Include="Functions\PhotographFunction.cs" />
     <Compile Include="Functions\ResizeToFillFunction.cs" />
+    <Compile Include="Functions\TrimFunction.cs" />
+    <Compile Include="Functions\UnsharpMaskFunction.cs" />
+    <Compile Include="Functions\VignetteFunction.cs" />
+    <Compile Include="Functions\WatermarkFunction.cs" />
     <Compile Include="ParamOptions\Gravity.cs" />
     <Compile Include="IBlitlineApi.cs" />
+    <Compile Include="ParamOptions\InterlaceType.cs" />
     <Compile Include="Request\BlitlineRequest.cs" />
     <Compile Include="Response\BlitlineResponse.cs" />
     <Compile Include="Functions\BlitlineFunction.cs" />
@@ -68,7 +81,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SpecialFilters\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

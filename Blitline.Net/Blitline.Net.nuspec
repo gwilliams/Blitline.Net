@@ -8,7 +8,7 @@
     <projectUrl>https://github.com/gwilliams/Blitline.Net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A .Net wrapper for the Blitline Image Processing API</description>
-	<releaseNotes>Removed RestSharp reference and replaced with Microsoft.Net.Http. Added correct casing to BlitlineRequest object.</releaseNotes>
+	<releaseNotes>Breaking changes! Removed RestSharp reference and replaced with Microsoft.Net.Http. Added correct casing to BlitlineRequest object.</releaseNotes>
     <tags>Blitline</tags>
   </metadata>
 </package>
