@@ -68,6 +68,7 @@
     <Compile Include="Unit\creating_blur_function.cs" />
     <Compile Include="Unit\creating_composite_function.cs" />
     <Compile Include="Unit\creating_contrast_function.cs" />
+    <Compile Include="Unit\creating_contrast_stretch_channel_function.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

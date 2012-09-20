@@ -3,7 +3,7 @@
     /// <summary>
     /// Adjusts contrasts within the image.
     /// </summary>
-    internal class ContrastStretchChannelFunction : BlitlineFunction
+    public class ContrastStretchChannelFunction : BlitlineFunction
     {
         public override string Name
         {

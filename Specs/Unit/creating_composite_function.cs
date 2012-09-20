@@ -29,7 +29,7 @@ namespace Specs.Unit.Composite
     {
         static CompositeFunction function;
 
-        Because of = () => function = new CompositeFunction("Text", true, 1, 2, CompositeOps.AtopCompositeOp);
+        Because of = () => function = new CompositeFunction("src", true, 1, 2, CompositeOps.AtopCompositeOp);
 
         It it_should_set_default_values_on_params = () =>
         {

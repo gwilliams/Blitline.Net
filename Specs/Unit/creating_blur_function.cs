@@ -4,7 +4,7 @@ using Machine.Specifications;
 
 namespace Specs.Unit.Blur
 {
-     [Subject(typeof(BlurFunction))]
+    [Subject(typeof(BlurFunction))]
     public class when_creating_blur_function
     {
         static BlurFunction function;

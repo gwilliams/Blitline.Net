@@ -2,7 +2,7 @@
 using Blitline.Net.Functions;
 using Machine.Specifications;
 
-namespace Specs.Unit
+namespace Specs.Unit.Contrast
 {
     [Subject(typeof(ContrastFunction))]
     public class when_only_supplying_default_values
