@@ -26,7 +26,7 @@
                     width,
                     height,
                     scale_factor = scaleFactor
-                }
+                };
         }
     }
 }
