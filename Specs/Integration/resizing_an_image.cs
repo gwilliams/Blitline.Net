@@ -4,7 +4,6 @@ using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 using Machine.Specifications;
-using RestSharp;
 
 namespace Specs.Integration
 {
