@@ -35,10 +35,8 @@ namespace Specs.Integration
 
         Because of = () => _response = _blitline.ProcessImages(_request);
 
-        It response_should_not_report_as_failed = () =>
-            {
-                _response.Failed.ShouldBeFalse();
-            };
+        It response_should_not_report_as_failed = () => _response.Failed.ShouldBeFalse();
+
         It response_should_have_a_job_id = () => _response.Results.JobId.ShouldNotBeEmpty();
 
         It response_should_have_image_identifier = () => _response.Results.Images.First().ImageIdentifier.ShouldNotBeEmpty();

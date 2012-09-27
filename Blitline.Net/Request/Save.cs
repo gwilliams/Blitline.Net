@@ -10,6 +10,8 @@ namespace Blitline.Net.Request
         public int Quality { get; set; }
         [JsonProperty("s3_destination")]
         public S3Destination S3Destination { get; set; }
+        [JsonProperty("extension")]
+        public string Extension { get; set; }
 
         public Save()
         {

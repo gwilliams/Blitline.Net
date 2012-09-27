@@ -7,15 +7,45 @@ namespace Blitline.Net.Request
 {
     public enum Hash
     {
-        md5,
-        crc32,
-        sha256
+        [JsonProperty("md5")]
+        Md5,
+        [JsonProperty("crc32")]
+        Crc32,
+        [JsonProperty("sha256")]
+        Sha256
     }
 
-    public enum SourceType
+    //public enum SourceType
+    //{
+    //    [JsonProperty("screenshot")]
+    //    Screenshot,
+    //    [JsonProperty("multipage")]
+    //    Multipage
+    //}
+
+    public abstract class SourceType
     {
-        Screenshot,
-        Multipage
+        [JsonProperty("name")]
+        public abstract string Name { get; }
+    }
+
+    public class MultiPageSource : SourceType
+    {
+        public override string Name
+        {
+            get { return "multi_page"; }
+        }
+
+        [JsonProperty("pages")]
+        public List<int> Pages { get; set; } 
+    }
+
+    public class ScreenShotSource : SourceType
+    {
+        public override string Name
+        {
+            get { return "screen_shot_url"; }
+        }
     }
 
     public class BlitlineRequest
@@ -27,7 +57,7 @@ namespace Blitline.Net.Request
         [JsonProperty("suppress_auto_orient")]
         public bool SuppressAutoOrient { get; set; }
         [JsonProperty("src_type")]
-        public SourceType? SourceType { get; set; }
+        public SourceType SourceType { get; set; }
         [JsonProperty("src")]
         public string SourceImage { get; set; }
         [JsonProperty("postback_url")]
