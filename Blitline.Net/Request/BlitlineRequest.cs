@@ -14,39 +14,31 @@ namespace Blitline.Net.Request
         [JsonProperty("sha256")]
         Sha256
     }
-
-    //public enum SourceType
+    
+    //public abstract class SourceType
     //{
-    //    [JsonProperty("screenshot")]
-    //    Screenshot,
-    //    [JsonProperty("multipage")]
-    //    Multipage
+    //    [JsonProperty("name")]
+    //    public abstract string Name { get; }
     //}
 
-    public abstract class SourceType
-    {
-        [JsonProperty("name")]
-        public abstract string Name { get; }
-    }
+    //public class MultiPageSource : SourceType
+    //{
+    //    public override string Name
+    //    {
+    //        get { return "multi_page"; }
+    //    }
 
-    public class MultiPageSource : SourceType
-    {
-        public override string Name
-        {
-            get { return "multi_page"; }
-        }
+    //    [JsonProperty("pages")]
+    //    public List<int> Pages { get; set; } 
+    //}
 
-        [JsonProperty("pages")]
-        public List<int> Pages { get; set; } 
-    }
-
-    public class ScreenShotSource : SourceType
-    {
-        public override string Name
-        {
-            get { return "screen_shot_url"; }
-        }
-    }
+    //public class ScreenShotSource : SourceType
+    //{
+    //    public override string Name
+    //    {
+    //        get { return "screen_shot_url"; }
+    //    }
+    //}
 
     public class BlitlineRequest
     {
@@ -56,8 +48,8 @@ namespace Blitline.Net.Request
         public Hash? Hash { get; set; }
         [JsonProperty("suppress_auto_orient")]
         public bool SuppressAutoOrient { get; set; }
-        [JsonProperty("src_type")]
-        public SourceType SourceType { get; set; }
+        //[JsonProperty("src_type")]
+        //public SourceType SourceType { get; set; }
         [JsonProperty("src")]
         public string SourceImage { get; set; }
         [JsonProperty("postback_url")]
