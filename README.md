@@ -1,4 +1,11 @@
 Blitline.Net
 ============
 
-.Net wrapper for Blitline API
+A simple .net wrapper for the [Blitline API](http://www.blitline.com)
+
+Simple Usage
+------------
+
+```
+using Blitline.Net;
+```
