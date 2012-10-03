@@ -67,7 +67,7 @@ public class MyTestFunction : BlitlineFunction
 
     public override object Params { get; protected set; }
 
-    public NoOpFunction()
+    public MyTestFunction()
     {
         @Params = new { foo = 1, bar = 2 };
     }
