@@ -57,4 +57,19 @@ public abstract class BlitlineFunction
         Functions.Add(function);
     }
 }
+
+public class MyTestFunction : BlitlineFunction
+{
+    public override string Name
+    {
+        get { return "my_test_function"; }
+    }
+
+    public override object Params { get; protected set; }
+
+    public NoOpFunction()
+    {
+        @Params = new { foo = 1, bar = 2 };
+    }
+}
 ```
