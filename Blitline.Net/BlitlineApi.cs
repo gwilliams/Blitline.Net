@@ -32,10 +32,10 @@ namespace Blitline.Net
             return new RequestBuilder();
         }
     }
-    
+
     public abstract class Builder<T>
     {
-        public abstract T BuildImp();
+        protected abstract T BuildImp();
 
         public Builder<T> WithCropFunction(Func<CropFunctionBuilder, CropFunction> build)
         {
@@ -47,6 +47,80 @@ namespace Blitline.Net
         {
             var o = BuildImp();
             return o;
+        }
+    }
+
+    public abstract class FunctionBuilder<T> : Builder<T>
+    {
+        public FunctionBuilder<T> SaveAs(Func<SaveBuilder, Save> build)
+        {
+            return this;
+        }
+    }
+
+    public class SaveBuilder : Builder<Save>
+    {
+        private readonly Save _save;
+
+        public SaveBuilder()
+        {
+            _save = new Save();
+        }
+
+        public SaveBuilder WithExtension(string extension)
+        {
+            _save.Extension = extension;
+            return this;
+        }
+
+        public SaveBuilder WithImageIdentifier(string imageIdentifier)
+        {
+            _save.ImageIdentifier = imageIdentifier;
+            return this;
+        }
+
+        public SaveBuilder WithQuality(int quality)
+        {
+            _save.Quality = quality;
+            return this;
+        }
+
+        public SaveBuilder WithS3Destination(Func<S3DestinationBuilder, S3Destination> build)
+        {
+            _save.S3Destination = build(new S3DestinationBuilder());
+            return this;
+        }
+
+        protected override Save BuildImp()
+        {
+            return _save;
+        }
+    }
+
+    public class S3DestinationBuilder : Builder<S3Destination>
+    {
+        private readonly S3Destination _destination;
+
+        public S3DestinationBuilder()
+        {
+            _destination = new S3Destination();
+        }
+
+        public S3DestinationBuilder WithBucketName(string bucketName)
+        {
+            _destination.Bucket = bucketName;
+            return this;
+        }
+
+        public S3DestinationBuilder WithKey(string key)
+        {
+            _destination.Key = key;
+            return this;
+        }
+
+        protected override S3Destination BuildImp()
+        {
+            return _destination;
         }
     }
 
@@ -71,13 +145,13 @@ namespace Blitline.Net
             return this;
         }
 
-        public override BlitlineRequest BuildImp()
+        protected override BlitlineRequest BuildImp()
         {
             return _request;
         }
     }
 
-    public class CropFunctionBuilder : Builder<CropFunction>
+    public class CropFunctionBuilder : FunctionBuilder<CropFunction>
     {
         private CropFunction _function;
 
@@ -92,7 +166,7 @@ namespace Blitline.Net
             return this;
         }
 
-        public override CropFunction BuildImp()
+        protected override CropFunction BuildImp()
         {
             return _function;
         }

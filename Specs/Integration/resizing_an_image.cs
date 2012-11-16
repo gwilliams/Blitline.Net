@@ -17,7 +17,7 @@ namespace Specs.Integration
         Establish context = () =>
         {
             _blitline = new BlitlineApi();
-            _request = new BlitlineRequest("bqbTZJ-fe3sBFfJ2G0mKWw", "http://www.savethestudent.org/uploads/photobox.jpg");
+            _request = new BlitlineRequest();//"bqbTZJ-fe3sBFfJ2G0mKWw", "https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40elevatedirect.com-new.png");
 
             var resizeFunction = new ResizeToFitFunction(100,100)
             {
