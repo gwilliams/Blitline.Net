@@ -31,6 +31,7 @@ namespace Specs.Integration
                                 .WithS3Destination(ss => ss.WithBucketName("bucket")
                                     .WithKey("key")
                                     .Build())
+                                .WithResizeFunction(r => r.WithDimensions().Build())
                                 .Build())
                             .Build())
                         .Build();

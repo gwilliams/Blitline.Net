@@ -43,6 +43,12 @@ namespace Blitline.Net
             return this;
         }
 
+        public Builder<T> WithResizeFunction(Func<ResizeFunctionBuilder, ResizeFunction> build)
+        {
+            build(new ResizeFunctionBuilder());
+            return this;
+        }
+
         public T Build()
         {
             var o = BuildImp();
@@ -167,6 +173,26 @@ namespace Blitline.Net
         }
 
         protected override CropFunction BuildImp()
+        {
+            return _function;
+        }
+    }
+
+    public class ResizeFunctionBuilder : FunctionBuilder<ResizeFunction>
+    {
+        private readonly ResizeFunction _function;
+
+        public ResizeFunctionBuilder()
+        {
+            _function = new ResizeFunction(0, 0);
+        }
+
+        public ResizeFunctionBuilder WithDimensions()
+        {
+            return this;
+        }
+
+        protected override ResizeFunction BuildImp()
         {
             return _function;
         }
