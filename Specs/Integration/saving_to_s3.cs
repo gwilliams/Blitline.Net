@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Blitline.Net;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 using Machine.Specifications;
 using SubSpec;
+
 namespace Specs.Integration
 {
     public class SavingToS3
@@ -19,6 +21,12 @@ namespace Specs.Integration
 
             "Given I have a blitline request with an s3 destination".Context(() =>
                 {
+                    var req = BuildA.Request()
+                        .WithApplicationId("bqbTZJ-fe3sBFfJ2G0mKWw")
+                        .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40elevatedirect.com-new.png"))
+                        .WithCropFunction(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51).Build())
+                        .Build();
+                    
                     bucketName = "elevate-test-photos";
                     blitlineApi = new BlitlineApi();
                     request = new BlitlineRequest("bqbTZJ-fe3sBFfJ2G0mKWw", "https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40elevatedirect.com-new.png");
@@ -35,8 +43,9 @@ namespace Specs.Integration
                             }
                         }
                     };
-                    
+
                     request.AddFunction(cropFunction);
+
                 });
 
             "When I process the request".Do(() => response = blitlineApi.ProcessImages(request));

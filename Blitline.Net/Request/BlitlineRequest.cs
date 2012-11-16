@@ -58,13 +58,18 @@ namespace Blitline.Net.Request
         public bool WaitForS3 { get; set; }
         [JsonProperty("functions")]
         public ICollection<BlitlineFunction> Functions { get; set; }
-        
-        public BlitlineRequest(string applicationId, string sourceImage)
+
+        //public BlitlineRequest(string applicationId, string sourceImage)
+        //{
+        //    ApplicationId = applicationId;
+        //    SourceImage = sourceImage;
+        //    Functions = new Collection<BlitlineFunction>();
+        //}
+        public BlitlineRequest()
         {
-            ApplicationId = applicationId;
-            SourceImage = sourceImage;
             Functions = new Collection<BlitlineFunction>();
         }
+
 
         public void AddFunction(BlitlineFunction function)
         {
