@@ -33,38 +33,53 @@ namespace Blitline.Net
         }
     }
 
-    public abstract class Builder<T>
+    public abstract class BaseBuilder<T>
     {
         protected abstract T BuildImp();
 
+        protected abstract void Validate();
+
+        public T Build()
+        {
+            var o = BuildImp();
+            Validate();
+            return o;
+        }
+    }
+
+    public abstract class Builder<T> : BaseBuilder<T>
+    {
+        protected BlitlineRequest Request = new BlitlineRequest();
+
         public Builder<T> WithCropFunction(Func<CropFunctionBuilder, CropFunction> build)
         {
-            build(new CropFunctionBuilder());
+            Request.Functions.Add(build(new CropFunctionBuilder()));
             return this;
         }
 
         public Builder<T> WithResizeFunction(Func<ResizeFunctionBuilder, ResizeFunction> build)
         {
-            build(new ResizeFunctionBuilder());
+            Request.Functions.Add(build(new ResizeFunctionBuilder()));
             return this;
-        }
-
-        public T Build()
-        {
-            var o = BuildImp();
-            return o;
         }
     }
 
     public abstract class FunctionBuilder<T> : Builder<T>
     {
+        protected BlitlineFunction Function;
+
         public FunctionBuilder<T> SaveAs(Func<SaveBuilder, Save> build)
         {
             return this;
         }
+
+        protected override void Validate()
+        {
+            //throw new NotImplementedException();
+        }
     }
 
-    public class SaveBuilder : Builder<Save>
+    public class SaveBuilder : BaseBuilder<Save>
     {
         private readonly Save _save;
 
@@ -101,9 +116,14 @@ namespace Blitline.Net
         {
             return _save;
         }
+
+        protected override void Validate()
+        {
+            if(string.IsNullOrEmpty(_save.ImageIdentifier)) throw new ArgumentNullException("ImageIdentifier", "ImageIdentifier is required");
+        }
     }
 
-    public class S3DestinationBuilder : Builder<S3Destination>
+    public class S3DestinationBuilder : BaseBuilder<S3Destination>
     {
         private readonly S3Destination _destination;
 
@@ -128,73 +148,115 @@ namespace Blitline.Net
         {
             return _destination;
         }
+
+        protected override void Validate()
+        {
+            if(string.IsNullOrEmpty(_destination.Bucket)) throw new ArgumentNullException("Bucket", "Bucket name is required");
+            if (string.IsNullOrEmpty(_destination.Key)) throw new ArgumentNullException("Key", "Key is required");
+        }
     }
 
     public class RequestBuilder : Builder<BlitlineRequest>
     {
-        private readonly BlitlineRequest _request;
-
         public RequestBuilder()
         {
-            _request = new BlitlineRequest();    
+            Request = new BlitlineRequest();    
         }
 
         public RequestBuilder WithApplicationId(string applicationId)
         {
-            _request.ApplicationId = applicationId;
+            Request.ApplicationId = applicationId;
             return this;
         }
 
         public RequestBuilder WithSourceImageUri(Uri sourceImageUri)
         {
-            _request.SourceImage = sourceImageUri.AbsoluteUri;
+            Request.SourceImage = sourceImageUri.AbsoluteUri;
+            return this;
+        }
+
+        public RequestBuilder WaitForS3(bool waitForS3)
+        {
+            Request.WaitForS3 = waitForS3;
+            return this;
+        }
+
+        public RequestBuilder WithPostbackUri(Uri postbackUri)
+        {
+            Request.PostbackUrl = postbackUri.AbsoluteUri;
+            return this;
+        }
+
+        public RequestBuilder SuppressAutoOrient(bool suppressAutoOrient)
+        {
+            Request.SuppressAutoOrient = suppressAutoOrient;
+            return this;
+        }
+
+        public RequestBuilder WithHash(Hash hash)
+        {
+            Request.Hash = hash;
             return this;
         }
 
         protected override BlitlineRequest BuildImp()
         {
-            return _request;
+            return Request;
+        }
+
+        protected override void Validate()
+        {
+            if (string.IsNullOrEmpty(Request.ApplicationId)) throw new ArgumentNullException("ApplicationId", "ApplicationId is required");
+            if (string.IsNullOrEmpty(Request.SourceImage)) throw new ArgumentNullException("SourceImage", "SourceImage is required");
+            if (Request.Functions.Count == 0) throw new ArgumentException("Functions", "Functions are required");
         }
     }
 
     public class CropFunctionBuilder : FunctionBuilder<CropFunction>
     {
-        private CropFunction _function;
-
         public CropFunctionBuilder()
         {
-            _function = new CropFunction(0,0,0,0);
+            Function = new CropFunction(0, 0, 0, 0);
         }
 
         public CropFunctionBuilder WithDimensions(int x, int y, int width, int height)
         {
-            _function = new CropFunction(x, y, width, height);
+            Function = new CropFunction(x, y, width, height);
             return this;
         }
 
         protected override CropFunction BuildImp()
         {
-            return _function;
+            return (CropFunction)Function;
+        }
+
+        protected override void Validate()
+        {
+            //throw new NotImplementedException();
         }
     }
 
     public class ResizeFunctionBuilder : FunctionBuilder<ResizeFunction>
     {
-        private readonly ResizeFunction _function;
-
         public ResizeFunctionBuilder()
         {
-            _function = new ResizeFunction(0, 0);
+            Function = new ResizeFunction(0, 0);
         }
 
-        public ResizeFunctionBuilder WithDimensions()
+        public ResizeFunctionBuilder WithDimensions(int width, int height)
         {
+            Function = new ResizeFunction(width, height);
             return this;
         }
 
         protected override ResizeFunction BuildImp()
         {
-            return _function;
+            return (ResizeFunction)Function;
+        }
+
+        protected override void Validate()
+        {
+            //throw new NotImplementedException();
         }
     }
 }

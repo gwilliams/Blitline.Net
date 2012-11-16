@@ -82,6 +82,7 @@
     <Compile Include="SubSpec\SubSpec.cs" />
     <Compile Include="SubSpec\SubSpec.Thesis.cs" />
     <Compile Include="SubSpec\SubSpecUtils.cs" />
+    <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
     <Compile Include="Unit\creating_annotate_function.cs" />
     <Compile Include="Unit\creating_append_function.cs" />
     <Compile Include="Unit\creating_blur_function.cs" />
@@ -106,6 +107,7 @@
   <ItemGroup>
     <Content Include="SubSpec\LICENSE.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -22,8 +22,8 @@ namespace Specs.Integration
             "Given I have a blitline request with an s3 destination".Context(() =>
                 {
                     var req = BuildA.Request()
-                        .WithApplicationId("bqbTZJ-fe3sBFfJ2G0mKWw")
-                        .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40elevatedirect.com-new.png"))
+                        .WithApplicationId("appID")
+                        .WithSourceImageUri(new Uri("https://some_url.gif"))
                         .WithCropFunction(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
                             .SaveAs(s => s.WithImageIdentifier("image")
                                 .WithExtension("jpg")
@@ -31,7 +31,6 @@ namespace Specs.Integration
                                 .WithS3Destination(ss => ss.WithBucketName("bucket")
                                     .WithKey("key")
                                     .Build())
-                                .WithResizeFunction(r => r.WithDimensions().Build())
                                 .Build())
                             .Build())
                         .Build();

@@ -70,7 +70,6 @@ namespace Blitline.Net.Request
             Functions = new Collection<BlitlineFunction>();
         }
 
-
         public void AddFunction(BlitlineFunction function)
         {
             Functions.Add(function);
