@@ -62,6 +62,13 @@ namespace Blitline.Net.Functions
             Gravity = gravity;
         }
 
-        protected internal AnnotateFunction() {}
+        protected internal AnnotateFunction()
+        {
+            Colour = "#ffffff";
+            FontFamily = "Helvetica";
+            PointSize = 32;
+            Stroke = "transparent";
+            Gravity = Gravity.CenterGrativty;
+        }
     }
 }

@@ -22,6 +22,12 @@ namespace Blitline.Net.Builders
             return o;
         }
 
+        public Builder<T> WithAnnotateFunction(Func<AnnotateFunctionBuilder, AnnotateFunction> build)
+        {
+            Functions.Add(build(new AnnotateFunctionBuilder()));
+            return this;
+        }
+
         public Builder<T> WithCropFunction(Func<CropFunctionBuilder, CropFunction> build)
         {
             Functions.Add(build(new CropFunctionBuilder()));

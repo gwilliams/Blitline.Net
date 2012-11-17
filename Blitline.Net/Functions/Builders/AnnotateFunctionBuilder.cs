@@ -15,6 +15,18 @@ namespace Blitline.Net.Functions.Builders
             return this;
         }
 
+        public AnnotateFunctionBuilder WithX(int x)
+        {
+            ((AnnotateFunction) Function).X = x;
+            return this;
+        }
+
+        public AnnotateFunctionBuilder WithY(int y)
+        {
+            ((AnnotateFunction) Function).Y = y;
+            return this;
+        }
+
         public AnnotateFunctionBuilder WithColour(string colour)
         {
             ((AnnotateFunction)Function).Colour = colour;
