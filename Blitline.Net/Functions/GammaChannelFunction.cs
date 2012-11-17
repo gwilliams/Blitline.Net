@@ -12,6 +12,9 @@
 
         public override object Params { get { return new {gamma = Gamma}; } }
 
+        /// <summary>
+        /// Gamma adjustent (Usually 0.8 to 2.3)
+        /// </summary>
         public decimal Gamma { get; set; }
 
         /// <summary>

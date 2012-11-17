@@ -76,5 +76,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithGammaChannelFunction(Func<GammaChannelFunctionBuilder, GammaChannelFunction> build)
+        {
+            Functions.Add(build(new GammaChannelFunctionBuilder()));
+            return this;
+        }
+
     }
 }
