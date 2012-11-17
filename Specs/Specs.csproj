@@ -88,8 +88,8 @@
     <Compile Include="Unit\Builders\CompositeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ContrastFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ContrastStrecthChannelFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\CropFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
-    <Compile Include="Unit\creating_crop_function.cs" />
     <Compile Include="Unit\creating_deskew_function.cs" />
     <Compile Include="Unit\creating_gamma_channel_function.cs" />
     <Compile Include="Unit\creating_median_filter_function.cs" />

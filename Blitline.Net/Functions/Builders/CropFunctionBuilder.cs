@@ -9,7 +9,11 @@
 
         public CropFunctionBuilder WithDimensions(int x, int y, int width, int height)
         {
-            Function = new CropFunction(x, y, width, height);
+            ((CropFunction) Function).X = x;
+            ((CropFunction)Function).Y = y;
+            ((CropFunction)Function).Width = width;
+            ((CropFunction)Function).Height = height;
+
             return this;
         }
 

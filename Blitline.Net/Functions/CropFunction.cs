@@ -25,9 +25,24 @@ namespace Blitline.Net.Functions
             }
         }
 
+        /// <summary>
+        /// X offset
+        /// </summary>
         public int X { get; set; }
+
+        /// <summary>
+        /// Y offset
+        /// </summary>
         public int Y { get; set; }
+
+        /// <summary>
+        /// Width of resulting image
+        /// </summary>
         public int Width { get; set; }
+
+        /// <summary>
+        /// Height of resulting image
+        /// </summary>
         public int Height { get; set; }
 
         /// <summary>
