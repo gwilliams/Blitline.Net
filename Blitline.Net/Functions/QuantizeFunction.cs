@@ -40,6 +40,9 @@
             Dither = dither;
         }
 
-        protected internal QuantizeFunction() {}
+        protected internal QuantizeFunction()
+        {
+            ColourSpace = "RGBColorspace";
+        }
     }
 }

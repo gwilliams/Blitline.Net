@@ -112,5 +112,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithQuantizeFunction(Func<QuantizeFunctionBuilder, QuantizeFunction> build)
+        {
+            Functions.Add(build(new QuantizeFunctionBuilder()));
+            return this;
+        }
+
     }
 }
