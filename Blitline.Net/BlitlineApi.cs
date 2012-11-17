@@ -33,70 +33,82 @@ namespace Blitline.Net
         }
     }
 
-    public abstract class BaseBuilder<T>
+    public abstract class UberBuilder<T>
     {
         protected abstract T BuildImp();
 
-        protected abstract void Validate();
-
-        public T Build()
-        {
-            var o = BuildImp();
-            Validate();
-            return o;
-        }
+        public abstract T Build();
     }
 
-    public abstract class Builder<T> : BaseBuilder<T>
+    public abstract class Builder<T> : UberBuilder<T> where T : Function
     {
-        protected BlitlineRequest Request = new BlitlineRequest();
+        protected List<BlitlineFunction> Functions { get; set; }
+
+        protected Builder()
+        {
+            Functions = new List<BlitlineFunction>();
+        }
+        
+        public override T Build()
+        {
+            var o = BuildImp();
+            o.Functions.AddRange(Functions);
+            return o;
+        }
 
         public Builder<T> WithCropFunction(Func<CropFunctionBuilder, CropFunction> build)
         {
-            Request.Functions.Add(build(new CropFunctionBuilder()));
+            Functions.Add(build(new CropFunctionBuilder()));
             return this;
         }
 
-        public Builder<T> WithResizeFunction(Func<ResizeFunctionBuilder, ResizeFunction> build)
+    }
+
+    public class RequestBuilder : Builder<BlitlineRequest>
+    {
+        readonly BlitlineRequest _request;
+
+        public RequestBuilder()
         {
-            Request.Functions.Add(build(new ResizeFunctionBuilder()));
+            _request = new BlitlineRequest();    
+        }
+
+        public RequestBuilder WithApplicationId(string id)
+        {
+            _request.ApplicationId = id;
             return this;
+        }
+
+        public RequestBuilder WithSourceImageUri(Uri uri)
+        {
+            _request.SourceImage = uri.AbsoluteUri;
+            return this;
+        }
+
+        protected override BlitlineRequest BuildImp()
+        {
+            return _request;
         }
     }
 
-    public abstract class FunctionBuilder<T> : Builder<T>
+    public class SaveBuilder : UberBuilder<Save>
     {
-        protected BlitlineFunction Function;
-
-        public FunctionBuilder<T> SaveAs(Func<SaveBuilder, Save> build)
-        {
-            return this;
-        }
-
-        protected override void Validate()
-        {
-            //throw new NotImplementedException();
-        }
-    }
-
-    public class SaveBuilder : BaseBuilder<Save>
-    {
-        private readonly Save _save;
+        readonly Save _save;
 
         public SaveBuilder()
         {
             _save = new Save();
         }
 
-        public SaveBuilder WithExtension(string extension)
+        public SaveBuilder WithImageIdentifier(string identifier)
         {
-            _save.Extension = extension;
+            _save.ImageIdentifier = identifier;
             return this;
         }
 
-        public SaveBuilder WithImageIdentifier(string imageIdentifier)
+        public SaveBuilder WithExtension(string extension)
         {
-            _save.ImageIdentifier = imageIdentifier;
+            _save.Extension = extension;
             return this;
         }
 
@@ -117,98 +129,53 @@ namespace Blitline.Net
             return _save;
         }
 
-        protected override void Validate()
+        public override Save Build()
         {
-            if(string.IsNullOrEmpty(_save.ImageIdentifier)) throw new ArgumentNullException("ImageIdentifier", "ImageIdentifier is required");
+            return BuildImp();
         }
     }
 
-    public class S3DestinationBuilder : BaseBuilder<S3Destination>
+    public class S3DestinationBuilder : UberBuilder<S3Destination>
     {
-        private readonly S3Destination _destination;
+        readonly S3Destination _s3Destination;
 
         public S3DestinationBuilder()
         {
-            _destination = new S3Destination();
+            _s3Destination = new S3Destination();
         }
 
         public S3DestinationBuilder WithBucketName(string bucketName)
         {
-            _destination.Bucket = bucketName;
+            _s3Destination.Bucket = bucketName;
             return this;
         }
 
         public S3DestinationBuilder WithKey(string key)
         {
-            _destination.Key = key;
+            _s3Destination.Key = key;
             return this;
         }
 
         protected override S3Destination BuildImp()
         {
-            return _destination;
+            return _s3Destination;
         }
 
-        protected override void Validate()
+        public override S3Destination Build()
         {
-            if(string.IsNullOrEmpty(_destination.Bucket)) throw new ArgumentNullException("Bucket", "Bucket name is required");
-            if (string.IsNullOrEmpty(_destination.Key)) throw new ArgumentNullException("Key", "Key is required");
+            return BuildImp();
         }
     }
 
-    public class RequestBuilder : Builder<BlitlineRequest>
+    public abstract class FunctionBuilder<T> : Builder<T>
+        where T : Function
     {
-        public RequestBuilder()
-        {
-            Request = new BlitlineRequest();    
-        }
+        protected BlitlineFunction Function;
 
-        public RequestBuilder WithApplicationId(string applicationId)
+        public FunctionBuilder<T> SaveAs(Func<SaveBuilder, Save> build)
         {
-            Request.ApplicationId = applicationId;
+            Function.Save = build(new SaveBuilder());
             return this;
-        }
-
-        public RequestBuilder WithSourceImageUri(Uri sourceImageUri)
-        {
-            Request.SourceImage = sourceImageUri.AbsoluteUri;
-            return this;
-        }
-
-        public RequestBuilder WaitForS3(bool waitForS3)
-        {
-            Request.WaitForS3 = waitForS3;
-            return this;
-        }
-
-        public RequestBuilder WithPostbackUri(Uri postbackUri)
-        {
-            Request.PostbackUrl = postbackUri.AbsoluteUri;
-            return this;
-        }
-
-        public RequestBuilder SuppressAutoOrient(bool suppressAutoOrient)
-        {
-            Request.SuppressAutoOrient = suppressAutoOrient;
-            return this;
-        }
-
-        public RequestBuilder WithHash(Hash hash)
-        {
-            Request.Hash = hash;
-            return this;
-        }
-
-        protected override BlitlineRequest BuildImp()
-        {
-            return Request;
-        }
-
-        protected override void Validate()
-        {
-            if (string.IsNullOrEmpty(Request.ApplicationId)) throw new ArgumentNullException("ApplicationId", "ApplicationId is required");
-            if (string.IsNullOrEmpty(Request.SourceImage)) throw new ArgumentNullException("SourceImage", "SourceImage is required");
-            if (Request.Functions.Count == 0) throw new ArgumentException("Functions", "Functions are required");
         }
     }
 
@@ -228,35 +195,6 @@ namespace Blitline.Net
         protected override CropFunction BuildImp()
         {
             return (CropFunction)Function;
-        }
-
-        protected override void Validate()
-        {
-            //throw new NotImplementedException();
-        }
-    }
-
-    public class ResizeFunctionBuilder : FunctionBuilder<ResizeFunction>
-    {
-        public ResizeFunctionBuilder()
-        {
-            Function = new ResizeFunction(0, 0);
-        }
-
-        public ResizeFunctionBuilder WithDimensions(int width, int height)
-        {
-            Function = new ResizeFunction(width, height);
-            return this;
-        }
-
-        protected override ResizeFunction BuildImp()
-        {
-            return (ResizeFunction)Function;
-        }
-
-        protected override void Validate()
-        {
-            //throw new NotImplementedException();
         }
     }
 }

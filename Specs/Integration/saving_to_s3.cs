@@ -20,21 +20,7 @@ namespace Specs.Integration
             var bucketName = default(string);
 
             "Given I have a blitline request with an s3 destination".Context(() =>
-                {
-                    var req = BuildA.Request()
-                        .WithApplicationId("appID")
-                        .WithSourceImageUri(new Uri("https://some_url.gif"))
-                        .WithCropFunction(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
-                            .SaveAs(s => s.WithImageIdentifier("image")
-                                .WithExtension("jpg")
-                                .WithQuality(75)
-                                .WithS3Destination(ss => ss.WithBucketName("bucket")
-                                    .WithKey("key")
-                                    .Build())
-                                .Build())
-                            .Build())
-                        .Build();
-                    
+                {   
                     bucketName = "elevate-test-photos";
                     blitlineApi = new BlitlineApi();
                     request = new BlitlineRequest();//"bqbTZJ-fe3sBFfJ2G0mKWw", "https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40elevatedirect.com-new.png");
