@@ -118,5 +118,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithResizeFunction(Func<ResizeFunctionBuilder, ResizeFunction> build)
+        {
+            Functions.Add(build(new ResizeFunctionBuilder()));
+            return this;
+        }
+
     }
 }
