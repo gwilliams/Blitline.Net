@@ -64,5 +64,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithDeskewFunction(Func<DeskewFunctionBuilder, DeskewFunction> build)
+        {
+            Functions.Add(build(new DeskewFunctionBuilder()));
+            return this;
+        }
+
     }
 }
