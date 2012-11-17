@@ -12,7 +12,14 @@
 
         public override object @Params { get { return new {sigma = Sigma, radius = Radius}; } }
 
+        /// <summary>
+        /// Gaussian sigma of blur (defaults to 1.0)
+        /// </summary>
         public decimal Sigma { get; set; }
+
+        /// <summary>
+        /// Gaussian radius of blur (defaults to 0.0)
+        /// </summary>
         public decimal Radius { get; set; }
 
         /// <summary>
@@ -26,6 +33,10 @@
             Radius = radius;
         }
 
-        protected internal BlurFunction() {}
+        protected internal BlurFunction()
+        {
+            Sigma = 1.0m;
+            Radius = 0.0m;
+        }
     }
 }

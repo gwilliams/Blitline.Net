@@ -21,6 +21,9 @@
             }
         }
 
+        /// <summary>
+        /// Whether images are appended vertically(true) or horizontally(false)
+        /// </summary>
         public bool Vertical { get; set; }
 
         /// <summary>

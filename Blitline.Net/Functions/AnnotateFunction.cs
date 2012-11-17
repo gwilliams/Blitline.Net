@@ -12,13 +12,44 @@ namespace Blitline.Net.Functions
             get { return "annotate"; }
         }
 
+        /// <summary>
+        /// Text to display on image
+        /// </summary>
         public string Text { get; set; }
+
+        /// <summary>
+        /// X offset (defaults to 0)
+        /// </summary>
         public int X { get; set; }
+
+        /// <summary>
+        /// Y offset (defaults to 0)
+        /// </summary>
         public int Y { get; set; }
+
+        /// <summary>
+        /// Colour of text (defaults to '#ffffff')
+        /// </summary>
         public string Colour { get; set; }
+
+        /// <summary>
+        /// Font of text (defaults to 'Helvetica')
+        /// </summary>
         public string FontFamily { get; set; }
+
+        /// <summary>
+        /// Size of text (defaults to 32)
+        /// </summary>
         public int PointSize { get; set; }
+
+        /// <summary>
+        /// Color of stroke (defaults to 'transparent')
+        /// </summary>
         public string Stroke { get; set; }
+
+        /// <summary>
+        /// Placement of text (defaults to 'CenterGravity')
+        /// </summary>
         public Gravity Gravity { get; set; }
 
         public override object Params
