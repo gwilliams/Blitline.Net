@@ -100,5 +100,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithPadResizeToFitFunction(Func<PadResizeToFitFunctionBuilder, PadResizeToFitFunction> build)
+        {
+            Functions.Add(build(new PadResizeToFitFunctionBuilder()));
+            return this;
+        }
+
     }
 }

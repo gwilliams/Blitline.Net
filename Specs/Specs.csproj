@@ -94,6 +94,8 @@
     <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\PadResizeToFitFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
   </ItemGroup>
   <ItemGroup>

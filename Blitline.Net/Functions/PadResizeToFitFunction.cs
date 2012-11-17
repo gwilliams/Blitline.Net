@@ -48,6 +48,10 @@ namespace Blitline.Net.Functions
             Gravity = gravity;
         }
 
-        protected internal PadResizeToFitFunction() {}
+        protected internal PadResizeToFitFunction()
+        {
+            Colour = "#ffffff";
+            Gravity = Gravity.CenterGrativty;
+        }
     }
 }
