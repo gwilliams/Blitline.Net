@@ -70,5 +70,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithEqualizeFunction(Func<EqualizeFunctionBuilder, EqualizeFunction> build)
+        {
+            Functions.Add(build(new EqualizeFunctionBuilder()));
+            return this;
+        }
+
     }
 }
