@@ -56,6 +56,13 @@ namespace Blitline.Net.Functions
             Radius = radius;
         }
 
-        protected internal VignetteFunction() {}
+        protected internal VignetteFunction()
+        {
+            Colour = "#000000";
+            X = 10;
+            Y = 10;
+            Threshold = 0.05m;
+            Sigma = 10m;
+        }
     }
 }

@@ -49,6 +49,11 @@ namespace Blitline.Net.Functions
             Threshold = threshold;
         }
 
-        protected internal UnsharpMaskFunction() {}
+        protected internal UnsharpMaskFunction()
+        {
+            Sigma = 1.0m;
+            Amount = 1.0m;
+            Threshold = 0.05m;
+        }
     }
 }

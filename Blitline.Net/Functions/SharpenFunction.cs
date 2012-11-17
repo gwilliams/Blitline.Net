@@ -36,6 +36,9 @@
             Radius = radius;
         }
 
-        protected internal SharpenFunction() {}
+        protected internal SharpenFunction()
+        {
+            Sigma = 1.0m;
+        }
     }
 }

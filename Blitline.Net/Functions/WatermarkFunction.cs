@@ -39,5 +39,13 @@ namespace Blitline.Net.Functions
             FontFamily = fontFamilty;
             Opacity = opacity;
         }
+
+        protected internal WatermarkFunction()
+        {
+            Gravity = Gravity.CenterGrativty;
+            PointSize = 94;
+            FontFamily = "Helvetica";
+            Opacity = 0.45m;
+        }
     }
 }

@@ -41,6 +41,9 @@
             ScaleFactor = scaleFactor;
         }
 
-        protected internal ResizeFunction() {}
+        protected internal ResizeFunction()
+        {
+            ScaleFactor = 0.5m;
+        }
     }
 }
