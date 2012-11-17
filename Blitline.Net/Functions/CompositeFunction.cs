@@ -12,18 +12,36 @@ namespace Blitline.Net.Functions
             get { return "composite"; }
         }
 
-        public override object Params { get; protected set; }
+        public string Source { get; set; }
+        public bool AsMask { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public CompositeOps CompositeOp { get; set; }
+
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    src = Source,
+                    as_mask = AsMask,
+                    x = X,
+                    y = Y,
+                    composite_op = CompositeOp
+                };
+            }
+        }
 
         public CompositeFunction(string src, bool asMask = false, int x = 0, int y = 0, CompositeOps compositeOp = CompositeOps.OverCompositeOp)
         {
-            @Params = new
-                {
-                    src,
-                    as_mask = asMask,
-                    x,
-                    y,
-                    composite_op = compositeOp
-                };
+            Source = src;
+            AsMask = asMask;
+            X = x;
+            Y = y;
+            CompositeOp = compositeOp;
         }
+
+        protected internal CompositeFunction() {}
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Blitline.Net.Functions
+﻿namespace Blitline.Net.Functions
 {
     /// <summary>
     /// Simulates a pencil sketch.
@@ -15,7 +10,22 @@ namespace Blitline.Net.Functions
             get { return "sketch"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    sigma = Sigma,
+                    radius = Radius,
+                    angle = Angle
+                };
+            }
+        }
+
+        public decimal Sigma { get; set; }
+        public decimal Radius { get; set; }
+        public decimal Angle { get; set; }
 
         /// <summary>
         /// 
@@ -25,12 +35,11 @@ namespace Blitline.Net.Functions
         /// <param name="angle">Angle of sketch (defaults to 0.0)</param>
         public SketchFunction(decimal sigma = 0.0m, decimal radius = 0.0m, decimal angle = 0.0m)
         {
-            @Params = new
-                {
-                    sigma,
-                    radius,
-                    angle
-                };
+            Sigma = sigma;
+            Radius = radius;
+            Angle = angle;
         }
+
+        protected internal SketchFunction() {}
     }
 }

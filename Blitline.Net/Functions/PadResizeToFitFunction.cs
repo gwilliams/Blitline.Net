@@ -14,7 +14,24 @@ namespace Blitline.Net.Functions
             get { return "pad_resize_to_fit"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    width = Width,
+                    height = Height,
+                    color = Colour,
+                    gravity = Gravity
+                };
+            }
+        }
+
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public string Colour { get; set; }
+        public Gravity Gravity { get; set; }
 
         /// <summary>
         /// 
@@ -25,13 +42,12 @@ namespace Blitline.Net.Functions
         /// <param name="gravity">Location of output relative to padding (defaults to CenterGrativty)</param>
         public PadResizeToFitFunction(int width, int height, string colour = "#ffffff", Gravity gravity = Gravity.CenterGrativty)
         {
-            @Params = new
-                {
-                    width,
-                    height,
-                    color = colour,
-                    gravity
-                };
+            Width = width;
+            Height = height;
+            Colour = colour;
+            Gravity = gravity;
         }
+
+        protected internal PadResizeToFitFunction() {}
     }
 }

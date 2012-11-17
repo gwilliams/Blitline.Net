@@ -12,7 +12,32 @@ namespace Blitline.Net.Functions
             get { return "annotate"; }
         }
 
-        public override object Params { get; protected set; }
+        public string Text { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public string Colour { get; set; }
+        public string FontFamily { get; set; }
+        public int PointSize { get; set; }
+        public string Stroke { get; set; }
+        public Gravity Gravity { get; set; }
+
+        public override object Params
+        {
+            get
+            {
+                return new
+                           {
+                               text = Text,
+                               x = X,
+                               y = Y,
+                               color = Colour ?? "#ffffff",
+                               font_family = FontFamily ?? "Helvetica",
+                               point_size = PointSize,
+                               stroke = Stroke ?? "transparent",
+                               gravity = Gravity
+                           };
+            }
+        }
 
         /// <summary>
         /// 
@@ -27,17 +52,16 @@ namespace Blitline.Net.Functions
         /// <param name="gravity">Placement of text (defaults to 'CenterGravity')</param>
         public AnnotateFunction(string text, int x = 0, int y = 0, string colour = "#ffffff", string fontFamily = "Helvetica", int pointSize = 32, string stroke = "transparent", Gravity gravity = Gravity.CenterGrativty)
         {
-            @Params = new
-                {
-                    text,
-                    x,
-                    y,
-                    color = colour,
-                    font_family = fontFamily,
-                    point_size = pointSize,
-                    stroke,
-                    gravity
-                };
+            Text = text;
+            X = x;
+            Y = y;
+            Colour = colour;
+            FontFamily = fontFamily;
+            PointSize = pointSize;
+            Stroke = stroke;
+            Gravity = gravity;
         }
+
+        protected internal AnnotateFunction() {}
     }
 }

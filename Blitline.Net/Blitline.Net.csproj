@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlitlineApi.cs" />
+    <Compile Include="Builders\BuildA.cs" />
+    <Compile Include="Builders\Builder.cs" />
+    <Compile Include="Functions\Builders\AnnotateFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\BlurFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\CropFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\FunctionBuilder.cs" />
     <Compile Include="Functions\AnnotateFunction.cs" />
     <Compile Include="Functions\AppendFunction.cs" />
     <Compile Include="Functions\BlurFunction.cs" />
@@ -82,6 +88,7 @@
     <Compile Include="ParamOptions\Gravity.cs" />
     <Compile Include="IBlitlineApi.cs" />
     <Compile Include="ParamOptions\InterlaceType.cs" />
+    <Compile Include="Request\Builders\RequestBuilder.cs" />
     <Compile Include="Request\BlitlineRequest.cs" />
     <Compile Include="Response\BlitlineResponse.cs" />
     <Compile Include="Functions\BlitlineFunction.cs" />
@@ -92,6 +99,9 @@
     <Compile Include="Response\Results.cs" />
     <Compile Include="Request\S3Destination.cs" />
     <Compile Include="Request\Save.cs" />
+    <Compile Include="Request\Builders\S3DestinationBuilder.cs" />
+    <Compile Include="Request\Builders\SaveBuilder.cs" />
+    <Compile Include="Builders\UberBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

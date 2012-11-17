@@ -5,7 +5,7 @@ using Machine.Specifications;
 namespace Specs.Unit.crop
 {
     [Subject(typeof(CropFunction))]
-    public class when_creating_blur_function
+    public class when_creating_crop_function
     {
         static CropFunction function;
 

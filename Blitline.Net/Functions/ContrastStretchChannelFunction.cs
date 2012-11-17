@@ -10,7 +10,20 @@
             get { return "contrast_stretch_channel"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                           {
+                               black_point = BlackPoint,
+                               white_point = WhitePoint
+                           };
+            }
+        }
+
+        public int BlackPoint { get; set; }
+        public int WhitePoint { get; set; }
 
         /// <summary>
         /// 
@@ -19,11 +32,10 @@
         /// <param name="whitePoint">Burn at most this many pixels. Specify an absolute number of pixels as a numeric value. If not given defaults to all_points-black_point</param>
         public ContrastStretchChannelFunction(int blackPoint, int whitePoint = 0)
         {
-            @Params = new
-                {
-                    black_point = blackPoint,
-                    white_point = whitePoint
-                };
+            BlackPoint = blackPoint;
+            WhitePoint = whitePoint;
         }
+
+        protected internal ContrastStretchChannelFunction() {}
     }
 }

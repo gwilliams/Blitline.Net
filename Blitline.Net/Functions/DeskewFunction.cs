@@ -10,7 +10,9 @@
             get { return "deskew"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params { get { return new {threshold = Threshold}; } }
+
+        public decimal Threshold { get; set; }
 
         /// <summary>
         /// 
@@ -18,10 +20,9 @@
         /// <param name="threshold">Maximum threshold percentage for deskewing (Default = 0.40)</param>
         public DeskewFunction(decimal threshold = 0.40m)
         {
-            @Params = new
-                {
-                    threshold
-                };
+            Threshold = threshold;
         }
+
+        protected internal DeskewFunction() {}
     }
 }

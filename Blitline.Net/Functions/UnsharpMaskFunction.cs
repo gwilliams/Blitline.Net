@@ -12,7 +12,24 @@ namespace Blitline.Net.Functions
             get { return "unsharp_mask"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    sigma = Sigma,
+                    radius = Radius,
+                    amount = Amount,
+                    threshold = Threshold
+                };
+            }
+        }
+
+        public decimal Sigma { get; set; }
+        public decimal Radius { get; set; }
+        public decimal Amount { get; set; }
+        public decimal Threshold { get; set; }
 
         /// <summary>
         /// 
@@ -26,13 +43,12 @@ namespace Blitline.Net.Functions
             if(amount < 0 || amount > 1.0m) throw new ArgumentException("amount cannot be less than 0 and greater than 1.0", "amount");
             if (threshold < 0 || threshold > 1.0m) throw new ArgumentException("threshold cannot be less than 0 and greater than 1.0", "threshold");
 
-            @Params = new
-                {
-                    sigma,
-                    radius,
-                    amount,
-                    threshold
-                };
+            Sigma = sigma;
+            Radius = radius;
+            Amount = amount;
+            Threshold = threshold;
         }
+
+        protected internal UnsharpMaskFunction() {}
     }
 }

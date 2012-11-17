@@ -11,7 +11,22 @@
             get { return "scale"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    width = Width,
+                    height = Height,
+                    scale_factor = ScaleFactor
+                };
+            }
+        }
+
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public decimal ScaleFactor { get; set; }
 
         /// <summary>
         /// 
@@ -21,12 +36,11 @@
         /// <param name="scaleFactor">Instead of height and width you can set a scale factor. (eg 0.5 = 50%)</param>
         public ScaleFunction(int width, int height, decimal scaleFactor = 0.5m)
         {
-            @Params = new
-                {
-                    width,
-                    height,
-                    scale_factor = scaleFactor
-                };
+            Width = width;
+            Height = height;
+            ScaleFactor = scaleFactor;
         }
+
+        protected internal ScaleFunction() {}
     }
 }

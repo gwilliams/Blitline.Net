@@ -10,7 +10,18 @@
             get { return "append"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                           {
+                               vertical = Vertical
+                           };
+            }
+        }
+
+        public bool Vertical { get; set; }
 
         /// <summary>
         /// 
@@ -18,10 +29,9 @@
         /// <param name="vertical">Whether images are appended vertically(true) or horizontally(false)</param>
         public AppendFunction(bool vertical)
         {
-            @Params = new
-                {
-                    vertical
-                };
+            Vertical = vertical;
         }
+
+        protected internal AppendFunction() {}
     }
 }

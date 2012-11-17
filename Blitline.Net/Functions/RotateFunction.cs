@@ -11,7 +11,18 @@
             get { return "rotate"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    amount = Amount
+                };
+            }
+        }
+
+        public int Amount { get; set; }
 
         /// <summary>
         /// The number of degrees to rotate the image.
@@ -19,10 +30,9 @@
         /// <param name="amount"></param>
         public RotateFunction(int amount)
         {
-            @Params = new
-                {
-                    amount
-                };
+            Amount = amount;
         }
+
+        protected internal RotateFunction() {}
     }
 }

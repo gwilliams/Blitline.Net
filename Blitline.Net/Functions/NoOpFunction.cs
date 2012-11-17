@@ -10,11 +10,10 @@
             get { return "no_op"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params { get { return new {}; } }
 
         public NoOpFunction()
         {
-            @Params = new {};
         }
     }
 }

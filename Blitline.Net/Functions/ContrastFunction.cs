@@ -10,7 +10,18 @@
             get { return "contrast"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                           {
+                               sharpen = Sharpen
+                           };
+            }
+        }
+
+        public bool Sharpen { get; set; }
 
         /// <summary>
         /// Contrast is increased if true (defaults to false)
@@ -18,10 +29,9 @@
         /// <param name="sharpen"></param>
         public ContrastFunction(bool sharpen = false)
         {
-            @Params = new
-                {
-                    sharpen
-                };
+            Sharpen = sharpen;
         }
+
+        protected internal ContrastFunction() {}
     }
 }

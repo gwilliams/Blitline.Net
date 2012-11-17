@@ -12,7 +12,28 @@ namespace Blitline.Net.Functions
             get { return "vignette"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    color = Colour,
+                    x = X,
+                    y = Y,
+                    threshold = Threshold,
+                    sigma = Sigma,
+                    radius = Radius
+                };
+            }
+        }
+
+        public string Colour { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public decimal Threshold { get; set; }
+        public decimal Sigma { get; set; }
+        public decimal Radius { get; set; }
 
         /// <summary>
         /// 
@@ -27,15 +48,14 @@ namespace Blitline.Net.Functions
         {
             if(threshold < 0 || threshold > 1.0m) throw new ArgumentException("threshold cannot be less than 0 and greater than 1.0", "threshold");
 
-            @Params = new
-                {
-                    color = colour,
-                    x,
-                    y,
-                    threshold,
-                    sigma,
-                    radius
-                };
+            Colour = colour;
+            X = x;
+            Y = y;
+            Threshold = threshold;
+            Sigma = sigma;
+            Radius = radius;
         }
+
+        protected internal VignetteFunction() {}
     }
 }

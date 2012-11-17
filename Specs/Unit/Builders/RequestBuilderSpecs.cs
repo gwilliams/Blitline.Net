@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using Blitline.Net;
+using Blitline.Net.Builders;
 using Blitline.Net.Request;
 using SubSpec;
 using Xunit;
