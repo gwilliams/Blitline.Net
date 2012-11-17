@@ -34,6 +34,12 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithBlurFunction(Func<BlurFunctionBuilder, BlurFunction> build)
+        {
+            Functions.Add(build(new BlurFunctionBuilder()));
+            return this;
+        }
+
         public Builder<T> WithCropFunction(Func<CropFunctionBuilder, CropFunction> build)
         {
             Functions.Add(build(new CropFunctionBuilder()));
