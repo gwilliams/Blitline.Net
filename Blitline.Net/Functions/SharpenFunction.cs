@@ -22,7 +22,14 @@
             }
         }
 
+        /// <summary>
+        /// Gaussian sigma of sharpen (defaults to 1.0)
+        /// </summary>
         public decimal Sigma { get; set; }
+
+        /// <summary>
+        /// Gaussian radius of shapen (defaults to 0.0)
+        /// </summary>
         public decimal Radius { get; set; }
 
         /// <summary>

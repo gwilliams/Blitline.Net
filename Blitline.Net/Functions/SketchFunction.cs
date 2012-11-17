@@ -23,8 +23,19 @@
             }
         }
 
+        /// <summary>
+        /// Gaussian operator (defaults to 0.0)
+        /// </summary>
         public decimal Sigma { get; set; }
+
+        /// <summary>
+        /// Gaussian operator (defaults to 0.0)
+        /// </summary>
         public decimal Radius { get; set; }
+
+        /// <summary>
+        /// Angle of sketch (defaults to 0.0)
+        /// </summary>
         public decimal Angle { get; set; }
 
         /// <summary>

@@ -29,9 +29,24 @@ namespace Blitline.Net.Functions
             }
         }
 
+        /// <summary>
+        /// Width of desired image
+        /// </summary>
         public int Width { get; set; }
+
+        /// <summary>
+        /// Height of desired image
+        /// </summary>
         public int Height { get; set; }
+
+        /// <summary>
+        /// Location of crop (defaults to 'CenterGravity')
+        /// </summary>
         public Gravity Gravity { get; set; }
+
+        /// <summary>
+        /// Don’t upsize image (defaults to false)
+        /// </summary>
         public bool OnlyShrinkLarger { get; set; }
 
         /// <summary>
@@ -49,6 +64,9 @@ namespace Blitline.Net.Functions
             OnlyShrinkLarger = onlyShrinkLarger;
         }
 
-        protected internal ResizeToFillFunction() {}
+        protected internal ResizeToFillFunction()
+        {
+            Gravity = Gravity.CenterGrativty;
+        }
     }
 }

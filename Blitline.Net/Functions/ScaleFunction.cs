@@ -24,8 +24,19 @@
             }
         }
 
+        /// <summary>
+        /// The new width of the image
+        /// </summary>
         public int Width { get; set; }
+
+        /// <summary>
+        /// The new height of the image
+        /// </summary>
         public int Height { get; set; }
+
+        /// <summary>
+        /// Instead of height and width you can set a scale factor. (eg 0.5 = 50%)
+        /// </summary>
         public decimal ScaleFactor { get; set; }
 
         /// <summary>

@@ -26,9 +26,24 @@ namespace Blitline.Net.Functions
             }
         }
 
+        /// <summary>
+        /// Gaussian operator (defaults to 1.0)
+        /// </summary>
         public decimal Sigma { get; set; }
+
+        /// <summary>
+        /// Gaussian operator (defaults to 0.0)
+        /// </summary>
         public decimal Radius { get; set; }
+
+        /// <summary>
+        /// The percentage of the blurred image to be added to the receiver, specified as a fraction between 0 and 1.0 (defaults to 1.0)
+        /// </summary>
         public decimal Amount { get; set; }
+
+        /// <summary>
+        /// The threshold needed to apply the amount, specified as a fraction between 0 and 1.0 (defaults to 0.05)
+        /// </summary>
         public decimal Threshold { get; set; }
 
         /// <summary>

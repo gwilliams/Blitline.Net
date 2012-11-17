@@ -22,6 +22,9 @@
             }
         }
 
+        /// <summary>
+        /// The number of degrees to rotate the image.
+        /// </summary>
         public int Amount { get; set; }
 
         /// <summary>

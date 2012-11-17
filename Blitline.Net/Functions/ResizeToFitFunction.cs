@@ -25,8 +25,19 @@ namespace Blitline.Net.Functions
             }
         }
 
+        /// <summary>
+        /// Width of desired image
+        /// </summary>
         public int Width { get; set; }
+
+        /// <summary>
+        /// Height of desired image
+        /// </summary>
         public int Height { get; set; }
+
+        /// <summary>
+        /// Don't upsize image
+        /// </summary>
         public bool OnlyShrinkLarger { get; set; }
 
         /// <summary>
