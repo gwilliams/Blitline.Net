@@ -28,6 +28,12 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithAppendFunction(Func<AppendFunctionBuilder, AppendFunction> build)
+        {
+            Functions.Add(build(new AppendFunctionBuilder()));
+            return this;
+        }
+
         public Builder<T> WithCropFunction(Func<CropFunctionBuilder, CropFunction> build)
         {
             Functions.Add(build(new CropFunctionBuilder()));

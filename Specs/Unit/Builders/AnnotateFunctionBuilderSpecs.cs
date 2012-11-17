@@ -40,7 +40,7 @@ namespace Specs.Unit.Builders
             "And the params should be constructed".Observation(() =>
                 {
                     var p = request.Functions[0].Params;
-                    var t = request.Functions[0].Params.GetType();
+                    var t = p.GetType();
                     Assert.Equal("Text", t.GetProperty("text").GetValue(p, null).ToString());
                     Assert.Equal(1, (int)t.GetProperty("x").GetValue(p, null));
                     Assert.Equal(1, (int)t.GetProperty("y").GetValue(p, null));
@@ -76,7 +76,7 @@ namespace Specs.Unit.Builders
             "And the params should be constructed".Observation(() =>
             {
                 var p = request.Functions[0].Params;
-                var t = request.Functions[0].Params.GetType();
+                var t = p.GetType();
                 Assert.Equal("Text", t.GetProperty("text").GetValue(p, null).ToString());
                 Assert.Equal(0, (int)t.GetProperty("x").GetValue(p, null));
                 Assert.Equal(0, (int)t.GetProperty("y").GetValue(p, null));

@@ -55,6 +55,7 @@
     <Compile Include="Builders\BuildA.cs" />
     <Compile Include="Builders\Builder.cs" />
     <Compile Include="Functions\Builders\AnnotateFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\AppendFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\BlurFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\CropFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\FunctionBuilder.cs" />

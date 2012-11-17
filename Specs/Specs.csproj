@@ -83,8 +83,8 @@
     <Compile Include="SubSpec\SubSpec.Thesis.cs" />
     <Compile Include="SubSpec\SubSpecUtils.cs" />
     <Compile Include="Unit\Builders\AnnotateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\AppendFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
-    <Compile Include="Unit\creating_append_function.cs" />
     <Compile Include="Unit\creating_blur_function.cs" />
     <Compile Include="Unit\creating_composite_function.cs" />
     <Compile Include="Unit\creating_contrast_function.cs" />
