@@ -72,6 +72,7 @@
     <Compile Include="Functions\Builders\ModulateFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\NoOpFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\PadResizeToFitFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\PhotographFunctionBuilder.cs" />
     <Compile Include="Functions\CompositeFunction.cs" />
     <Compile Include="Functions\ContrastFunction.cs" />
     <Compile Include="Functions\ContrastStretchChannelFunction.cs" />

@@ -106,5 +106,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithPhotographFunction(Func<PhotographFunctionBuilder, PhotographFunction> build)
+        {
+            Functions.Add(build(new PhotographFunctionBuilder()));
+            return this;
+        }
+
     }
 }
