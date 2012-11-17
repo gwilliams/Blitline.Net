@@ -86,8 +86,8 @@
     <Compile Include="Unit\Builders\AppendFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\BlurFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\CompositeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ContrastFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
-    <Compile Include="Unit\creating_contrast_function.cs" />
     <Compile Include="Unit\creating_contrast_stretch_channel_function.cs" />
     <Compile Include="Unit\creating_crop_function.cs" />
     <Compile Include="Unit\creating_deskew_function.cs" />

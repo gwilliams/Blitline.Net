@@ -21,6 +21,9 @@
             }
         }
 
+        /// <summary>
+        /// Contrast is increased if true (defaults to false)
+        /// </summary>
         public bool Sharpen { get; set; }
 
         /// <summary>

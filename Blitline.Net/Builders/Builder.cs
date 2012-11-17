@@ -46,6 +46,12 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithContrastFunction(Func<ContrastFunctionBuilder, ContrastFunction> build)
+        {
+            Functions.Add(build(new ContrastFunctionBuilder()));
+            return this;
+        }
+
         public Builder<T> WithCropFunction(Func<CropFunctionBuilder, CropFunction> build)
         {
             Functions.Add(build(new CropFunctionBuilder()));
