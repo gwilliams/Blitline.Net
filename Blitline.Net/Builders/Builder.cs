@@ -82,5 +82,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithMedianFilterFunction(Func<MedianFilterFunctionBuilder, MedianFilterFunction> build)
+        {
+            Functions.Add(build(new MedianFilterFunctionBuilder()));
+            return this;
+        }
+
     }
 }

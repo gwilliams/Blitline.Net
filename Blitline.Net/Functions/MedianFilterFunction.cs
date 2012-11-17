@@ -12,6 +12,9 @@
 
         public override object Params { get { return new {radius = Radius}; } }
 
+        /// <summary>
+        /// Radius of blur (defaults to 1.0)
+        /// </summary>
         public decimal Radius { get; set; }
 
         /// <summary>
@@ -23,6 +26,9 @@
             Radius = radius;
         }
 
-        protected internal MedianFilterFunction() { }
+        protected internal MedianFilterFunction()
+        {
+            Radius = 1.0m;
+        }
     }
 }
