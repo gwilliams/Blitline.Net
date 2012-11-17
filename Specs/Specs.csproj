@@ -97,7 +97,10 @@
     <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\PadResizeToFitFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\PhotographFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\QuantizeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ResizeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ResizeToFillFunctionBuilderSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

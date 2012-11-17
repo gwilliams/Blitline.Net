@@ -124,5 +124,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithResizeToFillFunction(Func<ResizeToFillFunctionBuilder, ResizeToFillFunction> build)
+        {
+            Functions.Add(build(new ResizeToFillFunctionBuilder()));
+            return this;
+        }
+
     }
 }
