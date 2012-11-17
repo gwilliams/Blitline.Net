@@ -13,7 +13,7 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build an append function".Context(() => request = BuildA.Request()
+            "When I build an contrast function".Context(() => request = BuildA.Request()
                 .WithContrastFunction(f => f.Sharpen(true).Build()).Build());
 
             "Then the name should be contrast".Observation(() => Assert.Equal("contrast", request.Functions[0].Name));
