@@ -40,6 +40,12 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithCompositeFunction(Func<CompositeFunctionBuilder, CompositeFunction> build)
+        {
+            Functions.Add(build(new CompositeFunctionBuilder()));
+            return this;
+        }
+
         public Builder<T> WithCropFunction(Func<CropFunctionBuilder, CropFunction> build)
         {
             Functions.Add(build(new CropFunctionBuilder()));
