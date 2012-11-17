@@ -69,6 +69,7 @@
     <Compile Include="Functions\Builders\EqualizeFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\GammaChannelFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\MedianFilterFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\ModulateFunctionBuilder.cs" />
     <Compile Include="Functions\CompositeFunction.cs" />
     <Compile Include="Functions\ContrastFunction.cs" />
     <Compile Include="Functions\ContrastStretchChannelFunction.cs" />

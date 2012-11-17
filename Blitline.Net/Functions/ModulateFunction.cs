@@ -34,6 +34,11 @@
             Hue = hue;
         }
 
-        protected internal ModulateFunction() {}
+        protected internal ModulateFunction()
+        {
+            Brightness = 1.0m;
+            Saturation = 1.0m;
+            Hue = 1.0m;
+        }
     }
 }

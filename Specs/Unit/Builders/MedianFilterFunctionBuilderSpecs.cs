@@ -13,7 +13,7 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a blur function".Context(() => request = BuildA.Request()
+            "When I build a median filter function".Context(() => request = BuildA.Request()
                 .WithMedianFilterFunction(f => f.WithRadius(2m).Build()).Build());
 
             "Then the name should be median_filter".Observation(() => Assert.Equal("median_filter", request.Functions[0].Name));

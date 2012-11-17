@@ -88,5 +88,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithModulateFunction(Func<ModulateFunctionBuilder, ModulateFunction> build)
+        {
+            Functions.Add(build(new ModulateFunctionBuilder()));
+            return this;
+        }
+
     }
 }

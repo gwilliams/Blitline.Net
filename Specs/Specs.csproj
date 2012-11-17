@@ -93,8 +93,8 @@
     <Compile Include="Unit\Builders\EqualizeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
-    <Compile Include="Unit\creating_modulate_function.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
