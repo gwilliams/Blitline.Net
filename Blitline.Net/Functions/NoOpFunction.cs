@@ -11,9 +11,5 @@
         }
 
         public override object Params { get { return new {}; } }
-
-        public NoOpFunction()
-        {
-        }
     }
 }

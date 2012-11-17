@@ -94,5 +94,11 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithNoOpFunction(Func<NoOpFunctionBuilder, NoOpFunction> build)
+        {
+            Functions.Add(build(new NoOpFunctionBuilder()));
+            return this;
+        }
+
     }
 }
