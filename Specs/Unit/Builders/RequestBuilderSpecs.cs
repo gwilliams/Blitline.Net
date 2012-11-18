@@ -38,7 +38,7 @@ namespace Specs.Unit.Builders
                                                               .WithApplicationId("123")
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
-                                                                  .WithCropFunction(r => r.WithDimensions(5, 6, 7, 8).Build())
+                                                                  .WithDeskewFunction(r => r.WithThreshold(0.2m).Build())
                                                                   .Build())
                                                               .Build());
 

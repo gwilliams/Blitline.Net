@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using SubSpec;
@@ -8,6 +9,15 @@ namespace Specs.Unit.Builders
 {
     public class VignetteFunctionBuilderSpecs
     {
+        [Fact]
+        public void CanNotBuildAVignetteFunctionWhereThresoldOutOfBounds()
+        {
+            Assert.Throws<ArgumentException>(() =>
+                                             BuildA.Request()
+                                                   .WithVignetteFunction(f => f.WithThreshold(2m).Build()).Build());
+
+        }
+
         [Specification]
         public void CanBuildAVignetteFunction()
         {
@@ -15,14 +25,14 @@ namespace Specs.Unit.Builders
 
             "When I build a vignette function".Context(() => request = BuildA.Request()
                 .WithVignetteFunction(f => f.WithColour("ccc").WithX(2).WithY(3)
-                    .WithThreshold(3m).WithSigma(4m).WithRadius(5m).Build()).Build());
+                    .WithThreshold(0.5m).WithSigma(4m).WithRadius(5m).Build()).Build());
 
             "Then the name should be vignette".Observation(() => Assert.Equal("vignette", request.Functions[0].Name));
 
             "And the colour should be ccc".Observation(() => Assert.Equal("ccc", ((VignetteFunction)request.Functions[0]).Colour));
             "And x should be 2".Observation(() => Assert.Equal(2, ((VignetteFunction)request.Functions[0]).X));
             "And y should be 3".Observation(() => Assert.Equal(3, ((VignetteFunction)request.Functions[0]).Y));
-            "And the threshold should be 3".Observation(() => Assert.Equal(3m, ((VignetteFunction)request.Functions[0]).Threshold));
+            "And the threshold should be 0.5".Observation(() => Assert.Equal(0.5m, ((VignetteFunction)request.Functions[0]).Threshold));
             "And the sigma should be 4".Observation(() => Assert.Equal(4m, ((VignetteFunction)request.Functions[0]).Sigma));
             "And the radius should be 5".Observation(() => Assert.Equal(5m, ((VignetteFunction)request.Functions[0]).Radius));
 
@@ -34,7 +44,7 @@ namespace Specs.Unit.Builders
                 Assert.Equal("ccc", t.GetProperty("color").GetValue(p, null).ToString());
                 Assert.Equal(2, (int)t.GetProperty("x").GetValue(p, null));
                 Assert.Equal(3, (int)t.GetProperty("y").GetValue(p, null));
-                Assert.Equal(3m, (decimal)t.GetProperty("threshold").GetValue(p, null));
+                Assert.Equal(0.5m, (decimal)t.GetProperty("threshold").GetValue(p, null));
                 Assert.Equal(4m, (decimal)t.GetProperty("sigma").GetValue(p, null));
                 Assert.Equal(5m, (decimal)t.GetProperty("radius").GetValue(p, null));
             });

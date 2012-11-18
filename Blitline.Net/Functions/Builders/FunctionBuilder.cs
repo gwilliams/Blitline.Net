@@ -15,5 +15,12 @@ namespace Blitline.Net.Functions.Builders
             Function.Save = build(new SaveBuilder());
             return this;
         }
+
+        public override T Build()
+        {
+            var o = base.Build();
+            o.Validate();
+            return o;
+        }
     }
 }

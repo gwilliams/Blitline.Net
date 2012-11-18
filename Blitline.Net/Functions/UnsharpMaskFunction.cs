@@ -26,7 +26,11 @@ namespace Blitline.Net.Functions
             }
         }
 
-        public override void Validate() {}
+        public override void Validate()
+        {
+            if (Amount < 0 || Amount > 1.0m) throw new ArgumentException("Amount cannot be less than 0 and greater than 1.0", "Amount");
+            if (Threshold < 0 || Threshold > 1.0m) throw new ArgumentException("Threshold cannot be less than 0 and greater than 1.0", "Threshold");
+        }
 
         /// <summary>
         /// Gaussian operator (defaults to 1.0)

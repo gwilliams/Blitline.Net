@@ -28,7 +28,10 @@ namespace Blitline.Net.Functions
             }
         }
 
-        public override void Validate() {}
+        public override void Validate()
+        {
+            if (Threshold < 0 || Threshold > 1.0m) throw new ArgumentException("Threshold cannot be less than 0 and greater than 1.0", "Threshold");
+        }
 
         public string Colour { get; set; }
         public int X { get; set; }
