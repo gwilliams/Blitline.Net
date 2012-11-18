@@ -51,7 +51,7 @@ namespace Specs.Unit.Builders
                     Assert.Equal("Arial", t.GetProperty("font_family").GetValue(p, null).ToString());
                     Assert.Equal(10, (int)t.GetProperty("point_size").GetValue(p, null));
                     Assert.Equal("super", t.GetProperty("stroke").GetValue(p, null).ToString());
-                    Assert.Equal(Gravity.NorthGravity, (Gravity)t.GetProperty("gravity").GetValue(p, null));
+                    Assert.Equal("NorthGravity", t.GetProperty("gravity").GetValue(p, null).ToString());
                 });
         }
 
@@ -89,7 +89,7 @@ namespace Specs.Unit.Builders
                 Assert.Equal("Helvetica", t.GetProperty("font_family").GetValue(p, null).ToString());
                 Assert.Equal(32, (int)t.GetProperty("point_size").GetValue(p, null));
                 Assert.Equal("transparent", t.GetProperty("stroke").GetValue(p, null).ToString());
-                Assert.Equal(Gravity.CenterGrativty, (Gravity)t.GetProperty("gravity").GetValue(p, null));
+                Assert.Equal("CenterGrativty", t.GetProperty("gravity").GetValue(p, null).ToString());
             });
         }
     }

@@ -65,7 +65,7 @@ namespace Blitline.Net.Functions
                                font_family = FontFamily ?? "Helvetica",
                                point_size = PointSize,
                                stroke = Stroke ?? "transparent",
-                               gravity = Gravity
+                               gravity = Gravity.ToString()
                            };
             }
         }
