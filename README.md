@@ -73,3 +73,4 @@ public class MyTestFunction : BlitlineFunction
     }
 }
 ```
+Released under the Simple Public License (SimPL 2.0): [http://opensource.org/licenses/SimPL-2.0]
