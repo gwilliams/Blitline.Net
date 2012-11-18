@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using SubSpec;
@@ -14,6 +15,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a median filter function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithMedianFilterFunction(f => f.WithRadius(2m).Build()).Build());
 
             "Then the name should be median_filter".Observation(() => Assert.Equal("median_filter", request.Functions[0].Name));
@@ -34,6 +37,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a median filter function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithMedianFilterFunction(f => f.Build()).Build());
 
             "Then the name should be median_filter".Observation(() => Assert.Equal("median_filter", request.Functions[0].Name));

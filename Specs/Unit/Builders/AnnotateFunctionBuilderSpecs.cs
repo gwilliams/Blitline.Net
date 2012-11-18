@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
@@ -15,6 +16,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build an annotate function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithAnnotateFunction(f => f
                     .WithText("Text")
                     .WithX(1)
@@ -58,6 +61,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build an annotate function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithAnnotateFunction(f => f
                     .WithText("Text")
                     .Build())

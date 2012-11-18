@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
@@ -15,6 +16,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a resize to resize_to_fill function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithResizeToFillFunction(f => f.WithWidth(5).WithHeight(2).WithGravity(Gravity.NorthEastGravity)
                     .OnlyShrinkLarger(true).Build()).Build());
 
@@ -42,6 +45,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a resize to resize_to_fill function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithResizeToFillFunction(f => f.WithWidth(5).WithHeight(2).Build()).Build());
 
             "Then the name should be resize_to_fill".Observation(() => Assert.Equal("resize_to_fill", request.Functions[0].Name));

@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using SubSpec;
@@ -14,6 +15,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build an photograph function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithPhotographFunction(f => f.WithAngle(2).Build()).Build());
 
             "Then the name should be photograph".Observation(() => Assert.Equal("photograph", request.Functions[0].Name));

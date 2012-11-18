@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using SubSpec;
@@ -14,6 +15,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a deskew function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithDeskewFunction(f => f.WithThreshold(1m).Build()).Build());
 
             "Then the name should be deskew".Observation(() => Assert.Equal("deskew", request.Functions[0].Name));

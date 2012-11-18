@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.ParamOptions;
@@ -19,6 +16,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a pad resize to fit function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithPadResizeToFitFunction(f => f.WithWidth(2).WithHeight(2).WithColour("ccc").WithGravity(Gravity.NorthEastGravity).Build()).Build());
 
             "Then the name should be pad_resize_to_fit".Observation(() => Assert.Equal("pad_resize_to_fit", request.Functions[0].Name));
@@ -45,6 +44,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a median pad resize to fit function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithPadResizeToFitFunction(f => f.WithWidth(2).WithHeight(2).Build()).Build());
 
             "Then the name should be pad_resize_to_fit".Observation(() => Assert.Equal("pad_resize_to_fit", request.Functions[0].Name));

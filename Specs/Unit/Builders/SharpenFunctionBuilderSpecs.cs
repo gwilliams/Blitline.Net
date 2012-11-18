@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using SubSpec;
@@ -14,6 +15,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a sharpen function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithSharpenFunction(f => f.WithSigma(5m).WithRadius(2m).Build()).Build());
 
             "Then the name should be sharpen".Observation(() => Assert.Equal("sharpen", request.Functions[0].Name));
@@ -36,6 +39,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a sharpen function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithSharpenFunction(f => f.Build()).Build());
 
             "Then the name should be sharpen".Observation(() => Assert.Equal("sharpen", request.Functions[0].Name));

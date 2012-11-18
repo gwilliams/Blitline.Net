@@ -12,7 +12,10 @@ namespace Specs.Unit.Builders
         [Fact]
         public void CanNotBuildAScaleFunctionWithScaleFactorWidthAndHightSet()
         {
-            Assert.Throws<ArgumentException>(() => BuildA.Request().WithScaleFunction(
+            Assert.Throws<ArgumentException>(() => BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
+                .WithScaleFunction(
                 f => f.WithHeight(10).WithWidth(5).WithScaleFactor(0.4m).Build()).Build());
         }
 
@@ -22,6 +25,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a scale function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithScaleFunction(f => f.WithScaleFactor(0.75m).Build()).Build());
 
             "Then the name should be scale".Observation(() => Assert.Equal("scale", request.Functions[0].Name));
@@ -46,6 +51,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a scale function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithScaleFunction(f => f.WithWidth(5).WithHeight(2).Build()).Build());
 
             "Then the name should be scale".Observation(() => Assert.Equal("scale", request.Functions[0].Name));

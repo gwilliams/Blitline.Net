@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
@@ -15,6 +16,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a composite function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithCompositeFunction(f => f.WithSource("source")
                 .AsMask(true)
                 .WithX(1)
@@ -46,6 +49,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a composite function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithCompositeFunction(f => f.WithSource("source").Build()).Build());
 
             "The the name should be composite".Observation(() => Assert.Equal("composite", request.Functions[0].Name));

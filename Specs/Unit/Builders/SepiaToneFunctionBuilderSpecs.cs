@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using SubSpec;
@@ -9,11 +10,13 @@ namespace Specs.Unit.Builders
     public class SepiaToneFunctionBuilderSpecs
     {
         [Specification]
-        public void CanBuildASpeiaToneFunction()
+        public void CanBuildASepeiaToneFunction()
         {
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build an sepia tone function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithSepiaToneFunction(f => f.WithThreshold(1).Build()).Build());
 
             "Then the name should be sepia_tone".Observation(() => Assert.Equal("sepia_tone", request.Functions[0].Name));

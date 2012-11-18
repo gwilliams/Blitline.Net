@@ -14,6 +14,8 @@ namespace Specs.Unit.Builders
         {
             Assert.Throws<ArgumentException>(() =>
                                              BuildA.Request()
+                                                   .WithApplicationId("123")
+                                                   .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                                                    .WithVignetteFunction(f => f.WithThreshold(2m).Build()).Build());
 
         }
@@ -24,6 +26,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a vignette function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithVignetteFunction(f => f.WithColour("ccc").WithX(2).WithY(3)
                     .WithThreshold(0.5m).WithSigma(4m).WithRadius(5m).Build()).Build());
 
@@ -56,6 +60,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a vignette function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithVignetteFunction(f => f.Build()).Build());
 
             "Then the name should be vignette".Observation(() => Assert.Equal("vignette", request.Functions[0].Name));

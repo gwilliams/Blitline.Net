@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System;
+using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
@@ -15,6 +16,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a watermark function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithWatermarkFunction(f => f.WithText("text").WithGravity(Gravity.NorthEastGravity)
                     .WithPointSize(10)
                     .WithFontFamily("Arial")
@@ -47,6 +50,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a watermark function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithWatermarkFunction(f => f.WithText("text").Build()).Build());
 
             "Then the name should be watermark".Observation(() => Assert.Equal("watermark", request.Functions[0].Name));

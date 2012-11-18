@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Blitline.Net.Builders;
 using Blitline.Net.Request;
 using SubSpec;
@@ -17,6 +14,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build an trim function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithTrimFunction(f => f.Build()).Build());
 
             "Then the name should be trim".Observation(() => Assert.Equal("trim", request.Functions[0].Name));

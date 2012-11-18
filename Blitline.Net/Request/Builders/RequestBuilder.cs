@@ -28,5 +28,12 @@ namespace Blitline.Net.Request.Builders
         {
             return _request;
         }
+
+        public override BlitlineRequest Build()
+        {
+            var o = base.Build();
+            o.Validate();
+            return o;
+        }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
@@ -18,6 +15,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a resize function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithResizeFunction(f => f.WithScaleFactor(0.2m).Build()).Build());
 
             "Then the name should be resize".Observation(() => Assert.Equal("resize", request.Functions[0].Name));
@@ -42,6 +41,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a resize function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithResizeFunction(f => f.WithWidth(5).WithHeight(2).Build()).Build());
 
             "Then the name should be resize".Observation(() => Assert.Equal("resize", request.Functions[0].Name));

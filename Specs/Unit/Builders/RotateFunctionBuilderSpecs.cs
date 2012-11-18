@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
@@ -18,6 +15,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a rotate function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithRotateFunction(f => f.WithAmount(10).Build()).Build());
 
             "Then the name should be rotate".Observation(() => Assert.Equal("rotate", request.Functions[0].Name));

@@ -1,3 +1,4 @@
+using System;
 using Blitline.Net.Functions;
 using Newtonsoft.Json;
 
@@ -32,6 +33,12 @@ namespace Blitline.Net.Request
         {
             ApplicationId = applicationId;
             SourceImage = sourceUrl;
+        }
+
+        public void Validate()
+        {
+            if(string.IsNullOrEmpty(ApplicationId)) throw new ArgumentNullException("ApplicationId is required", "ApplicationId");
+            if(string.IsNullOrEmpty(SourceImage)) throw new ArgumentNullException("SourceImage is required", "SourceImage");
         }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
@@ -18,6 +15,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a modulate function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithModulateFunction(f => f.WithBrightness(2m).WithSaturation(2.0m).WithHue(2.0m).Build()).Build());
 
             "Then the name should be modulate".Observation(() => Assert.Equal("modulate", request.Functions[0].Name));
@@ -42,6 +41,8 @@ namespace Specs.Unit.Builders
             BlitlineRequest request = default(BlitlineRequest);
 
             "When I build a median filter function".Context(() => request = BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithModulateFunction(f => f.Build()).Build());
 
             "Then the name should be modulate".Observation(() => Assert.Equal("modulate", request.Functions[0].Name));
