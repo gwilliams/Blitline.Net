@@ -3,7 +3,33 @@ Blitline.Net
 
 A simple .net wrapper for the [Blitline API](http://www.blitline.com)
 
-Simple Usage
+New Usage
+------------
+
+```
+using Blitline.Net.Builders;
+using Blitline.Net.Request;
+
+namespace Blitline.Net.Test
+{
+    public class Test
+    {
+        public void BuildRequest()
+        {
+            var client = new BlitlineApi();
+            var request = BuilA.Request()
+                .WithApplicationId("API_KEY")
+                .WithSourceImageUri(new Uri("http://IMAGE_URL"))
+                .WithResizeToFitFunction(f => f.WithWidth(100).WithHeight(100).Build())
+                .Build();
+
+            var response = client.ProcessImages(request);
+        }
+    }
+}
+```
+
+Old Simple Usage
 ------------
 
 ```
@@ -14,20 +40,26 @@ using Blitline.Net.Response;
 
 namespace Blitline.Net.Test
 {
-	var client = new BlitlineApi();
-	var request = new BlitlineRequest("API_KEY", "IMAGE_URL");
+    public class Test
+    {
+        public void BuildRequest()
+        {
+        	var client = new BlitlineApi();
+        	var request = new BlitlineRequest("API_KEY", "IMAGE_URL");
 
-	var resizeFunction = new ResizeToFitFunction(100, 100)
-	{
-		Save = new Save
-		{
-			ImageIdentifier = "test_image"
-		}
-	};
+        	var resizeFunction = new ResizeToFitFunction(100, 100)
+        	{
+        		Save = new Save
+        		{
+        			ImageIdentifier = "test_image"
+        		}
+        	};
 
-	request.AddFunction(resizeFunction);
+        	request.AddFunction(resizeFunction);
 
-	var response = client.ProcessImages(request);
+        	var response = client.ProcessImages(request);
+        }
+    }
 }
 ```
 
