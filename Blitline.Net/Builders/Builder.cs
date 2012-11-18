@@ -159,5 +159,11 @@ namespace Blitline.Net.Builders
             Functions.Add(build(new SharpenFunctionBuilder()));
             return this;
         }
+
+        public Builder<T> WithSketchFunction(Func<SketchFunctionBuilder, SketchFunction> build)
+        {
+            Functions.Add(build(new SketchFunctionBuilder()));
+            return this;
+        }
     }
 }
