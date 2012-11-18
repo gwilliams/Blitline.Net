@@ -141,5 +141,11 @@ namespace Blitline.Net.Builders
             Functions.Add(build(new RotateFunctionBuilder()));
             return this;
         }
+        
+        public Builder<T> WithScaleFunction(Func<ScaleFunctionBuilder, ScaleFunction> build)
+        {
+            Functions.Add(build(new ScaleFunctionBuilder()));
+            return this;
+        }
     }
 }
