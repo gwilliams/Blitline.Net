@@ -9,6 +9,16 @@ namespace Specs.Unit.Builders
 {
     public class ResizeFunctionBuilderSpecs
     {
+        [Fact]
+        public void CanNotBuildAResizeFunctionWithScaleFactorWidthAndHightSet()
+        {
+            Assert.Throws<ArgumentException>(() => BuildA.Request()
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
+                .WithResizeFunction(
+                f => f.WithHeight(10).WithWidth(5).WithScaleFactor(0.4m).Build()).Build());
+        }
+
         [Specification]
         public void CanBuildAResizeFunctionWithOnlyAScaleFactor()
         {
