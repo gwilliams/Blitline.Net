@@ -28,7 +28,7 @@ namespace Blitline.Net.Functions
                     as_mask = AsMask,
                     x = X,
                     y = Y,
-                    composite_op = CompositeOp
+                    composite_op = CompositeOp.ToString()
                 };
             }
         }

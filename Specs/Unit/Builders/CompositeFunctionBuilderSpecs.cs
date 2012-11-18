@@ -39,7 +39,7 @@ namespace Specs.Unit.Builders
                     Assert.Equal(true, (bool)t.GetProperty("as_mask").GetValue(p, null));
                     Assert.Equal(1, (int)t.GetProperty("x").GetValue(p, null));
                     Assert.Equal(1, (int)t.GetProperty("y").GetValue(p, null));
-                    Assert.Equal(CompositeOps.AddCompositeOp, (CompositeOps)t.GetProperty("composite_op").GetValue(p, null));
+                    Assert.Equal("AddCompositeOp", t.GetProperty("composite_op").GetValue(p, null).ToString());
                 });
         }
 
@@ -68,7 +68,7 @@ namespace Specs.Unit.Builders
                 Assert.Equal(false, (bool)t.GetProperty("as_mask").GetValue(p, null));
                 Assert.Equal(0, (int)t.GetProperty("x").GetValue(p, null));
                 Assert.Equal(0, (int)t.GetProperty("y").GetValue(p, null));
-                Assert.Equal(CompositeOps.OverCompositeOp, (CompositeOps)t.GetProperty("composite_op").GetValue(p, null));
+                Assert.Equal("OverCompositeOp", t.GetProperty("composite_op").GetValue(p, null).ToString());
             });
         }
     }
