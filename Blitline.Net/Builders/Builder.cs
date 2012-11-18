@@ -153,5 +153,11 @@ namespace Blitline.Net.Builders
             Functions.Add(build(new SepiaToneFunctionBuilder()));
             return this;
         }
+ 
+        public Builder<T> WithSharpenFunction(Func<SharpenFunctionBuilder, SharpenFunction> build)
+        {
+            Functions.Add(build(new SharpenFunctionBuilder()));
+            return this;
+        }
     }
 }
