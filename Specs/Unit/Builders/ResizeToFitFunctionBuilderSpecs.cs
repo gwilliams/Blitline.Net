@@ -13,7 +13,7 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a resize to resize_to_fill function".Context(() => request = BuildA.Request()
+            "When I build a resize to resize_to_fit function".Context(() => request = BuildA.Request()
                 .WithResizeToFitFunction(f => f.WithWidth(5).WithHeight(2)
                     .OnlyShrinkLarger(true).Build()).Build());
 

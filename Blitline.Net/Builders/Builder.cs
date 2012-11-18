@@ -136,5 +136,10 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> WithRotateFunction(Func<RotateFunctionBuilder, RotateFunction> build)
+        {
+            Functions.Add(build(new RotateFunctionBuilder()));
+            return this;
+        }
     }
 }
