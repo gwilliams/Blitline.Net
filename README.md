@@ -20,7 +20,12 @@ namespace Blitline.Net.Test
                 .WithApplicationId("API_KEY")
                 .WithSourceImageUri(new Uri("http://IMAGE_URL"))
                 .WithResizeToFitFunction(f => f.WithWidth(100).WithHeight(100)
-                    .SaveAs(s => s.WithImageIdentifier("image_identifier").Build())
+                    .SaveAs(s => s.WithImageIdentifier("image_identifier")
+                    .WithS3Destination(s3 => s3
+                      .WithBucketName("bucket-name")
+                      .WithKey("some-image-name.png")
+                      .Build())
+                    .Build())
                 .Build())
                 .Build().Send();
         }
