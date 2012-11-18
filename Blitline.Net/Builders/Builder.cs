@@ -177,5 +177,11 @@ namespace Blitline.Net.Builders
             Functions.Add(build(new UnsharpMaskFunctionBuilder()));
             return this;
         }
+
+        public Builder<T> WithVignetteFunction(Func<VignetteFunctionBuilder, VignetteFunction> build)
+        {
+            Functions.Add(build(new VignetteFunctionBuilder()));
+            return this;
+        }
     }
 }

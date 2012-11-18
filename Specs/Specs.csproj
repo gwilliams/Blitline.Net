@@ -109,6 +109,7 @@
     <Compile Include="Unit\Builders\SketchFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\TrimFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\UnsharpMaskFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\VignetteFunctionBuilderSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
