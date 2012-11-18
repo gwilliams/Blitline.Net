@@ -34,7 +34,7 @@ namespace Specs.Unit.Builders
                 Assert.Equal(2, (int)t.GetProperty("width").GetValue(p, null));
                 Assert.Equal(2, (int)t.GetProperty("height").GetValue(p, null));
                 Assert.Equal("ccc", t.GetProperty("color").GetValue(p, null).ToString());
-                Assert.Equal(Gravity.NorthEastGravity, (Gravity)t.GetProperty("gravity").GetValue(p, null));
+                Assert.Equal("NorthEastGravity", t.GetProperty("gravity").GetValue(p, null).ToString());
             });
         }
 
@@ -62,7 +62,7 @@ namespace Specs.Unit.Builders
                 Assert.Equal(2, (int)t.GetProperty("width").GetValue(p, null));
                 Assert.Equal(2, (int)t.GetProperty("height").GetValue(p, null));
                 Assert.Equal("#ffffff", t.GetProperty("color").GetValue(p, null).ToString());
-                Assert.Equal(Gravity.CenterGrativty, (Gravity)t.GetProperty("gravity").GetValue(p, null));
+                Assert.Equal("CenterGrativty", t.GetProperty("gravity").GetValue(p, null).ToString());
             });
         }
     }

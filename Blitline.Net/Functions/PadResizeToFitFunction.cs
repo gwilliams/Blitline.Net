@@ -23,7 +23,7 @@ namespace Blitline.Net.Functions
                     width = Width,
                     height = Height,
                     color = Colour,
-                    gravity = Gravity
+                    gravity = Gravity.ToString()
                 };
             }
         }
