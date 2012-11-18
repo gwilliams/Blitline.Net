@@ -3,7 +3,7 @@ using Blitline.Net.Builders;
 
 namespace Blitline.Net.Request.Builders
 {
-    public class SaveBuilder : UberBuilder<Save>
+    public class SaveBuilder : BuilderBase<Save>
     {
         readonly Save _save;
 

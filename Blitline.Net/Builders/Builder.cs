@@ -6,7 +6,7 @@ using Blitline.Net.Request;
 
 namespace Blitline.Net.Builders
 {
-    public abstract class Builder<T> : UberBuilder<T> where T : Function
+    public abstract class Builder<T> : BuilderBase<T> where T : Function
     {
         protected List<BlitlineFunction> Functions { get; set; }
 

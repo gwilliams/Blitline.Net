@@ -113,6 +113,7 @@
     <Compile Include="ParamOptions\Gravity.cs" />
     <Compile Include="IBlitlineApi.cs" />
     <Compile Include="ParamOptions\InterlaceType.cs" />
+    <Compile Include="Request\BlitlineRequestExtensions.cs" />
     <Compile Include="Request\Builders\RequestBuilder.cs" />
     <Compile Include="Request\BlitlineRequest.cs" />
     <Compile Include="Response\BlitlineResponse.cs" />
@@ -126,7 +127,7 @@
     <Compile Include="Request\Save.cs" />
     <Compile Include="Request\Builders\S3DestinationBuilder.cs" />
     <Compile Include="Request\Builders\SaveBuilder.cs" />
-    <Compile Include="Builders\UberBuilder.cs" />
+    <Compile Include="Builders\BuilderBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

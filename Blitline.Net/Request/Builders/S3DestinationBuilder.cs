@@ -2,7 +2,7 @@
 
 namespace Blitline.Net.Request.Builders
 {
-    public class S3DestinationBuilder : UberBuilder<S3Destination>
+    public class S3DestinationBuilder : BuilderBase<S3Destination>
     {
         readonly S3Destination _s3Destination;
 

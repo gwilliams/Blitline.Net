@@ -1,6 +1,6 @@
 ﻿namespace Blitline.Net.Builders
 {
-    public abstract class UberBuilder<T>
+    public abstract class BuilderBase<T>
     {
         protected abstract T BuildImp();
 
