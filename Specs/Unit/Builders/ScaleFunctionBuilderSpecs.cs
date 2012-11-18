@@ -34,7 +34,8 @@ namespace Specs.Unit.Builders
                 var p = request.Functions[0].Params;
                 var t = p.GetType();
 
-                Assert.Equal(1, t.GetProperties().Length);
+                Assert.Equal(0, (int)t.GetProperty("width").GetValue(p, null));
+                Assert.Equal(0, (int)t.GetProperty("height").GetValue(p, null));
                 Assert.Equal(0.75m, (decimal)t.GetProperty("scale_factor").GetValue(p, null));
             });
         }
@@ -57,9 +58,9 @@ namespace Specs.Unit.Builders
                 var p = request.Functions[0].Params;
                 var t = p.GetType();
 
-                Assert.Equal(2, t.GetProperties().Length);
                 Assert.Equal(5, (int)t.GetProperty("width").GetValue(p, null));
                 Assert.Equal(2, (int)t.GetProperty("height").GetValue(p, null));
+                Assert.Equal(0m, (decimal)t.GetProperty("scale_factor").GetValue(p, null));
             });
         }
     }

@@ -17,21 +17,13 @@ namespace Blitline.Net.Functions
         {
             get
             {
-                object o;
-                if (ScaleFactor != 0)
-                {
-                    o = new {scale_factor = ScaleFactor};
-                }
-                else
-                {
-                    o = new
-                            {
-                                width = Width,
-                                height = Height
-                            };
-                }
+                return new
+                           {
+                               width = Width,
+                               height = Height,
+                               scale_factor = ScaleFactor
+                           };
 
-                return o;
             }
         }
 

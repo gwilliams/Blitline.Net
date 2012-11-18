@@ -1,4 +1,6 @@
-﻿namespace Blitline.Net.Functions
+﻿using System;
+
+namespace Blitline.Net.Functions
 {
     /// <summary>
     /// Resize the image to a specific height and width. 
@@ -24,7 +26,13 @@
             }
         }
 
-        public override void Validate() {}
+        public override void Validate()
+        {
+            if (ScaleFactor != 0 && (Width != 0 || Height != 0))
+            {
+                throw new ArgumentException("Can only supply Width and Height OR ScaleFactor. Not Both.");
+            }
+        }
 
         public int Width { get; set; }
         public int Height { get; set; }
@@ -43,9 +51,6 @@
             ScaleFactor = scaleFactor;
         }
 
-        protected internal ResizeFunction()
-        {
-            ScaleFactor = 0.5m;
-        }
+        protected internal ResizeFunction() {}
     }
 }
