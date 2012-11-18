@@ -9,18 +9,45 @@ namespace Blitline.Net.Functions
             get { return "watermark"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    text = Text,
+                    gravity = Gravity,
+                    point_size = PointSize,
+                    font_family = FontFamily,
+                    opacity = Opacity
+                };
+            }
+        }
+
+        public override void Validate() {}
+
+        public string Text { get; set; }
+        public Gravity Gravity { get; set; }
+        public int PointSize { get; set; }
+        public string FontFamily { get; set; }
+        public decimal Opacity { get; set; }
+    
 
         public WatermarkFunction(string text, Gravity gravity = Gravity.CenterGrativty, int pointSize = 94, string fontFamilty = "Helvetica", decimal opacity = 0.45m)
         {
-            @Params = new
-                {
-                    text,
-                    gravity,
-                    point_size = pointSize,
-                    font_family = fontFamilty,
-                    opacity
-                };
+            Text = text;
+            Gravity = gravity;
+            PointSize = pointSize;
+            FontFamily = fontFamilty;
+            Opacity = opacity;
+        }
+
+        protected internal WatermarkFunction()
+        {
+            Gravity = Gravity.CenterGrativty;
+            PointSize = 94;
+            FontFamily = "Helvetica";
+            Opacity = 0.45m;
         }
     }
 }

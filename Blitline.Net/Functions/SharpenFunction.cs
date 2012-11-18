@@ -10,20 +10,44 @@
             get { return "sharpen"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    sigma = Sigma,
+                    radius = Radius
+                };
+            }
+        }
+
+        public override void Validate() {}
+
+        /// <summary>
+        /// Gaussian sigma of sharpen (defaults to 1.0)
+        /// </summary>
+        public decimal Sigma { get; set; }
+
+        /// <summary>
+        /// Gaussian radius of shapen (defaults to 0.0)
+        /// </summary>
+        public decimal Radius { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="sigma">Gaussian sigma of sharpen (defaults to 1.0)</param>
-        /// <param name="radius"Gaussian radius of shapen (defaults to 0.0)></param>
+        /// <param name="radius">Gaussian radius of shapen (defaults to 0.0)</param>
         public SharpenFunction(decimal sigma = 1.0m, decimal radius = 0.0m)
         {
-            @Params = new
-                {
-                    sigma, 
-                    radius
-                };
+            Sigma = sigma;
+            Radius = radius;
+        }
+
+        protected internal SharpenFunction()
+        {
+            Sigma = 1.0m;
         }
     }
 }

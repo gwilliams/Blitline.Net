@@ -10,7 +10,14 @@
             get { return "gamma_channel"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params { get { return new {gamma = Gamma}; } }
+        
+        public override void Validate() {}
+
+        /// <summary>
+        /// Gamma adjustent (Usually 0.8 to 2.3)
+        /// </summary>
+        public decimal Gamma { get; set; }
 
         /// <summary>
         /// 
@@ -18,7 +25,9 @@
         /// <param name="gamma">Gamma adjustent (Usually 0.8 to 2.3)</param>
         public GammaChannelFunction(decimal gamma)
         {
-            @Params = new {gamma};
+            Gamma = gamma;
         }
+
+        protected internal GammaChannelFunction() {}
     }
 }

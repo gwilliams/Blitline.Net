@@ -10,7 +10,24 @@
             get { return "quantize"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    number_colors = NumberOfColours,
+                    color_space = ColourSpace,
+                    dither = Dither
+                };
+            }
+        }
+
+        public override void Validate() {}
+
+        public int NumberOfColours { get; set; }
+        public string ColourSpace { get; set; }
+        public bool Dither { get; set; }
 
         /// <summary>
         /// 
@@ -20,12 +37,14 @@
         /// <param name="dither">Whether or not to use dithering on the resulting image (defaults to "false")</param>
         public QuantizeFunction(int numberOfColours, string colourSpace = "RGBColorspace", bool dither = false)
         {
-            @Params = new
-                {
-                    number_colors = numberOfColours,
-                    color_space = colourSpace,
-                    dither
-                };
+            NumberOfColours = numberOfColours;
+            ColourSpace = colourSpace;
+            Dither = dither;
+        }
+
+        protected internal QuantizeFunction()
+        {
+            ColourSpace = "RGBColorspace";
         }
     }
 }

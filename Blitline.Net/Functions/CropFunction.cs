@@ -11,7 +11,41 @@ namespace Blitline.Net.Functions
             get { return "crop"; }
         }
 
-        public override object @Params { get; protected set; }
+        public override object @Params
+        {
+            get
+            {
+                return new
+                           {
+                               x = X,
+                               y = Y,
+                               width = Width,
+                               height = Height
+                           };
+            }
+        }
+
+        public override void Validate() {}
+
+        /// <summary>
+        /// X offset
+        /// </summary>
+        public int X { get; set; }
+
+        /// <summary>
+        /// Y offset
+        /// </summary>
+        public int Y { get; set; }
+
+        /// <summary>
+        /// Width of resulting image
+        /// </summary>
+        public int Width { get; set; }
+
+        /// <summary>
+        /// Height of resulting image
+        /// </summary>
+        public int Height { get; set; }
 
         /// <summary>
         /// 
@@ -22,13 +56,12 @@ namespace Blitline.Net.Functions
         /// <param name="height">Height of resulting image</param>
         public CropFunction(int x, int y, int width, int height)
         {
-            @Params = new
-                          {
-                              x,
-                              y,
-                              width,
-                              height
-                          };
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
         }
+
+        protected internal CropFunction() {}
     }
 }

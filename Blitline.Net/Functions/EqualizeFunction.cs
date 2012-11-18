@@ -10,11 +10,8 @@
             get { return "equalize"; }
         }
 
-        public override object Params { get; protected set; }
-
-        public EqualizeFunction()
-        {
-            @Params = new {};
-        }
+        public override object Params { get { return new {}; } }
+        
+        public override void Validate() {}
     }
 }
