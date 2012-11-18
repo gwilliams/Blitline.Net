@@ -85,6 +85,7 @@
     <Compile Include="Functions\Builders\TrimFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\UnsharpMaskFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\VignetteFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\WatermarkFunctionBuilder.cs" />
     <Compile Include="Functions\CompositeFunction.cs" />
     <Compile Include="Functions\ContrastFunction.cs" />
     <Compile Include="Functions\ContrastStretchChannelFunction.cs" />

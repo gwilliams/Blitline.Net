@@ -183,5 +183,11 @@ namespace Blitline.Net.Builders
             Functions.Add(build(new VignetteFunctionBuilder()));
             return this;
         }
+
+        public Builder<T> WithWatermarkFunction(Func<WatermarkFunctionBuilder, WatermarkFunction> build)
+        {
+            Functions.Add(build(new WatermarkFunctionBuilder()));
+            return this;
+        }
     }
 }
