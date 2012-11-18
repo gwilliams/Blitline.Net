@@ -76,6 +76,10 @@
     <Compile Include="Functions\Builders\QuantizeFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ResizeFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ResizeToFillFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\ResizeToFitFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\RotateFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\ScaleFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\SepiaToneFunctionBuilder.cs" />
     <Compile Include="Functions\CompositeFunction.cs" />
     <Compile Include="Functions\ContrastFunction.cs" />
     <Compile Include="Functions\ContrastStretchChannelFunction.cs" />

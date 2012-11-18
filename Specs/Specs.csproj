@@ -101,6 +101,10 @@
     <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ResizeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ResizeToFillFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ResizeToFitFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\RotateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ScaleFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\SepiaToneFunctionBuilderSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
