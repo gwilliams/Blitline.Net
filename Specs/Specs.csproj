@@ -105,6 +105,9 @@
     <Compile Include="Unit\Builders\RotateFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ScaleFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\SepiaToneFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\SharpenFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\SketchFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\TrimFunctionBuilderSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

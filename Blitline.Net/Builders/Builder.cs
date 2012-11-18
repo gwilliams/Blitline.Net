@@ -165,5 +165,11 @@ namespace Blitline.Net.Builders
             Functions.Add(build(new SketchFunctionBuilder()));
             return this;
         }
+
+        public Builder<T> WithTrimFunction(Func<TrimFunctionBuilder, TrimFunction> build)
+        {
+            Functions.Add(build(new TrimFunctionBuilder()));
+            return this;
+        }
     }
 }

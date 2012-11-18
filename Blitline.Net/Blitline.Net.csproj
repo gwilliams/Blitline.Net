@@ -80,6 +80,9 @@
     <Compile Include="Functions\Builders\RotateFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ScaleFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\SepiaToneFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\SharpenFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\SketchFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\TrimFunctionBuilder.cs" />
     <Compile Include="Functions\CompositeFunction.cs" />
     <Compile Include="Functions\ContrastFunction.cs" />
     <Compile Include="Functions\ContrastStretchChannelFunction.cs" />
