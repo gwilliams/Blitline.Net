@@ -8,7 +8,7 @@ namespace Blitline.Net.Functions
         [JsonProperty("name")]
         public abstract string Name { get; }
         [JsonProperty("params")]
-        public abstract object @Params { get; }
+        public abstract dynamic @Params { get; }
         [JsonProperty("save")]
         public Save Save { get; set; }
 

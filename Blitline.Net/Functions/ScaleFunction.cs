@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 
 namespace Blitline.Net.Functions
 {
@@ -13,17 +14,18 @@ namespace Blitline.Net.Functions
             get { return "scale"; }
         }
 
-        public override object Params
+        public override dynamic Params
         {
             get
             {
-                return new
-                           {
-                               width = Width,
-                               height = Height,
-                               scale_factor = ScaleFactor
-                           };
+                dynamic o = new ExpandoObject();
 
+                o.width = Width;
+                o.height = Height;
+
+                if (ScaleFactor > 0) o.scale_factor = ScaleFactor;
+
+                return o;
             }
         }
 
