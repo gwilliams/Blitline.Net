@@ -171,5 +171,11 @@ namespace Blitline.Net.Builders
             Functions.Add(build(new TrimFunctionBuilder()));
             return this;
         }
+
+        public Builder<T> WithUnsharpMaskFunction(Func<UnsharpMaskFunctionBuilder, UnsharpMaskFunction> build)
+        {
+            Functions.Add(build(new UnsharpMaskFunctionBuilder()));
+            return this;
+        }
     }
 }

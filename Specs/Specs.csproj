@@ -108,6 +108,7 @@
     <Compile Include="Unit\Builders\SharpenFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\SketchFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\TrimFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\UnsharpMaskFunctionBuilderSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
