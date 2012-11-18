@@ -24,6 +24,12 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
+        public RequestBuilder FixS3ImageUrl(bool fix)
+        {
+            _request.FixS3ImageUrl = fix;
+            return this;
+        }
+
         protected override BlitlineRequest BuildImp()
         {
             return _request;

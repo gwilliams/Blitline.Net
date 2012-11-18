@@ -18,6 +18,15 @@ namespace Blitline.Net.Request
         public string PostbackUrl { get; set; }
         [JsonProperty("wait_for_s3")]
         public bool WaitForS3 { get; set; }
+
+        /// <summary>
+        /// Blitline returns an image url such as http://s3.amazonaws.com/gdoubleu-test-photos/annotate-default.png
+        /// This generally throws an error when accessing the image, with a PermanentRedirect error stating
+        /// that the endpoint is incorrect and should be gdoubleu-test-photos.s3.amazonaws.com resulting in an image url of
+        /// http://gdoubleu-test-photos.s3.amazonaws.com/annotate-default.png (this is http://bucketname/s3key.xxx)
+        /// Enabling this will automatically convert all response urls to the above format
+        /// </summary>
+        public bool FixS3ImageUrl { get; set; }
         
         public void AddFunction(BlitlineFunction function)
         {
