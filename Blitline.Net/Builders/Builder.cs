@@ -147,5 +147,11 @@ namespace Blitline.Net.Builders
             Functions.Add(build(new ScaleFunctionBuilder()));
             return this;
         }
+    
+        public Builder<T> WithSepiaToneFunction(Func<SepiaToneFunctionBuilder, SepiaToneFunction> build)
+        {
+            Functions.Add(build(new SepiaToneFunctionBuilder()));
+            return this;
+        }
     }
 }
