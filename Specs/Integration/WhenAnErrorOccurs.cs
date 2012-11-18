@@ -19,7 +19,7 @@ namespace Specs.Integration
             "Give I have an incomplete request".Context(() =>
                 {
                     _blitline = new BlitlineApi();
-                    _request = new BlitlineRequest("blah", "https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40elevatedirect.com-new.png");
+                    _request = new BlitlineRequest("blah", "https://s3-eu-west-1.amazonaws.com/gdoubleu-blitline/moi.jpg");
                     
                     var cropFunction = new CropFunction(51, 126, 457 - 126, 382 - 51)
                     {

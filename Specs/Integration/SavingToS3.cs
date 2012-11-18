@@ -19,11 +19,11 @@ namespace Specs.Integration
 
             "Given I have a blitline request with an s3 destination".Context(() =>
                 {   
-                    bucketName = "elevate-test-photos";
+                    bucketName = "gdoubleu-test-photos";
 
                     request = BuildA.Request()
-                                    .WithApplicationId("bqbTZJ-fe3sBFfJ2G0mKWw")
-                                    .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/elevate-test-photos/gw%40elevatedirect.com-new.png"))
+                                    .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
+                                    .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-blitline/moi.jpg"))
                                     .WithCropFunction(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
                                                             .SaveAs(s => s.WithImageIdentifier("image_identifier")
                                                                           .WithS3Destination(s3 => s3
