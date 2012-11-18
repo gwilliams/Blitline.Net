@@ -34,12 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Specifications">
-      <HintPath>..\packages\Machine.Specifications.0.5.8\lib\net40\Machine.Specifications.dll</HintPath>
-    </Reference>
-    <Reference Include="Machine.Specifications.Clr4">
-      <HintPath>..\packages\Machine.Specifications.0.5.8\lib\net40\Machine.Specifications.Clr4.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -56,25 +50,62 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\packages\xunit.extensions.1.9.1\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.runner.msbuild">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.msbuild.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.runner.tdnet">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.tdnet.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.runner.utility">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.utility.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Integration\changing_file_extension.cs" />
-    <Compile Include="Integration\resizing_an_image.cs" />
-    <Compile Include="Integration\saving_to_s3.cs" />
-    <Compile Include="Integration\when_an_error_occurs.cs" />
+    <Compile Include="Integration\ChangingFileExtension.cs" />
+    <Compile Include="Integration\ProcessAnnotateFunction.cs" />
+    <Compile Include="Integration\ProcessScaleFunction.cs" />
+    <Compile Include="Integration\SavingToS3.cs" />
+    <Compile Include="Integration\WhenAnErrorOccurs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Integration\cropping_an_image.cs" />
-    <Compile Include="Unit\creating_annotate_function.cs" />
-    <Compile Include="Unit\creating_append_function.cs" />
-    <Compile Include="Unit\creating_blur_function.cs" />
-    <Compile Include="Unit\creating_composite_function.cs" />
-    <Compile Include="Unit\creating_contrast_function.cs" />
-    <Compile Include="Unit\creating_contrast_stretch_channel_function.cs" />
-    <Compile Include="Unit\creating_crop_function.cs" />
-    <Compile Include="Unit\creating_deskew_function.cs" />
-    <Compile Include="Unit\creating_gamma_channel_function.cs" />
-    <Compile Include="Unit\creating_median_filter_function.cs" />
-    <Compile Include="Unit\creating_modulate_function.cs" />
+    <Compile Include="SubSpec\SubSpec.cs" />
+    <Compile Include="SubSpec\SubSpec.Thesis.cs" />
+    <Compile Include="SubSpec\SubSpecUtils.cs" />
+    <Compile Include="Unit\BlitlineResponseSpecs.cs" />
+    <Compile Include="Unit\Builders\AnnotateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\AppendFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\BlurFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\CompositeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ContrastFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ContrastStrecthChannelFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\CropFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\DeskewFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\EqualizeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\PadResizeToFitFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\PhotographFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\QuantizeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ResizeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ResizeToFillFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ResizeToFitFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\RotateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ScaleFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\SepiaToneFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\SharpenFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\SketchFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\TrimFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\UnsharpMaskFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\VignetteFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\WatermarkFunctionBuilderSpecs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -84,6 +115,9 @@
       <Project>{5C68792D-01BC-4E32-90F0-F397A8E321C4}</Project>
       <Name>Blitline.Net</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SubSpec\LICENSE.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

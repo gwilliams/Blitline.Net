@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
@@ -18,7 +19,23 @@ namespace Blitline.Net
             {
                 var result = client.PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string>{{"json", payload}}));
                 var o = result.Result.Content.ReadAsStringAsync().Result;
-                return JsonConvert.DeserializeObject<BlitlineResponse>(o);
+                var response = JsonConvert.DeserializeObject<BlitlineResponse>(o);
+
+                if (blitlineRequest.FixS3ImageUrl)
+                {
+                    var imageKeyBucketList = blitlineRequest.Functions.Select(f =>
+                        {
+                            if (f.Save != null && f.Save.S3Destination != null)
+                            {
+                                return new {Image = f.Save.S3Destination.Key, f.Save.S3Destination.Bucket};
+                            }
+                            return null;
+                        }).ToDictionary(k => k.Image, v => v.Bucket);
+
+                     response.FixS3Urls(imageKeyBucketList);
+                }
+
+                return response;
             }
         }
     }

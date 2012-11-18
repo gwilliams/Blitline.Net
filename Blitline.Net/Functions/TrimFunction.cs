@@ -12,12 +12,8 @@
             get { return "trim"; }
         }
 
-        public override object Params { get; protected set; }
-
-
-        public TrimFunction()
-        {
-            @Params = new {};
-        }
+        public override object Params { get { return new {}; } }
+        
+        public override void Validate() {}
     }
 }

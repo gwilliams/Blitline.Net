@@ -10,14 +10,26 @@
             get { return "sepia_tone"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params
+        {
+            get
+            {
+                return new
+                {
+                    threshold = Threshold
+                };
+            }
+        }
+
+        public override void Validate() {}
+
+        public int Threshold { get; set; }
 
         public SepiaToneFunction(int threshold = 0)
         {
-            @Params = new
-                {
-                    threshold
-                };
+            Threshold = threshold;
         }
+
+        protected internal SepiaToneFunction() {}
     }
 }

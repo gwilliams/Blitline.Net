@@ -15,7 +15,41 @@ namespace Blitline.Net.Functions
             get { return "resize_to_fill"; }
         }
 
-        public override object @Params { get; protected set; }
+        public override object @Params
+        {
+            get
+            {
+                return new
+                {
+                    width = Width,
+                    height = Height,
+                    gravity = Gravity.ToString(),
+                    only_shrink_larger = OnlyShrinkLarger
+                };
+            }
+        }
+
+        public override void Validate() {}
+
+        /// <summary>
+        /// Width of desired image
+        /// </summary>
+        public int Width { get; set; }
+
+        /// <summary>
+        /// Height of desired image
+        /// </summary>
+        public int Height { get; set; }
+
+        /// <summary>
+        /// Location of crop (defaults to 'CenterGravity')
+        /// </summary>
+        public Gravity Gravity { get; set; }
+
+        /// <summary>
+        /// Don’t upsize image (defaults to false)
+        /// </summary>
+        public bool OnlyShrinkLarger { get; set; }
 
         /// <summary>
         /// 
@@ -26,14 +60,15 @@ namespace Blitline.Net.Functions
         /// <param name="onlyShrinkLarger">Don’t upsize image (defaults to false)</param>
         public ResizeToFillFunction(int width, int height, Gravity gravity = Gravity.CenterGrativty, bool onlyShrinkLarger = false)
         {
-            var g = gravity.ToString();
-            @Params = new
-                          {
-                              width,
-                              height,
-                              gravity = g,
-                              only_shrink_larger = onlyShrinkLarger
-                          };
+            Width = width;
+            Height = height;
+            Gravity = gravity;
+            OnlyShrinkLarger = onlyShrinkLarger;
+        }
+
+        protected internal ResizeToFillFunction()
+        {
+            Gravity = Gravity.CenterGrativty;
         }
     }
 }

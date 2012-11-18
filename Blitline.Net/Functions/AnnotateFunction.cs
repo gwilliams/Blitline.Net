@@ -12,7 +12,65 @@ namespace Blitline.Net.Functions
             get { return "annotate"; }
         }
 
-        public override object Params { get; protected set; }
+        /// <summary>
+        /// Text to display on image
+        /// </summary>
+        public string Text { get; set; }
+
+        /// <summary>
+        /// X offset (defaults to 0)
+        /// </summary>
+        public int X { get; set; }
+
+        /// <summary>
+        /// Y offset (defaults to 0)
+        /// </summary>
+        public int Y { get; set; }
+
+        /// <summary>
+        /// Colour of text (defaults to '#ffffff')
+        /// </summary>
+        public string Colour { get; set; }
+
+        /// <summary>
+        /// Font of text (defaults to 'Helvetica')
+        /// </summary>
+        public string FontFamily { get; set; }
+
+        /// <summary>
+        /// Size of text (defaults to 32)
+        /// </summary>
+        public int PointSize { get; set; }
+
+        /// <summary>
+        /// Color of stroke (defaults to 'transparent')
+        /// </summary>
+        public string Stroke { get; set; }
+
+        /// <summary>
+        /// Placement of text (defaults to 'CenterGravity')
+        /// </summary>
+        public Gravity Gravity { get; set; }
+
+        public override object Params
+        {
+            get
+            {
+                return new
+                           {
+                               text = Text,
+                               x = X,
+                               y = Y,
+                               color = Colour ?? "#ffffff",
+                               font_family = FontFamily ?? "Helvetica",
+                               point_size = PointSize,
+                               stroke = Stroke ?? "transparent",
+                               gravity = Gravity.ToString()
+                           };
+            }
+        }
+
+        public override void Validate() {}
 
         /// <summary>
         /// 
@@ -27,17 +85,23 @@ namespace Blitline.Net.Functions
         /// <param name="gravity">Placement of text (defaults to 'CenterGravity')</param>
         public AnnotateFunction(string text, int x = 0, int y = 0, string colour = "#ffffff", string fontFamily = "Helvetica", int pointSize = 32, string stroke = "transparent", Gravity gravity = Gravity.CenterGrativty)
         {
-            @Params = new
-                {
-                    text,
-                    x,
-                    y,
-                    color = colour,
-                    font_family = fontFamily,
-                    point_size = pointSize,
-                    stroke,
-                    gravity
-                };
+            Text = text;
+            X = x;
+            Y = y;
+            Colour = colour;
+            FontFamily = fontFamily;
+            PointSize = pointSize;
+            Stroke = stroke;
+            Gravity = gravity;
+        }
+
+        protected internal AnnotateFunction()
+        {
+            Colour = "#ffffff";
+            FontFamily = "Helvetica";
+            PointSize = 32;
+            Stroke = "transparent";
+            Gravity = Gravity.CenterGrativty;
         }
     }
 }

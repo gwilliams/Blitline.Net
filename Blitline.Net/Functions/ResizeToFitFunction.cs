@@ -12,9 +12,35 @@ namespace Blitline.Net.Functions
             get { return "resize_to_fit"; }
         }
 
-        public override object @Params { get; protected set; }
+        public override object @Params
+        {
+            get
+            {
+                return new
+                {
+                    width = Width,
+                    height = Height,
+                    only_shrink_larger = OnlyShrinkLarger
+                };
+            }
+        }
 
-        public ResizeToFitFunction(int width, int height) : this(width, height, false) { }
+        public override void Validate() {}
+
+        /// <summary>
+        /// Width of desired image
+        /// </summary>
+        public int Width { get; set; }
+
+        /// <summary>
+        /// Height of desired image
+        /// </summary>
+        public int Height { get; set; }
+
+        /// <summary>
+        /// Don't upsize image
+        /// </summary>
+        public bool OnlyShrinkLarger { get; set; }
 
         /// <summary>
         /// 
@@ -24,12 +50,11 @@ namespace Blitline.Net.Functions
         /// <param name="onlyShrinkLarger">Don't upsize image</param>
         public ResizeToFitFunction(int width, int height, bool onlyShrinkLarger = false)
         {
-            @Params = new
-            {
-                width,
-                height,
-                only_shrink_larger = onlyShrinkLarger
-            };
+            Width = width;
+            Height = height;
+            OnlyShrinkLarger = onlyShrinkLarger;
         }
+
+        protected internal ResizeToFitFunction() {}
     }
 }

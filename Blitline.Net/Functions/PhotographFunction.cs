@@ -10,7 +10,11 @@
             get { return "photograph"; }
         }
 
-        public override object Params { get; protected set; }
+        public override object Params { get { return new { angle = Angle}; } }
+        
+        public override void Validate() {}
+
+        public int Angle { get; set; }
 
         /// <summary>
         /// 
@@ -18,7 +22,9 @@
         /// <param name="angle">Angle of rotation</param>
         public PhotographFunction(int angle = 0)
         {
-            @Params = new {angle};
+            Angle = angle;
         }
+
+        protected internal PhotographFunction() {}
     }
 }
