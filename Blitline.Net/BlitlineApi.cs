@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
-using System.Text.RegularExpressions;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 using Newtonsoft.Json;
@@ -23,25 +23,20 @@ namespace Blitline.Net
 
                 if (blitlineRequest.FixS3ImageUrl)
                 {
-                    response = FixS3Urls(response);
+                    var imageKeyBucketList = blitlineRequest.Functions.Select(f =>
+                        {
+                            if (f.Save != null && f.Save.S3Destination != null)
+                            {
+                                return new {Image = f.Save.S3Destination.Key, f.Save.S3Destination.Bucket};
+                            }
+                            return null;
+                        }).ToDictionary(k => k.Image, v => v.Bucket);
+
+                    response.FixS3Urls(imageKeyBucketList);
                 }
 
                 return response;
             }
-        }
-
-        private static BlitlineResponse FixS3Urls(BlitlineResponse response)
-        {
-            const string pattern = @"[^\/]+$";
-
-            foreach (var image in response.Results.Images)
-            {
-                var url = image.S3Url;
-                var imageName = Regex.Match(url, pattern).Value;
-                image.S3Url = imageName;
-            }
-
-            return response;
         }
     }
 }
