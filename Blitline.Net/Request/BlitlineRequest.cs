@@ -1,30 +1,8 @@
-using System.Collections.Generic;
 using Blitline.Net.Functions;
 using Newtonsoft.Json;
 
 namespace Blitline.Net.Request
 {
-    public enum Hash
-    {
-        [JsonProperty("md5")]
-        Md5,
-        [JsonProperty("crc32")]
-        Crc32,
-        [JsonProperty("sha256")]
-        Sha256
-    }
-
-    public class Function
-    {
-        [JsonProperty("functions")]
-        public List<BlitlineFunction> Functions { get; set; }
-
-        public Function()
-        {
-            Functions = new List<BlitlineFunction>();
-        }
-    }
-
     public class BlitlineRequest : Function
     {
         [JsonProperty("application_id")]

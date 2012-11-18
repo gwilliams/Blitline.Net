@@ -116,6 +116,8 @@
     <Compile Include="Request\BlitlineRequestExtensions.cs" />
     <Compile Include="Request\Builders\RequestBuilder.cs" />
     <Compile Include="Request\BlitlineRequest.cs" />
+    <Compile Include="Request\Function.cs" />
+    <Compile Include="Request\Hash.cs" />
     <Compile Include="Response\BlitlineResponse.cs" />
     <Compile Include="Functions\BlitlineFunction.cs" />
     <Compile Include="Functions\CropFunction.cs" />
