@@ -45,5 +45,16 @@ namespace Blitline.Net.Request
         {
             Functions.Add(function);
         }
+
+        public BlitlineRequest()
+        {
+            
+        }
+
+        public BlitlineRequest(string applicationId, string sourceUrl)
+        {
+            ApplicationId = applicationId;
+            SourceImage = sourceUrl;
+        }
     }
 }
