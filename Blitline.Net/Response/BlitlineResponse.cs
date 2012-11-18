@@ -18,11 +18,10 @@ namespace Blitline.Net.Response
             {
                 var uri = new Uri(image.S3Url);
                 var imageName = uri.Segments[uri.Segments.Length - 1];
-                var imageKey = imageName.Remove(imageName.LastIndexOf('.'));
-
-                if (imageKeyBucketList.ContainsKey(imageKey))
+                
+                if (imageKeyBucketList.ContainsKey(imageName))
                 {
-                    var bucketName = imageKeyBucketList[imageName.Remove(imageName.LastIndexOf('.'))];
+                    var bucketName = imageKeyBucketList[imageName];
                     image.S3Url = string.Format(newUri, uri.Scheme, bucketName, imageName);
                 }
             }

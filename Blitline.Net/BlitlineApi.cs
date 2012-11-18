@@ -32,7 +32,7 @@ namespace Blitline.Net
                             return null;
                         }).ToDictionary(k => k.Image, v => v.Bucket);
 
-                    response.FixS3Urls(imageKeyBucketList);
+                     response.FixS3Urls(imageKeyBucketList);
                 }
 
                 return response;

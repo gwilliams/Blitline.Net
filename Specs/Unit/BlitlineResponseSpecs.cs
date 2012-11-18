@@ -39,7 +39,7 @@ namespace Specs.Unit
 
                     _imageKeyBucketList = new Dictionary<string, string>
                                               {
-                                                  {"annotate-default","gdoubleu-test-photos"}
+                                                  {"annotate-default.png","gdoubleu-test-photos"}
                                               };
                 });
 
