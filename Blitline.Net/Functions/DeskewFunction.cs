@@ -11,6 +11,8 @@
         }
 
         public override object Params { get { return new {threshold = Threshold}; } }
+        
+        public override void Validate() {}
 
         /// <summary>
         /// Maximum threshold percentage for deskewing (Default = 0.40)

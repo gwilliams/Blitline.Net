@@ -28,6 +28,8 @@ namespace Blitline.Net.Functions
             }
         }
 
+        public override void Validate() {}
+
         public int Width { get; set; }
         public int Height { get; set; }
         public string Colour { get; set; }

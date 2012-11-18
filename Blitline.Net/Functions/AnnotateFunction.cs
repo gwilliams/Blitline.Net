@@ -70,6 +70,8 @@ namespace Blitline.Net.Functions
             }
         }
 
+        public override void Validate() {}
+
         /// <summary>
         /// 
         /// </summary>

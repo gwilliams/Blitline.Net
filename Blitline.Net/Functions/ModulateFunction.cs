@@ -23,6 +23,8 @@
             }
         }
 
+        public override void Validate() {}
+
         public decimal Brightness { get; set; }
         public decimal Saturation { get; set; }
         public decimal Hue { get; set; }

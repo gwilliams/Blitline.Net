@@ -22,6 +22,8 @@
             }
         }
 
+        public override void Validate() {}
+
         /// <summary>
         /// The number of degrees to rotate the image.
         /// </summary>

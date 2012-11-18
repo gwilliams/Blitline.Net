@@ -33,6 +33,8 @@ namespace Blitline.Net.Functions
             }
         }
 
+        public override void Validate() {}
+
         public CompositeFunction(string src, bool asMask = false, int x = 0, int y = 0, CompositeOps compositeOp = CompositeOps.OverCompositeOp)
         {
             Source = src;

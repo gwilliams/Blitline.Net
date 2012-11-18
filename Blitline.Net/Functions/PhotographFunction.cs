@@ -11,6 +11,8 @@
         }
 
         public override object Params { get { return new { angle = Angle}; } }
+        
+        public override void Validate() {}
 
         public int Angle { get; set; }
 

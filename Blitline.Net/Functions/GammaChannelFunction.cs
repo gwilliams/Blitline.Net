@@ -11,6 +11,8 @@
         }
 
         public override object Params { get { return new {gamma = Gamma}; } }
+        
+        public override void Validate() {}
 
         /// <summary>
         /// Gamma adjustent (Usually 0.8 to 2.3)

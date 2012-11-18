@@ -6,7 +6,7 @@ using Blitline.Net.Request.Builders;
 namespace Blitline.Net.Functions.Builders
 {
     public abstract class FunctionBuilder<T> : Builder<T>
-        where T : Function
+        where T : BlitlineFunction
     {
         protected BlitlineFunction Function;
 

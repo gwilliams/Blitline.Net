@@ -24,6 +24,8 @@ namespace Blitline.Net.Functions
             }
         }
 
+        public override void Validate() {}
+
         public string Text { get; set; }
         public Gravity Gravity { get; set; }
         public int PointSize { get; set; }

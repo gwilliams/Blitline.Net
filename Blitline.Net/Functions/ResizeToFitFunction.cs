@@ -25,6 +25,8 @@ namespace Blitline.Net.Functions
             }
         }
 
+        public override void Validate() {}
+
         /// <summary>
         /// Width of desired image
         /// </summary>

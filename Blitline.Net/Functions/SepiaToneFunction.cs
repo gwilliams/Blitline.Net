@@ -21,6 +21,8 @@
             }
         }
 
+        public override void Validate() {}
+
         public int Threshold { get; set; }
 
         public SepiaToneFunction(int threshold = 0)

@@ -23,6 +23,8 @@
             }
         }
 
+        public override void Validate() {}
+
         /// <summary>
         /// Gaussian operator (defaults to 0.0)
         /// </summary>

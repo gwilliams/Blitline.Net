@@ -22,6 +22,8 @@
             }
         }
 
+        public override void Validate() {}
+
         /// <summary>
         /// Gaussian sigma of sharpen (defaults to 1.0)
         /// </summary>

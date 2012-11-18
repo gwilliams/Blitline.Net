@@ -22,6 +22,8 @@
             }
         }
 
+        public override void Validate() {}
+
         public int BlackPoint { get; set; }
         public int WhitePoint { get; set; }
 

@@ -23,6 +23,8 @@
             }
         }
 
+        public override void Validate() {}
+
         public int NumberOfColours { get; set; }
         public string ColourSpace { get; set; }
         public bool Dither { get; set; }

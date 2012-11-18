@@ -11,6 +11,8 @@
         }
 
         public override object Params { get { return new {radius = Radius}; } }
+        
+        public override void Validate() {}
 
         /// <summary>
         /// Radius of blur (defaults to 1.0)

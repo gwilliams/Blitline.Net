@@ -11,6 +11,8 @@ namespace Blitline.Net.Functions
         public abstract object @Params { get; }
         [JsonProperty("save")]
         public Save Save { get; set; }
+
+        public abstract void Validate();
         
         public void AddFunction(BlitlineFunction function)
         {

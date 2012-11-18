@@ -26,6 +26,8 @@ namespace Blitline.Net.Functions
             }
         }
 
+        public override void Validate() {}
+
         /// <summary>
         /// Gaussian operator (defaults to 1.0)
         /// </summary>

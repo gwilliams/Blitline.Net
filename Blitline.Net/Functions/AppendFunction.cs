@@ -21,6 +21,8 @@
             }
         }
 
+        public override void Validate() {}
+
         /// <summary>
         /// Whether images are appended vertically(true) or horizontally(false)
         /// </summary>

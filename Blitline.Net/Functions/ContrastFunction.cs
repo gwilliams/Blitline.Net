@@ -21,6 +21,8 @@
             }
         }
 
+        public override void Validate() {}
+
         /// <summary>
         /// Contrast is increased if true (defaults to false)
         /// </summary>

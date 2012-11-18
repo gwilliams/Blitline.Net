@@ -24,6 +24,8 @@
             }
         }
 
+        public override void Validate() {}
+
         /// <summary>
         /// The new width of the image
         /// </summary>
