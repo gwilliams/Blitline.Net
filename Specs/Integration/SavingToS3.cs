@@ -56,7 +56,7 @@ namespace Specs.Integration
                     request = BuildA.Request()
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                .FixS3ImageUrl(true)
+                                .FixS3ImageUrl()
                                 .WithCropFunction(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
                                                         .SaveAs(s => s.WithImageIdentifier("image_identifier")
                                                                       .WithS3Destination(s3 => s3

@@ -17,11 +17,14 @@ namespace Specs.Unit.Builders
 
             "When I build a request".Context(() => request = BuildA.Request()
                                                               .WithApplicationId("123")
-                                                              .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
-                                                              .WithPostbackUri(new Uri("http://www.bar.com/"))
+                                                              .FixS3ImageUrl()
                                                               .WaitForS3()
-                                                              .SuppressAutoOrientation()
+                                                              .ContentTypeAsJson()
+                                                              .SupressAutoOrientation()
+                                                              .WithPostbackUri(new Uri("http://www.bar.com/"))
+                                                              .WithExtendedMetaData()
                                                               .WithHash(Hash.Md5)
+                                                              .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .WithCropFunction(f => f.WithDimensions(1,2,3,4).Build())
                                                               .Build());
 
@@ -31,13 +34,17 @@ namespace Specs.Unit.Builders
 
             "And the source image is http://www.foo.com/bar.gif".Observation(() => Assert.Equal("http://www.foo.com/bar.gif", request.SourceImage));
 
-            "And the postback uri is http://www.bar.com/".Observation(() => Assert.Equal("http://www.bar.com/", request.PostbackUrl));
+            "And wait for s3 is true".Observation(() => Assert.Equal(true, request.WaitForS3));
 
-            "And wait for s3 is true".Observation(() => Assert.True(request.WaitForS3));
+            "And content type as json is true".Observation(() => Assert.True(request.ContentTypeJson));
 
-            "And suppress auto orientation is true".Observation(() => Assert.True(request.SuppressAutoOrient));
+            "And supress auto orientation is true".Observation(() => Assert.True(request.SuppressAutoOrient));
 
-            "And the hash should be md5".Observation(() => Assert.Equal(Hash.Md5, request.Hash));
+            "And the postback url is http://postback.com".Observation(() => Assert.Equal("http://www.bar.com/", request.PostbackUrl));
+
+            "And extended meta data is true".Observation(() => Assert.True(request.ExtendedMetaData));
+
+            "And the hash is Md5".Observation(() => Assert.Equal(Hash.Md5, request.Hash));
 
             "And there is 1 function".Observation(() => Assert.Equal(1, request.Functions.Count));
         }

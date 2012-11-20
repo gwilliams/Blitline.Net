@@ -18,6 +18,10 @@ namespace Blitline.Net.Request
         public string PostbackUrl { get; set; }
         [JsonProperty("wait_for_s3")]
         public bool WaitForS3 { get; set; }
+        [JsonProperty("content_type_json")]
+        public bool ContentTypeJson { get; set; }
+        [JsonProperty("extended_metadata")]
+        public bool ExtendedMetaData { get; set; }
 
         /// <summary>
         /// Blitline returns an image url such as http://s3.amazonaws.com/gdoubleu-test-photos/annotate-default.png
