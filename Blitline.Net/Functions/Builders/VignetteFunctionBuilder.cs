@@ -12,15 +12,10 @@
             ((VignetteFunction) Function).Colour = colour;
             return this;
         }
-
-        public VignetteFunctionBuilder WithX(int x)
+        
+        public VignetteFunctionBuilder WithPosition(int x, int y)
         {
             ((VignetteFunction) Function).X = x;
-            return this;
-        }
-
-        public VignetteFunctionBuilder WithY(int y)
-        {
             ((VignetteFunction) Function).Y = y;
             return this;
         }

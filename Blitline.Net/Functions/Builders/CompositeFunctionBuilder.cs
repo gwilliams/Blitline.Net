@@ -25,14 +25,9 @@ namespace Blitline.Net.Functions.Builders
             return this;
         }
 
-        public CompositeFunctionBuilder WithX(int x)
+        public CompositeFunctionBuilder WithPosition(int x, int y)
         {
             ((CompositeFunction) Function).X = x;
-            return this;
-        }
-
-        public CompositeFunctionBuilder WithY(int y)
-        {
             ((CompositeFunction) Function).Y = y;
             return this;
         }

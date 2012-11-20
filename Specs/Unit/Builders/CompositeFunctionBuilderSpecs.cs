@@ -20,8 +20,7 @@ namespace Specs.Unit.Builders
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithCompositeFunction(f => f.WithSource("source")
                 .AsMask(true)
-                .WithX(1)
-                .WithY(1)
+                .WithPosition(1, 1)
                 .WithCompositeOp(CompositeOps.AddCompositeOp).Build()).Build());
 
             "The the name should be composite".Observation(() => Assert.Equal("composite", request.Functions[0].Name));

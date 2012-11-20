@@ -14,16 +14,11 @@ namespace Blitline.Net.Functions.Builders
             ((AnnotateFunction) Function).Text = text;
             return this;
         }
-
-        public AnnotateFunctionBuilder WithX(int x)
+        
+        public AnnotateFunctionBuilder WithPosition(int x, int y)
         {
-            ((AnnotateFunction) Function).X = x;
-            return this;
-        }
-
-        public AnnotateFunctionBuilder WithY(int y)
-        {
-            ((AnnotateFunction) Function).Y = y;
+            ((AnnotateFunction)Function).X = x;
+            ((AnnotateFunction)Function).Y = y;
             return this;
         }
 

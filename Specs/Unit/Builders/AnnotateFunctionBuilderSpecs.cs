@@ -20,8 +20,7 @@ namespace Specs.Unit.Builders
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .WithAnnotateFunction(f => f
                     .WithText("Text")
-                    .WithX(1)
-                    .WithY(1)
+                    .WithPosition(1, 1)
                     .WithColour("ccc")
                     .WithFontFamilty("Arial")
                     .WithPointSize(10)

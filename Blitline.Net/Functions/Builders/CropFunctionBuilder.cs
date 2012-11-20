@@ -10,9 +10,9 @@
         public CropFunctionBuilder WithDimensions(int x, int y, int width, int height)
         {
             ((CropFunction) Function).X = x;
-            ((CropFunction)Function).Y = y;
-            ((CropFunction)Function).Width = width;
-            ((CropFunction)Function).Height = height;
+            ((CropFunction) Function).Y = y;
+            ((CropFunction) Function).Width = width;
+            ((CropFunction) Function).Height = height;
 
             return this;
         }
