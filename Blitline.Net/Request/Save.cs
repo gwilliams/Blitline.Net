@@ -12,6 +12,10 @@ namespace Blitline.Net.Request
         public S3Destination S3Destination { get; set; }
         [JsonProperty("extension")]
         public string Extension { get; set; }
+        [JsonProperty("interlace")]
+        public string Interlace { get; set; }
+        [JsonProperty("png_quantize")]
+        public bool PngQuantize { get; set; }
 
         public Save()
         {

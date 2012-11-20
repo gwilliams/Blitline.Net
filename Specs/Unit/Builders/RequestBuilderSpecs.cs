@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Blitline.Net.Builders;
+using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
 using SubSpec;
 using Xunit;
@@ -78,6 +79,8 @@ namespace Specs.Unit.Builders
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
                                                                       .WithExtension("png")
                                                                       .WithQuality(10)
+                                                                      .QuantizePng()
+                                                                      .WithInterlaceType(InterlaceType.LineInterlace)
                                                                       .Build())
                                                                   .Build())
                                                               .Build());
@@ -87,6 +90,10 @@ namespace Specs.Unit.Builders
             "And the image identifier is image".Observation(() => Assert.Equal("image", request.Functions.First().Save.ImageIdentifier));
 
             "And the quality is 10".Observation(() => Assert.Equal(10, request.Functions.First().Save.Quality));
+
+            "And quantize png is true".Observation(() => Assert.True(request.Functions[0].Save.PngQuantize));
+
+            "And the interlace type is LineInterlace".Observation(() => Assert.Equal("LineInterlace", request.Functions[0].Save.Interlace));
         }
 
         [Specification]
