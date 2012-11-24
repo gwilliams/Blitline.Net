@@ -3,7 +3,7 @@ Blitline.Net
 
 A simple .net wrapper for the [Blitline API](http://www.blitline.com)
 
-New Usage
+New Usage - Simple
 ------------
 
 ```
@@ -16,7 +16,7 @@ namespace Blitline.Net.Test
     {
         public void BuildRequest()
         {
-            var response = BuilA.Request()
+            var response = BuildA.Request()
                 .WithApplicationId("API_KEY")
                 .WithSourceImageUri(new Uri("http://IMAGE_URL"))
                 .WithResizeToFitFunction(f => f.WithWidth(100).WithHeight(100)
@@ -27,7 +27,46 @@ namespace Blitline.Net.Test
                       .Build())
                     .Build())
                 .Build())
-                .Build().Send();
+                .Build()
+                .Send();
+        }
+    }
+}
+```
+
+New Usage - Advanced
+-------------
+```
+using Blitline.Net.Builders;
+using Blitline.Net.Request;
+
+namespace Blitline.Net.Test
+{
+    public class Test
+    {
+        public void BuildRequest()
+        {
+            var response = BuildA.Request()
+                .WithApplicationId("API_KEY")
+                .WithSourceImageUri(new Uri("http://IMAGE_URL"))
+                .WithResizeToFitFunction(f => f.WithWidth(100).WithHeight(100)
+                    .SaveAs(s => s.WithImageIdentifier("resized_image")
+                    .WithS3Destination(s3 => s3
+                      .WithBucketName("bucket-name")
+                      .WithKey("resized-image.png")
+                      .Build())
+                    .Build())
+                    .WithCropFunction(cf => cf.WithDimensions(1,2,3,4)
+                        .SaveAs(cs => cs.WithImageIdentifier("cropped_image")
+                        .WithS3Destination(cs3 => cs3
+                            .WithBucketName("bucket-name")
+                            .WithKey("cropped-image.png")
+                            .Build())
+                        .Build())
+                    .Build())
+                .Build())
+                .Build()
+                .Send();
         }
     }
 }
