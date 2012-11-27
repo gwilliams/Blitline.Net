@@ -36,6 +36,12 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
+        public RequestBuilder WaitForS3()
+        {
+            _request.WaitForS3 = true;
+            return this;
+        }
+
         protected override BlitlineRequest BuildImp()
         {
             return _request;
