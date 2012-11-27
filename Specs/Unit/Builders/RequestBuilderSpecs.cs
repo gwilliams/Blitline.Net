@@ -4,7 +4,6 @@ using System.Linq;
 using Blitline.Net.Builders;
 using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
-using Newtonsoft.Json;
 using SubSpec;
 using Xunit;
 
@@ -164,7 +163,7 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a multipage request".Context(() => request = BuildA.Request()
+            "When I build a multipage with page numbers request".Context(() => request = BuildA.Request()
                                                               .WithApplicationId("123")
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .SourceIsMultipageDocument(new[]{1,3})
@@ -188,6 +187,30 @@ namespace Specs.Unit.Builders
             "And the 1st page is 1".Observation(() => Assert.Equal(1, request.SourceType.Pages[0]));
 
             "And the 1st page is 3".Observation(() => Assert.Equal(3, request.SourceType.Pages[1]));
+        }
+
+        [Specification]
+        public void CanBuildARequestWithoutSourceType()
+        {
+            BlitlineRequest request = default(BlitlineRequest);
+
+            "When I build a request without source type".Context(() => request = BuildA.Request()
+                                                              .WithApplicationId("123")
+                                                              .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                                                              .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
+                                                                  .SaveAs(s => s.WithImageIdentifier("image")
+                                                                      .WithExtension("png")
+                                                                      .WithQuality(10)
+                                                                      .WithS3Destination(s3 => s3.WithBucketName("Bucket")
+                                                                        .WithKey("Key")
+                                                                        .WithHeader("1", "foo")
+                                                                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } })
+                                                                        .Build())
+                                                                      .Build())
+                                                                  .Build())
+                                                              .Build());
+
+            "Then source type is null".Observation(() => Assert.Null(request.SourceType));
         }
     }
 }
