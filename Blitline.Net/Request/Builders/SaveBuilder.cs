@@ -56,7 +56,9 @@ namespace Blitline.Net.Request.Builders
 
         public override Save Build()
         {
-            return BuildImp();
+            var o = BuildImp();
+            o.Validate();
+            return o;
         }
     }
 }

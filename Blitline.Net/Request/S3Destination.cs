@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -25,6 +26,12 @@ namespace Blitline.Net.Request
             {
                 AddHeader(header.Key, header.Value);
             }
+        }
+
+        public void Validate()
+        {
+            if(string.IsNullOrEmpty(Bucket)) throw new ArgumentNullException("Bucket", "Bucket is required");
+            if(string.IsNullOrEmpty(Key)) throw new ArgumentNullException("Key", "Key is required");
         }
     }
 }

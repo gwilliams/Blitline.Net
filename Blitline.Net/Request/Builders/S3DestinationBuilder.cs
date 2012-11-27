@@ -43,7 +43,9 @@ namespace Blitline.Net.Request.Builders
 
         public override S3Destination Build()
         {
-            return BuildImp();
+            var o = BuildImp();
+            o.Validate();
+            return o;
         }
     }
 }

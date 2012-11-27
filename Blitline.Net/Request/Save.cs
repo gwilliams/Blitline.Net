@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 
 namespace Blitline.Net.Request
@@ -20,6 +21,11 @@ namespace Blitline.Net.Request
         public Save()
         {
             Quality = 75;
+        }
+
+        public void Validate()
+        {
+            if(string.IsNullOrEmpty(ImageIdentifier)) throw new ArgumentNullException("ImageIdentifier", "Image identifier is required");
         }
     }
 }

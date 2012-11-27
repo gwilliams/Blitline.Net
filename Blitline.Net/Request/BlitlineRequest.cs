@@ -54,6 +54,7 @@ namespace Blitline.Net.Request
         {
             if(string.IsNullOrEmpty(ApplicationId)) throw new ArgumentNullException("ApplicationId is required", "ApplicationId");
             if(string.IsNullOrEmpty(SourceImage)) throw new ArgumentNullException("SourceImage is required", "SourceImage");
+            if (Functions.Count == 0) throw new ArgumentException("1 or more function required", "Functions");
         }
     }
 }
