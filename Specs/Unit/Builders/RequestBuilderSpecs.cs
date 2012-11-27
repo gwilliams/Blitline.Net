@@ -19,6 +19,7 @@ namespace Specs.Unit.Builders
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .WithPostbackUri(new Uri("http://www.bar.com/"))
                                                               .WaitForS3()
+                                                              .SuppressAutoOrientation()
                                                               .WithCropFunction(f => f.WithDimensions(1,2,3,4).Build())
                                                               .Build());
 
@@ -31,6 +32,8 @@ namespace Specs.Unit.Builders
             "And the postback uri is http://www.bar.com/".Observation(() => Assert.Equal("http://www.bar.com/", request.PostbackUrl));
 
             "And wait for s3 is true".Observation(() => Assert.True(request.WaitForS3));
+
+            "And suppress auto orientation is true".Observation(() => Assert.True(request.SuppressAutoOrient));
 
             "And there is 1 function".Observation(() => Assert.Equal(1, request.Functions.Count));
         }

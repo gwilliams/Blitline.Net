@@ -42,6 +42,12 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
+        public RequestBuilder SuppressAutoOrientation()
+        {
+            _request.SuppressAutoOrient = true;
+            return this;
+        }
+
         protected override BlitlineRequest BuildImp()
         {
             return _request;
