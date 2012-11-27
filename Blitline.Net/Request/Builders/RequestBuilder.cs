@@ -60,24 +60,6 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-        public RequestBuilder WithHash(Hash hash)
-        {
-            _request.Hash = hash;
-            return this;
-        }
-
-        public RequestBuilder WithPostbackUri(Uri uri)
-        {
-            _request.PostbackUrl = uri.AbsoluteUri;
-            return this;
-        }
-
-        public RequestBuilder WaitForS3()
-        {
-            _request.WaitForS3 = true;
-            return this;
-        }
-
         public RequestBuilder SuppressAutoOrientation()
         {
             _request.SuppressAutoOrient = true;
