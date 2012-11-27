@@ -17,6 +17,7 @@ namespace Specs.Unit.Builders
             "When I build a request".Context(() => request = BuildA.Request()
                                                               .WithApplicationId("123")
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                                                              .WithPostbackUri(new Uri("http://www.bar.com/"))
                                                               .WithCropFunction(f => f.WithDimensions(1,2,3,4).Build())
                                                               .Build());
 
@@ -25,6 +26,8 @@ namespace Specs.Unit.Builders
             "And the application id is 123".Observation(() => Assert.Equal("123", request.ApplicationId));
 
             "And the source image is http://www.foo.com/bar.gif".Observation(() => Assert.Equal("http://www.foo.com/bar.gif", request.SourceImage));
+
+            "And the postback uri is http://www.bar.com/".Observation(() => Assert.Equal("http://www.bar.com/", request.PostbackUrl));
 
             "And there is 1 function".Observation(() => Assert.Equal(1, request.Functions.Count));
         }

@@ -30,6 +30,12 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
+        public RequestBuilder WithPostbackUri(Uri uri)
+        {
+            _request.PostbackUrl = uri.AbsoluteUri;
+            return this;
+        }
+
         protected override BlitlineRequest BuildImp()
         {
             return _request;
