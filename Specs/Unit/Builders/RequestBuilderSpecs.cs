@@ -4,6 +4,7 @@ using System.Linq;
 using Blitline.Net.Builders;
 using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
+using Newtonsoft.Json;
 using SubSpec;
 using Xunit;
 
@@ -26,6 +27,7 @@ namespace Specs.Unit.Builders
                                                               .WithExtendedMetaData()
                                                               .WithHash(Hash.Md5)
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                                                              .SourceIsScreenshot()
                                                               .WithCropFunction(f => f.WithDimensions(1,2,3,4).Build())
                                                               .Build());
 
@@ -46,6 +48,8 @@ namespace Specs.Unit.Builders
             "And extended meta data is true".Observation(() => Assert.True(request.ExtendedMetaData));
 
             "And the hash is Md5".Observation(() => Assert.Equal(Hash.Md5, request.Hash));
+
+            "And the source type is screen_shot_url".Observation(() => Assert.Equal("screen_shot_url", request.SourceType));
 
             "And there is 1 function".Observation(() => Assert.Equal(1, request.Functions.Count));
         }
@@ -128,6 +132,62 @@ namespace Specs.Unit.Builders
             "And the first header is foo".Observation(() => Assert.Equal("foo", request.Functions.First().Save.S3Destination.Headers.First().Value));
 
             "And the second header is bar".Observation(() => Assert.Equal("bar", request.Functions.First().Save.S3Destination.Headers.Last().Value));
+        }
+
+        [Specification]
+        public void CanBuildAMultipageRequest()
+        {
+            BlitlineRequest request = default(BlitlineRequest);
+
+            "When I build a multipage request".Context(() => request = BuildA.Request()
+                                                              .WithApplicationId("123")
+                                                              .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                                                              .SourceIsMultipageDocument()
+                                                              .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
+                                                                  .SaveAs(s => s.WithImageIdentifier("image")
+                                                                      .WithExtension("png")
+                                                                      .WithQuality(10)
+                                                                      .WithS3Destination(s3 => s3.WithBucketName("Bucket")
+                                                                        .WithKey("Key")
+                                                                        .WithHeader("1", "foo")
+                                                                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } })
+                                                                        .Build())
+                                                                      .Build())
+                                                                  .Build())
+                                                              .Build());
+
+            "Then source type is multipage".Observation(() => Assert.Equal("multi_page", request.SourceType));
+        }
+
+        [Specification]
+        public void CanBuildAMultipageWithSpecificPagesRequest()
+        {
+            BlitlineRequest request = default(BlitlineRequest);
+
+            "When I build a multipage request".Context(() => request = BuildA.Request()
+                                                              .WithApplicationId("123")
+                                                              .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                                                              .SourceIsMultipageDocument(new[]{1,3})
+                                                              .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
+                                                                  .SaveAs(s => s.WithImageIdentifier("image")
+                                                                      .WithExtension("png")
+                                                                      .WithQuality(10)
+                                                                      .WithS3Destination(s3 => s3.WithBucketName("Bucket")
+                                                                        .WithKey("Key")
+                                                                        .WithHeader("1", "foo")
+                                                                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } })
+                                                                        .Build())
+                                                                      .Build())
+                                                                  .Build())
+                                                              .Build());
+
+            "Then source type is multipage".Observation(() => Assert.Equal("multi_page", request.SourceType.Name));
+
+            "And there are 2 pages".Observation(() => Assert.Equal(2, request.SourceType.Pages.Length));
+
+            "And the 1st page is 1".Observation(() => Assert.Equal(1, request.SourceType.Pages[0]));
+
+            "And the 1st page is 3".Observation(() => Assert.Equal(3, request.SourceType.Pages[1]));
         }
     }
 }

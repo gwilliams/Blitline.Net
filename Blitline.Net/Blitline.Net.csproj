@@ -118,6 +118,7 @@
     <Compile Include="Request\BlitlineRequest.cs" />
     <Compile Include="Request\Function.cs" />
     <Compile Include="Request\Hash.cs" />
+    <Compile Include="Request\MultiPageSourceType.cs" />
     <Compile Include="Response\BlitlineResponse.cs" />
     <Compile Include="Functions\BlitlineFunction.cs" />
     <Compile Include="Functions\CropFunction.cs" />

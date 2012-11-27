@@ -22,6 +22,8 @@ namespace Blitline.Net.Request
         public bool ContentTypeJson { get; set; }
         [JsonProperty("extended_metadata")]
         public bool ExtendedMetaData { get; set; }
+        [JsonProperty("src_type")]
+        public dynamic SourceType { get; set; }
 
         /// <summary>
         /// Blitline returns an image url such as http://s3.amazonaws.com/gdoubleu-test-photos/annotate-default.png

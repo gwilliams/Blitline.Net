@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Blitline.Net.Builders;
 
 namespace Blitline.Net.Request.Builders
@@ -72,6 +73,24 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
+        public RequestBuilder SourceIsScreenshot()
+        {
+            _request.SourceType = "screen_shot_url";
+            return this;
+        }
+
+        public RequestBuilder SourceIsMultipageDocument()
+        {
+            _request.SourceType = "multi_page";
+            return this;
+        }
+
+        public RequestBuilder SourceIsMultipageDocument(IList<int> pages)
+        {
+            _request.SourceType = new MultiPageSourceType {Pages = pages};
+            return this;
+        }
+        
         protected override BlitlineRequest BuildImp()
         {
             return _request;
