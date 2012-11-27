@@ -1,4 +1,5 @@
-﻿using Blitline.Net.Builders;
+﻿using System.Collections.Generic;
+using Blitline.Net.Builders;
 
 namespace Blitline.Net.Request.Builders
 {
@@ -20,6 +21,18 @@ namespace Blitline.Net.Request.Builders
         public S3DestinationBuilder WithKey(string key)
         {
             _s3Destination.Key = key;
+            return this;
+        }
+
+        public S3DestinationBuilder WithHeader(string key, string value)
+        {
+            _s3Destination.AddHeader(key, value);
+            return this;
+        }
+
+        public S3DestinationBuilder WithHeaders(IDictionary<string, string> headers)
+        {
+            _s3Destination.AddHeaders(headers);
             return this;
         }
 

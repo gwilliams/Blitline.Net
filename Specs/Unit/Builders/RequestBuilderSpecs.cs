@@ -95,6 +95,8 @@ namespace Specs.Unit.Builders
                                                                       .WithQuality(10)
                                                                       .WithS3Destination(s3 => s3.WithBucketName("Bucket")
                                                                         .WithKey("Key")
+                                                                        .WithHeader("1","foo")
+                                                                        .WithHeader("2","bar")
                                                                         .Build())
                                                                       .Build())
                                                                   .Build())
@@ -105,6 +107,12 @@ namespace Specs.Unit.Builders
             "And the bucket name is Bucket".Observation(() => Assert.Equal("Bucket", request.Functions.First().Save.S3Destination.Bucket));
 
             "And the key is Key".Observation(() => Assert.Equal("Key", request.Functions.First().Save.S3Destination.Key));
+
+            "And there are 2 headers".Observation(() => Assert.Equal(2, request.Functions.First().Save.S3Destination.Headers.Count));
+
+            "And the first header is foo".Observation(() => Assert.Equal("foo", request.Functions.First().Save.S3Destination.Headers.First().Value));
+
+            "And the second header is bar".Observation(() => Assert.Equal("bar", request.Functions.First().Save.S3Destination.Headers.Last().Value));
         }
     }
 }
