@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Blitline.Net.Builders;
 using Blitline.Net.Request;
@@ -96,7 +97,7 @@ namespace Specs.Unit.Builders
                                                                       .WithS3Destination(s3 => s3.WithBucketName("Bucket")
                                                                         .WithKey("Key")
                                                                         .WithHeader("1","foo")
-                                                                        .WithHeader("2","bar")
+                                                                        .WithHeaders(new Dictionary<string, string>{{"2","bar"}})
                                                                         .Build())
                                                                       .Build())
                                                                   .Build())
