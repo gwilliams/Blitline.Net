@@ -48,6 +48,12 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
+        public RequestBuilder WithHash(Hash hash)
+        {
+            _request.Hash = hash;
+            return this;
+        }
+
         protected override BlitlineRequest BuildImp()
         {
             return _request;

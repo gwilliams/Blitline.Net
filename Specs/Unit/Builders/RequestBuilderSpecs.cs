@@ -20,6 +20,7 @@ namespace Specs.Unit.Builders
                                                               .WithPostbackUri(new Uri("http://www.bar.com/"))
                                                               .WaitForS3()
                                                               .SuppressAutoOrientation()
+                                                              .WithHash(Hash.Md5)
                                                               .WithCropFunction(f => f.WithDimensions(1,2,3,4).Build())
                                                               .Build());
 
@@ -34,6 +35,8 @@ namespace Specs.Unit.Builders
             "And wait for s3 is true".Observation(() => Assert.True(request.WaitForS3));
 
             "And suppress auto orientation is true".Observation(() => Assert.True(request.SuppressAutoOrient));
+
+            "And the hash should be md5".Observation(() => Assert.Equal(Hash.Md5, request.Hash));
 
             "And there is 1 function".Observation(() => Assert.Equal(1, request.Functions.Count));
         }
