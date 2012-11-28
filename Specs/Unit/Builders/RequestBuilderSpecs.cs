@@ -21,7 +21,7 @@ namespace Specs.Unit.Builders
                                                               .FixS3ImageUrl()
                                                               .WaitForS3()
                                                               .ContentTypeAsJson()
-                                                              .SupressAutoOrientation()
+                                                              .SuppressAutoOrientation()
                                                               .WithPostbackUri(new Uri("http://www.bar.com/"))
                                                               .WithExtendedMetaData()
                                                               .WithHash(Hash.Md5)

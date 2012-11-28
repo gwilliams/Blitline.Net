@@ -43,12 +43,6 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-        public RequestBuilder SupressAutoOrientation()
-        {
-            _request.SuppressAutoOrient = true;
-            return this;
-        }
-
         public RequestBuilder WithPostbackUri(Uri posbackUri)
         {
             _request.PostbackUrl = posbackUri.AbsoluteUri;
