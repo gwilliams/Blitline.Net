@@ -3,7 +3,6 @@ using System.Linq;
 using Blitline.Net.Builders;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
-using Newtonsoft.Json;
 using SubSpec;
 using Xunit;
 
