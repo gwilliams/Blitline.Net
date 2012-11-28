@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Integration\ChangingFileExtension.cs" />
     <Compile Include="Integration\ProcessAnnotateFunction.cs" />
+    <Compile Include="Integration\ProcessMultipageDocument.cs" />
     <Compile Include="Integration\ProcessScaleFunction.cs" />
     <Compile Include="Integration\ProcessScreenshot.cs" />
     <Compile Include="Integration\SavingToS3.cs" />
