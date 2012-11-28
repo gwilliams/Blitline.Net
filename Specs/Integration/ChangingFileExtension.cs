@@ -28,7 +28,7 @@ namespace Specs.Integration
                                                              .SaveAs(
                                                                  s =>
                                                                  s.WithImageIdentifier("file_extension")
-                                                                  .WithExtension(Extension.Png)
+                                                                  .WithExtension(Extension.PNG)
                                                                   .Build())
                                                              .Build())
                                      .Build();
