@@ -2,7 +2,6 @@
 using System.Linq;
 using Blitline.Net;
 using Blitline.Net.Builders;
-using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 using SubSpec;
@@ -29,7 +28,7 @@ namespace Specs.Integration
                                                              .SaveAs(
                                                                  s =>
                                                                  s.WithImageIdentifier("file_extension")
-                                                                  .WithExtension(".png")
+                                                                  .WithExtension(Extension.Png)
                                                                   .Build())
                                                              .Build())
                                      .Build();

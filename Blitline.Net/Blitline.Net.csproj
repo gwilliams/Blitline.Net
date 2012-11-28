@@ -116,6 +116,8 @@
     <Compile Include="Request\BlitlineRequestExtensions.cs" />
     <Compile Include="Request\Builders\RequestBuilder.cs" />
     <Compile Include="Request\BlitlineRequest.cs" />
+    <Compile Include="Extension.cs" />
+    <Compile Include="ExtensionConverter.cs" />
     <Compile Include="Request\Function.cs" />
     <Compile Include="Request\Hash.cs" />
     <Compile Include="Request\MultiPageSourceType.cs" />

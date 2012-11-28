@@ -1,5 +1,6 @@
 using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Blitline.Net.Request
 {
@@ -12,7 +13,8 @@ namespace Blitline.Net.Request
         [JsonProperty("s3_destination")]
         public S3Destination S3Destination { get; set; }
         [JsonProperty("extension")]
-        public string Extension { get; set; }
+        [JsonConverter(typeof(ExtensionConverter))]
+        public Extension Extension { get; set; }
         [JsonProperty("interlace")]
         public string Interlace { get; set; }
         [JsonProperty("png_quantize")]

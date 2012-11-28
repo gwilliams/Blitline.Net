@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Blitline.Net;
 using Blitline.Net.Builders;
 using Blitline.Net.ParamOptions;
 using Blitline.Net.Request;
@@ -80,7 +81,7 @@ namespace Specs.Unit.Builders
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
-                                                                      .WithExtension("png")
+                                                                      .WithExtension(Extension.Png)
                                                                       .WithQuality(10)
                                                                       .QuantizePng()
                                                                       .WithInterlaceType(InterlaceType.LineInterlace)
@@ -109,7 +110,7 @@ namespace Specs.Unit.Builders
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
-                                                                      .WithExtension("png")
+                                                                      .WithExtension(Extension.Png)
                                                                       .WithQuality(10)
                                                                       .WithS3Destination(s3 => s3.WithBucketName("Bucket")
                                                                         .WithKey("Key")
@@ -144,7 +145,7 @@ namespace Specs.Unit.Builders
                                                               .SourceIsMultipageDocument()
                                                               .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
-                                                                      .WithExtension("png")
+                                                                      .WithExtension(Extension.Png)
                                                                       .WithQuality(10)
                                                                       .WithS3Destination(s3 => s3.WithBucketName("Bucket")
                                                                         .WithKey("Key")
@@ -169,7 +170,7 @@ namespace Specs.Unit.Builders
                                                               .SourceIsMultipageDocument(new[]{1,3})
                                                               .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
-                                                                      .WithExtension("png")
+                                                                      .WithExtension(Extension.Png)
                                                                       .WithQuality(10)
                                                                       .WithS3Destination(s3 => s3.WithBucketName("Bucket")
                                                                         .WithKey("Key")
@@ -199,7 +200,7 @@ namespace Specs.Unit.Builders
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
-                                                                      .WithExtension("png")
+                                                                      .WithExtension(Extension.Png)
                                                                       .WithQuality(10)
                                                                       .WithS3Destination(s3 => s3.WithBucketName("Bucket")
                                                                         .WithKey("Key")

@@ -19,7 +19,7 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-        public SaveBuilder WithExtension(string extension)
+        public SaveBuilder WithExtension(Extension extension)
         {
             _save.Extension = extension;
             return this;
