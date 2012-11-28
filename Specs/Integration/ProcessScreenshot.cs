@@ -11,7 +11,7 @@ namespace Specs.Integration
     public class ProcessScreenshot
     {
         [Specification]
-        public void CanSaveToS3Bucket()
+        public void CanProcessAScreenShot()
         {
             var request = default(BlitlineRequest);
             var response = default(BlitlineResponse);
