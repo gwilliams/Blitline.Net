@@ -38,5 +38,33 @@ namespace Blitline.Net
                 return response;
             }
         }
+
+        public BlitlineResponse ProcessImages(IEnumerable<BlitlineRequest> blitlineRequests)
+        {
+            var payload = JsonConvert.SerializeObject(blitlineRequests.ToArray());
+
+            using (var client = new HttpClient())
+            {
+                var result = client.PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
+                var o = result.Result.Content.ReadAsStringAsync().Result;
+                var response = JsonConvert.DeserializeObject<BlitlineResponse>(o);
+
+                if (blitlineRequests.Any(r => r.FixS3ImageUrl))
+                {
+                    //var imageKeyBucketList = blitlineRequests.Functions.Select(f =>
+                    //{
+                    //    if (f.Save != null && f.Save.S3Destination != null)
+                    //    {
+                    //        return new { Image = f.Save.S3Destination.Key, f.Save.S3Destination.Bucket };
+                    //    }
+                    //    return null;
+                    //}).ToDictionary(k => k.Image, v => v.Bucket);
+
+                    //response.FixS3Urls(imageKeyBucketList);
+                }
+
+                return response;
+            }
+        }
     }
 }
