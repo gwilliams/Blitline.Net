@@ -1,4 +1,5 @@
-﻿using Blitline.Net;
+﻿using System.Linq;
+using Blitline.Net;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
@@ -9,7 +10,7 @@ namespace Specs.Integration
 {
     public class WhenAnErrorOccurs
     {
-        BlitlineApi _blitline = default (BlitlineApi);
+        BlitlineApi _blitline = default(BlitlineApi);
         BlitlineResponse _response = default(BlitlineResponse);
         BlitlineRequest _request = default(BlitlineRequest);
 
@@ -20,7 +21,7 @@ namespace Specs.Integration
                 {
                     _blitline = new BlitlineApi();
                     _request = new BlitlineRequest("blah", "https://s3-eu-west-1.amazonaws.com/gdoubleu-blitline/moi.jpg");
-                    
+
                     var cropFunction = new CropFunction(51, 126, 457 - 126, 382 - 51)
                     {
                         Save = new Save

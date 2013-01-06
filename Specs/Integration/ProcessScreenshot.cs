@@ -38,6 +38,6 @@ namespace Specs.Integration
             "When I process the request".Do(() => response = request.Send());
 
             "Then the s3 url should not be empty".Observation(() => Assert.NotEmpty(response.Results.Images.First().S3Url));
-        } 
+        }
     }
 }

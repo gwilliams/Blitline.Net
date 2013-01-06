@@ -1,22 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Blitline.Net.Response
 {
-    public class BlitlineResponse
+    public class BlitlineBatchResponse : BlitlineResponse
     {
-        protected const string NewAmazonUri = "{0}://{1}.s3.amazonaws.com/{2}";
-        public Results Results { get; set; }
+        public new IEnumerable<Results> Results { get; set; }
 
-        public virtual bool Failed { get { return !string.IsNullOrEmpty(Results.Error); } }
-
-        public virtual void FixS3Urls(Dictionary<string, string> imageKeyBucketList)
+        public override bool Failed
         {
-            foreach (var image in Results.Images)
+            get { return Results.Any(r => !string.IsNullOrEmpty(r.Error)); }
+        }
+
+        public override void FixS3Urls(Dictionary<string, string> imageKeyBucketList)
+        {
+            foreach (var image in Results.SelectMany(r => r.Images))
             {
                 var uri = new Uri(image.S3Url);
                 var imageName = uri.Segments[uri.Segments.Length - 1];
-                
+
                 if (imageKeyBucketList.ContainsKey(imageName))
                 {
                     var bucketName = imageKeyBucketList[imageName];

@@ -35,7 +35,7 @@ namespace Specs.Integration
             "When I process the request".Do(() => response = request.Send());
 
             "Then the s3 url should not be empty".Observation(() => Assert.NotEmpty(response.Results.Images.First().S3Url));
-        } 
+        }
 
         [Specification]
         public void CanProcessAMultipageDocumentWithSpecificPages()
@@ -50,7 +50,7 @@ namespace Specs.Integration
                 request = BuildA.Request()
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/Gareth+Williams%27s+Resume.pdf"))
-                                .SourceIsMultipageDocument(new[]{1})
+                                .SourceIsMultipageDocument(new[] { 1 })
                                 .WithResizeToFitFunction(f => f.WithWidth(200).WithHeight(200)
                                     .SaveAs(s => s.WithImageIdentifier("multipage_2")
                                     .WithS3Destination(s3 => s3.WithBucketName(bucketName).WithKey("multipage_page.png").Build())
@@ -61,7 +61,7 @@ namespace Specs.Integration
 
             "When I process the request".Do(() => response = request.Send());
 
-            "Then the s3 url should not be empty".Observation(() => Assert.NotEmpty(response.Results.Images.First().S3Url)); 
+            "Then the s3 url should not be empty".Observation(() => Assert.NotEmpty(response.Results.Images.First().S3Url));
         }
     }
 }

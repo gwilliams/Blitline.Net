@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Blitline.Net.Response;
 
 namespace Blitline.Net.Request
@@ -8,6 +9,12 @@ namespace Blitline.Net.Request
         {
             var api = new BlitlineApi();
             return api.ProcessImages(request);
+        }
+
+        public static BlitlineBatchResponse Send(this IEnumerable<BlitlineRequest> requests)
+        {
+            var api = new BlitlineApi();
+            return api.ProcessImages(requests);
         }
     }
 }

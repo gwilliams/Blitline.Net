@@ -12,8 +12,8 @@ namespace Specs.Integration
     public class ChangingFileExtension
     {
         BlitlineApi _blitline = default(BlitlineApi);
-        BlitlineResponse _response = default (BlitlineResponse);
-        BlitlineRequest _request = default (BlitlineRequest);
+        BlitlineResponse _response = default(BlitlineResponse);
+        BlitlineRequest _request = default(BlitlineRequest);
 
         [Specification]
         public void CanChangeImageFileExtension()
@@ -38,6 +38,6 @@ namespace Specs.Integration
 
             "Then the processed image should contain the new extension".Observation(() => Assert.Contains(".png", _response.Results.Images.First().S3Url));
         }
-        
+
     }
 }

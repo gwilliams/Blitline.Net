@@ -21,25 +21,14 @@ namespace Blitline.Net
                 var o = result.Result.Content.ReadAsStringAsync().Result;
                 var response = JsonConvert.DeserializeObject<BlitlineResponse>(o);
 
-                if (blitlineRequest.FixS3ImageUrl)
-                {
-                    var imageKeyBucketList = blitlineRequest.Functions.Select(f =>
-                        {
-                            if (f.Save != null && f.Save.S3Destination != null)
-                            {
-                                return new {Image = f.Save.S3Destination.Key, f.Save.S3Destination.Bucket};
-                            }
-                            return null;
-                        }).ToDictionary(k => k.Image, v => v.Bucket);
-
-                     response.FixS3Urls(imageKeyBucketList);
-                }
+                var correctS3BucketList = FixS3Urls(new[]{blitlineRequest});
+                if (correctS3BucketList.Any()) response.FixS3Urls(correctS3BucketList);
 
                 return response;
             }
         }
 
-        public BlitlineResponse ProcessImages(IEnumerable<BlitlineRequest> blitlineRequests)
+        public BlitlineBatchResponse ProcessImages(IEnumerable<BlitlineRequest> blitlineRequests)
         {
             var payload = JsonConvert.SerializeObject(blitlineRequests.ToArray());
 
@@ -47,24 +36,32 @@ namespace Blitline.Net
             {
                 var result = client.PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
                 var o = result.Result.Content.ReadAsStringAsync().Result;
-                var response = JsonConvert.DeserializeObject<BlitlineResponse>(o);
+                var response = JsonConvert.DeserializeObject<BlitlineBatchResponse>(o);
 
-                if (blitlineRequests.Any(r => r.FixS3ImageUrl))
-                {
-                    //var imageKeyBucketList = blitlineRequests.Functions.Select(f =>
-                    //{
-                    //    if (f.Save != null && f.Save.S3Destination != null)
-                    //    {
-                    //        return new { Image = f.Save.S3Destination.Key, f.Save.S3Destination.Bucket };
-                    //    }
-                    //    return null;
-                    //}).ToDictionary(k => k.Image, v => v.Bucket);
-
-                    //response.FixS3Urls(imageKeyBucketList);
-                }
-
+                var correctS3BucketList = FixS3Urls(blitlineRequests);
+                if(correctS3BucketList.Any()) response.FixS3Urls(correctS3BucketList);
+                
                 return response;
             }
+        }
+
+        private Dictionary<string, string> FixS3Urls(IEnumerable<BlitlineRequest> blitlineRequests)
+        {
+            var imageKeyBucketList = new Dictionary<string, string>();
+
+            if (blitlineRequests.Any(r => r.FixS3ImageUrl))
+            {
+                imageKeyBucketList = blitlineRequests.SelectMany(f => f.Functions).Select(f =>
+                {
+                    if (f.Save != null && f.Save.S3Destination != null)
+                    {
+                        return new { Image = f.Save.S3Destination.Key, f.Save.S3Destination.Bucket };
+                    }
+                    return null;
+                }).ToDictionary(k => k.Image, v => v.Bucket);
+            }
+
+            return imageKeyBucketList;
         }
     }
 }
