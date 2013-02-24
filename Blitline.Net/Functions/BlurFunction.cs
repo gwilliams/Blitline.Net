@@ -35,7 +35,7 @@
             Radius = radius;
         }
 
-        protected internal BlurFunction()
+        public BlurFunction()
         {
             Sigma = 1.0m;
             Radius = 0.0m;

@@ -36,7 +36,7 @@
             Hue = hue;
         }
 
-        protected internal ModulateFunction()
+        public ModulateFunction()
         {
             Brightness = 1.0m;
             Saturation = 1.0m;

@@ -49,14 +49,14 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-        protected override Save BuildImp()
+        protected override Save BuildImp
         {
-            return _save;
+            get { return _save; }
         }
 
         public override Save Build()
         {
-            var o = BuildImp();
+            var o = BuildImp;
             o.Validate();
             return o;
         }

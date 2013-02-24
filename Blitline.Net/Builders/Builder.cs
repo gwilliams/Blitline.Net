@@ -17,7 +17,7 @@ namespace Blitline.Net.Builders
         
         public override T Build()
         {
-            var o = BuildImp();
+            var o = BuildImp;
             o.Functions.AddRange(Functions);
             return o;
         }

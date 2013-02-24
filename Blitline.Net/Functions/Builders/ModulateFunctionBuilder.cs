@@ -2,32 +2,22 @@
 {
     public class ModulateFunctionBuilder : FunctionBuilder<ModulateFunction>
     {
-        public ModulateFunctionBuilder()
-        {
-            Function = new ModulateFunction();
-        }
-
         public ModulateFunctionBuilder WithBrightness(decimal brightness)
         {
-            ((ModulateFunction) Function).Brightness = brightness;
+            BuildImp.Brightness = brightness;
             return this;
         }
 
         public ModulateFunctionBuilder WithSaturation(decimal saturation)
         {
-            ((ModulateFunction) Function).Saturation = saturation;
+            BuildImp.Saturation = saturation;
             return this;
         }
 
         public ModulateFunctionBuilder WithHue(decimal hue)
         {
-            ((ModulateFunction) Function).Hue = hue;
+            BuildImp.Hue = hue;
             return this;
-        }
-
-        protected override ModulateFunction BuildImp()
-        {
-            return (ModulateFunction) Function;
         }
     }
 }

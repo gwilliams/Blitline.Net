@@ -30,6 +30,6 @@
             Threshold = threshold;
         }
 
-        protected internal SepiaToneFunction() {}
+        public SepiaToneFunction() {}
     }
 }

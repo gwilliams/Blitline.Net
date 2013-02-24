@@ -45,7 +45,7 @@
             Radius = radius;
         }
 
-        protected internal SharpenFunction()
+        public SharpenFunction()
         {
             Sigma = 1.0m;
         }

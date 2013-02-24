@@ -28,6 +28,6 @@
             Gamma = gamma;
         }
 
-        protected internal GammaChannelFunction() {}
+        public GammaChannelFunction() {}
     }
 }

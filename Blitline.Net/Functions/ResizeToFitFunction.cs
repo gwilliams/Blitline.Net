@@ -55,6 +55,6 @@ namespace Blitline.Net.Functions
             OnlyShrinkLarger = onlyShrinkLarger;
         }
 
-        protected internal ResizeToFitFunction() {}
+        public ResizeToFitFunction() {}
     }
 }

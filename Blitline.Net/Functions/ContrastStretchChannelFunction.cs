@@ -38,6 +38,6 @@
             WhitePoint = whitePoint;
         }
 
-        protected internal ContrastStretchChannelFunction() {}
+        public ContrastStretchChannelFunction() {}
     }
 }

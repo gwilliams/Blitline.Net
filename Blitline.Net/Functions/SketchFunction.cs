@@ -53,6 +53,6 @@
             Angle = angle;
         }
 
-        protected internal SketchFunction() {}
+        public SketchFunction() {}
     }
 }

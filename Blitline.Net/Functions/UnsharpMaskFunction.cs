@@ -70,7 +70,7 @@ namespace Blitline.Net.Functions
             Threshold = threshold;
         }
 
-        protected internal UnsharpMaskFunction()
+        public UnsharpMaskFunction()
         {
             Sigma = 1.0m;
             Amount = 1.0m;

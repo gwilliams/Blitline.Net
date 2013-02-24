@@ -37,6 +37,6 @@
             Vertical = vertical;
         }
 
-        protected internal AppendFunction() {}
+        public AppendFunction() {}
     }
 }

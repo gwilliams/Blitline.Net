@@ -42,7 +42,7 @@
             Dither = dither;
         }
 
-        protected internal QuantizeFunction()
+        public QuantizeFunction()
         {
             ColourSpace = "RGBColorspace";
         }

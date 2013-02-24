@@ -2,20 +2,10 @@
 {
     public class RotateFunctionBuilder : FunctionBuilder<RotateFunction>
     {
-        public RotateFunctionBuilder()
-        {
-            Function = new RotateFunction();
-        }
-
         public RotateFunctionBuilder WithAmount(int amount)
         {
-            ((RotateFunction) Function).Amount = amount;
+            BuildImp.Amount = amount;
             return this;
-        }
-
-        protected override RotateFunction BuildImp()
-        {
-            return (RotateFunction) Function;
         }
     }
 }

@@ -66,7 +66,7 @@ namespace Blitline.Net.Functions
             OnlyShrinkLarger = onlyShrinkLarger;
         }
 
-        protected internal ResizeToFillFunction()
+        public ResizeToFillFunction()
         {
             Gravity = Gravity.CenterGrativty;
         }

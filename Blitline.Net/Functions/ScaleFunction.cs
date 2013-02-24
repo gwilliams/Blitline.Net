@@ -65,6 +65,6 @@ namespace Blitline.Net.Functions
             ScaleFactor = scaleFactor;
         }
 
-        protected internal ScaleFunction() {}
+        public ScaleFunction() {}
     }
 }

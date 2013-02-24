@@ -54,6 +54,6 @@ namespace Blitline.Net.Functions
             ScaleFactor = scaleFactor;
         }
 
-        protected internal ResizeFunction() {}
+        public ResizeFunction() {}
     }
 }

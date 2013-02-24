@@ -38,6 +38,6 @@
             Amount = amount;
         }
 
-        protected internal RotateFunction() {}
+        public RotateFunction() {}
     }
 }

@@ -62,6 +62,6 @@ namespace Blitline.Net.Functions
             Height = height;
         }
 
-        protected internal CropFunction() {}
+        public CropFunction() {}
     }
 }

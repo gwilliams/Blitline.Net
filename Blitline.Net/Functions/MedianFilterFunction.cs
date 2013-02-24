@@ -28,7 +28,7 @@
             Radius = radius;
         }
 
-        protected internal MedianFilterFunction()
+        public MedianFilterFunction()
         {
             Radius = 1.0m;
         }

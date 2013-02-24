@@ -28,7 +28,7 @@
             Threshold = threshold;
         }
 
-        protected internal DeskewFunction()
+        public DeskewFunction()
         {
             Threshold = 0.4m;
         }

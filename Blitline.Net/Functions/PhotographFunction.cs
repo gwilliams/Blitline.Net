@@ -25,6 +25,6 @@
             Angle = angle;
         }
 
-        protected internal PhotographFunction() {}
+        public PhotographFunction() {}
     }
 }

@@ -6,9 +6,14 @@ using Blitline.Net.Request.Builders;
 namespace Blitline.Net.Functions.Builders
 {
     public abstract class FunctionBuilder<T> : Builder<T>
-        where T : BlitlineFunction
+        where T : BlitlineFunction, new()
     {
-        protected BlitlineFunction Function;
+        protected T Function;
+
+        protected FunctionBuilder()
+        {
+            Function = new T();
+        }
 
         public FunctionBuilder<T> SaveAs(Func<SaveBuilder, Save> build)
         {
@@ -21,6 +26,11 @@ namespace Blitline.Net.Functions.Builders
             var o = base.Build();
             o.Validate();
             return o;
+        }
+
+        protected sealed override T BuildImp
+        {
+            get { return Function; }
         }
     }
 }

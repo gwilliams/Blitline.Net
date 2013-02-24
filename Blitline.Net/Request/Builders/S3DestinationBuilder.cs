@@ -36,14 +36,14 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-        protected override S3Destination BuildImp()
+        protected override S3Destination BuildImp
         {
-            return _s3Destination;
+            get { return _s3Destination; }
         }
 
         public override S3Destination Build()
         {
-            var o = BuildImp();
+            var o = BuildImp;
             o.Validate();
             return o;
         }

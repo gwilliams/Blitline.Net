@@ -84,10 +84,10 @@ namespace Blitline.Net.Request.Builders
             _request.SourceType = new MultiPageSourceType {Pages = pages};
             return this;
         }
-        
-        protected override BlitlineRequest BuildImp()
+
+        protected override BlitlineRequest BuildImp
         {
-            return _request;
+            get { return _request; }
         }
 
         public override BlitlineRequest Build()

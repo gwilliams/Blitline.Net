@@ -37,6 +37,6 @@
             Sharpen = sharpen;
         }
 
-        protected internal ContrastFunction() {}
+        public ContrastFunction() {}
     }
 }

@@ -44,7 +44,7 @@ namespace Blitline.Net.Functions
             CompositeOp = compositeOp;
         }
 
-        protected internal CompositeFunction()
+        public CompositeFunction()
         {
             CompositeOp = CompositeOps.OverCompositeOp;
         }

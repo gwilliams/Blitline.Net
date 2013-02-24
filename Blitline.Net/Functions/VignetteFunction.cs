@@ -61,7 +61,7 @@ namespace Blitline.Net.Functions
             Radius = radius;
         }
 
-        protected internal VignetteFunction()
+        public VignetteFunction()
         {
             Colour = "#000000";
             X = 10;

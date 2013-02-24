@@ -42,7 +42,7 @@ namespace Blitline.Net.Functions
             Opacity = opacity;
         }
 
-        protected internal WatermarkFunction()
+        public WatermarkFunction()
         {
             Gravity = Gravity.CenterGrativty;
             PointSize = 94;

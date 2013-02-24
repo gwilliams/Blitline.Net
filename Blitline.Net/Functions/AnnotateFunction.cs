@@ -95,7 +95,7 @@ namespace Blitline.Net.Functions
             Gravity = gravity;
         }
 
-        protected internal AnnotateFunction()
+        public AnnotateFunction()
         {
             Colour = "#ffffff";
             FontFamily = "Helvetica";
