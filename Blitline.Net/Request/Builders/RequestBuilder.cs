@@ -92,7 +92,7 @@ namespace Blitline.Net.Request.Builders
 
         public override BlitlineRequest Build()
         {
-            var o = base.Build();
+            BlitlineRequest o = base.Build();
             o.Validate();
             return o;
         }

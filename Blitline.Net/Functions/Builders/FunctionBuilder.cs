@@ -23,9 +23,8 @@ namespace Blitline.Net.Functions.Builders
 
         public override T Build()
         {
-            var o = base.Build();
-            o.Validate();
-            return o;
+            BuildImp.Validate();
+            return BuildImp;
         }
 
         protected sealed override T BuildImp
