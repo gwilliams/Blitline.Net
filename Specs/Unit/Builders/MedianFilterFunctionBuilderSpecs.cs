@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build a median filter function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithMedianFilterFunction(f => f.WithRadius(2m).Build()).Build());
+                .MedianFilter(f => f.WithRadius(2m).Build()).Build());
 
             "Then the name should be median_filter".Observation(() => Assert.Equal("median_filter", request.Functions[0].Name));
             "And the radius should be 2".Observation(() => Assert.Equal(2, ((MedianFilterFunction)request.Functions[0]).Radius));
@@ -39,7 +39,7 @@ namespace Specs.Unit.Builders
             "When I build a median filter function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithMedianFilterFunction(f => f.Build()).Build());
+                .MedianFilter(f => f.Build()).Build());
 
             "Then the name should be median_filter".Observation(() => Assert.Equal("median_filter", request.Functions[0].Name));
             "And the radius should be 1".Observation(() => Assert.Equal(1.0m, ((MedianFilterFunction)request.Functions[0]).Radius));

@@ -18,7 +18,7 @@ namespace Specs.Unit.Builders
             "When I build an annotate function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithAnnotateFunction(f => f
+                .Annotate(f => f
                     .WithText("Text")
                     .WithPosition(1, 1)
                     .WithColour("ccc")
@@ -62,7 +62,7 @@ namespace Specs.Unit.Builders
             "When I build an annotate function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithAnnotateFunction(f => f
+                .Annotate(f => f
                     .WithText("Text")
                     .Build())
                 .Build());

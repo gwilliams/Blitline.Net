@@ -31,7 +31,7 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-        public SaveBuilder WithS3Destination(Func<S3DestinationBuilder, S3Destination> build)
+        public SaveBuilder ToS3(Func<S3DestinationBuilder, S3Destination> build)
         {
             _save.S3Destination = build(new S3DestinationBuilder());
             return this;

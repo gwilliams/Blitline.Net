@@ -24,10 +24,10 @@ namespace Specs.Integration
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("http://www.google.co.uk"))
                                 .SourceIsScreenshot()
-                                .WithCropFunction(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
+                                .Crop(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
                                                         .SaveAs(s => s.WithImageIdentifier("image_identifier")
-                                                                      .WithS3Destination(s3 => s3
-                                                                                  .WithBucketName(bucketName)
+                                                                      .ToS3(s3 => s3
+                                                                                  .ToBucket(bucketName)
                                                                                   .WithKey("screenshot.png")
                                                                                   .Build())
                                                                        .Build())

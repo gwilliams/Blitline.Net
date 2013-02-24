@@ -25,10 +25,10 @@ namespace Specs.Integration
                                     BuildA.Request()
                                         .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                         .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                        .WithScaleFunction(f => f.WithHeight(50).WithWidth(100)
+                                        .Scale(f => f.WithHeight(50).WithWidth(100)
                                                                 .SaveAs(s => s.WithImageIdentifier("first_image")
-                                                                              .WithS3Destination(s3 => s3
-                                                                                          .WithBucketName(bucketName)
+                                                                              .ToS3(s3 => s3
+                                                                                          .ToBucket(bucketName)
                                                                                           .WithKey("multi-1.png")
                                                                                           .Build())
                                                                                .Build())
@@ -37,10 +37,10 @@ namespace Specs.Integration
                                     BuildA.Request()
                                         .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                         .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                        .WithScaleFunction(f => f.WithHeight(50).WithWidth(100)
+                                        .Scale(f => f.WithHeight(50).WithWidth(100)
                                                                 .SaveAs(s => s.WithImageIdentifier("second_image")
-                                                                              .WithS3Destination(s3 => s3
-                                                                                          .WithBucketName(bucketName)
+                                                                              .ToS3(s3 => s3
+                                                                                          .ToBucket(bucketName)
                                                                                           .WithKey("multi-2.png")
                                                                                           .Build())
                                                                                .Build())

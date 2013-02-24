@@ -16,7 +16,7 @@ namespace Specs.Unit.Builders
             "When I build an trim function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithTrimFunction(f => f.Build()).Build());
+                .Trim(f => f.Build()).Build());
 
             "Then the name should be trim".Observation(() => Assert.Equal("trim", request.Functions[0].Name));
 

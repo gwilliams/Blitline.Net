@@ -18,7 +18,7 @@ namespace Specs.Unit.Builders
             "When I build a watermark function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithWatermarkFunction(f => f.WithText("text").WithGravity(Gravity.NorthEastGravity)
+                .Watermark(f => f.WithText("text").WithGravity(Gravity.NorthEastGravity)
                     .WithPointSize(10)
                     .WithFontFamily("Arial")
                     .WithOpacity(0.1m)
@@ -52,7 +52,7 @@ namespace Specs.Unit.Builders
             "When I build a watermark function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithWatermarkFunction(f => f.WithText("text").Build()).Build());
+                .Watermark(f => f.WithText("text").Build()).Build());
 
             "Then the name should be watermark".Observation(() => Assert.Equal("watermark", request.Functions[0].Name));
             "And the text should be text".Observation(() => Assert.Equal("text", ((WatermarkFunction)request.Functions[0]).Text));

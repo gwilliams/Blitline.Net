@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build a quantize function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithQuantizeFunction(f => f.WithNumberOfColours(5).WithColourSpace("colours").Dither(true).Build()).Build());
+                .Quantize(f => f.WithNumberOfColours(5).WithColourSpace("colours").Dither(true).Build()).Build());
 
             "Then the name should be quantize".Observation(() => Assert.Equal("quantize", request.Functions[0].Name));
             "And the number of colours should be 5".Observation(() => Assert.Equal(5, ((QuantizeFunction)request.Functions[0]).NumberOfColours));
@@ -43,7 +43,7 @@ namespace Specs.Unit.Builders
             "When I build a quantize function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithQuantizeFunction(f => f.WithNumberOfColours(5).Build()).Build());
+                .Quantize(f => f.WithNumberOfColours(5).Build()).Build());
 
             "Then the name should be quantize".Observation(() => Assert.Equal("quantize", request.Functions[0].Name));
             "And the number of colours should be 5".Observation(() => Assert.Equal(5, ((QuantizeFunction)request.Functions[0]).NumberOfColours));

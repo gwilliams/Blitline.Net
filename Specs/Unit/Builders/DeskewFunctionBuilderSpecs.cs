@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build a deskew function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithDeskewFunction(f => f.WithThreshold(1m).Build()).Build());
+                .Deskew(f => f.WithThreshold(1m).Build()).Build());
 
             "Then the name should be deskew".Observation(() => Assert.Equal("deskew", request.Functions[0].Name));
             "And threshold should be 1".Observation(() => Assert.Equal(1, ((DeskewFunction)request.Functions[0]).Threshold));

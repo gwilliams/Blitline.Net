@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build an contrast stretch channel function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithContrastStretchChannelFunction(f => f.WithBlackPoint(10)
+                .ContrastStretchChannel(f => f.WithBlackPoint(10)
                     .WithWhitePoint(5).Build()).Build());
 
             "Then the name should be contrast_stretch_channel".Observation(() => Assert.Equal("contrast_stretch_channel", request.Functions[0].Name));

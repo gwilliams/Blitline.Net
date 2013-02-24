@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build a sharpen function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithSharpenFunction(f => f.WithSigma(5m).WithRadius(2m).Build()).Build());
+                .Sharpen(f => f.WithSigma(5m).WithRadius(2m).Build()).Build());
 
             "Then the name should be sharpen".Observation(() => Assert.Equal("sharpen", request.Functions[0].Name));
             "And the sigma should be 5".Observation(() => Assert.Equal(5m, ((SharpenFunction)request.Functions[0]).Sigma));
@@ -41,7 +41,7 @@ namespace Specs.Unit.Builders
             "When I build a sharpen function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithSharpenFunction(f => f.Build()).Build());
+                .Sharpen(f => f.Build()).Build());
 
             "Then the name should be sharpen".Observation(() => Assert.Equal("sharpen", request.Functions[0].Name));
             "And the sigma should be 1".Observation(() => Assert.Equal(1m, ((SharpenFunction)request.Functions[0]).Sigma));

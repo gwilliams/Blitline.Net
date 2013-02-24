@@ -16,7 +16,7 @@ namespace Specs.Unit.Builders
             "When I build an no op function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithNoOpFunction(f => f.Build()).Build());
+                .NoOp(f => f.Build()).Build());
 
             "Then the name should be no_op".Observation(() => Assert.Equal("no_op", request.Functions[0].Name));
 

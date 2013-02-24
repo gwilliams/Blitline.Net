@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build an contrast function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithContrastFunction(f => f.Sharpen(true).Build()).Build());
+                .Contrast(f => f.Sharpen(true).Build()).Build());
 
             "Then the name should be contrast".Observation(() => Assert.Equal("contrast", request.Functions[0].Name));
             "And the sharpen should be true".Observation(() => Assert.Equal(true, ((ContrastFunction)request.Functions[0]).Sharpen));

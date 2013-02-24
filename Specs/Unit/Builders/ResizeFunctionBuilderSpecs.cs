@@ -15,7 +15,7 @@ namespace Specs.Unit.Builders
             Assert.Throws<ArgumentException>(() => BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeFunction(
+                .Resize(
                 f => f.WithHeight(10).WithWidth(5).WithScaleFactor(0.4m).Build()).Build());
         }
 
@@ -27,7 +27,7 @@ namespace Specs.Unit.Builders
             "When I build a resize function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeFunction(f => f.WithScaleFactor(0.2m).Build()).Build());
+                .Resize(f => f.WithScaleFactor(0.2m).Build()).Build());
 
             "Then the name should be resize".Observation(() => Assert.Equal("resize", request.Functions[0].Name));
             "And the width should be 0".Observation(() => Assert.Equal(0, ((ResizeFunction)request.Functions[0]).Width));
@@ -51,7 +51,7 @@ namespace Specs.Unit.Builders
             "When I build a resize function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeFunction(f => f.WithWidth(5).WithHeight(2).Build()).Build());
+                .Resize(f => f.WithWidth(5).WithHeight(2).Build()).Build());
 
             "Then the name should be resize".Observation(() => Assert.Equal("resize", request.Functions[0].Name));
             "And the width should be 5".Observation(() => Assert.Equal(5, ((ResizeFunction)request.Functions[0]).Width));

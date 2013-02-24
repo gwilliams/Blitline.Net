@@ -25,10 +25,10 @@ namespace Specs.Integration
                 request = BuildA.Request()
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                .WithAnnotateFunction(f => f.WithText("Hello")
+                                .Annotate(f => f.WithText("Hello")
                                                         .SaveAs(s => s.WithImageIdentifier("image_identifier")
-                                                                      .WithS3Destination(s3 => s3
-                                                                                  .WithBucketName(bucketName)
+                                                                      .ToS3(s3 => s3
+                                                                                  .ToBucket(bucketName)
                                                                                   .WithKey("annotate-default.png")
                                                                                   .Build())
                                                                        .Build())
@@ -57,14 +57,14 @@ namespace Specs.Integration
                 request = BuildA.Request()
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                .WithAnnotateFunction(f => f.WithText("Hello")
+                                .Annotate(f => f.WithText("Hello")
                                     .WithColour("#FFF000")
                                     .WithPointSize(48)
                                     .WithFontFamilty("Arial")
                                     .WithGravity(Gravity.NorthEastGravity)
                                                         .SaveAs(s => s.WithImageIdentifier("image_identifier")
-                                                                      .WithS3Destination(s3 => s3
-                                                                                  .WithBucketName(bucketName)
+                                                                      .ToS3(s3 => s3
+                                                                                  .ToBucket(bucketName)
                                                                                   .WithKey("annotate-full.png")
                                                                                   .Build())
                                                                        .Build())

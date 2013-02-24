@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build a resize to resize_to_fit function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeToFitFunction(f => f.WithWidth(5).WithHeight(2)
+                .ResizeToFit(f => f.WithWidth(5).WithHeight(2)
                     .OnlyShrinkLarger(true).Build()).Build());
 
             "Then the name should be resize_to_fit".Observation(() => Assert.Equal("resize_to_fit", request.Functions[0].Name));

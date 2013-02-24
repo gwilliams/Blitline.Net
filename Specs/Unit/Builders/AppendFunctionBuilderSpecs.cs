@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build an append function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithAppendFunction(f => f.AppendVeritically(true).Build()).Build());
+                .Append(f => f.AppendVeritically(true).Build()).Build());
 
             "Then the name should be append".Observation(() => Assert.Equal("append", request.Functions[0].Name));
             "And the vertical should be true".Observation(() => Assert.Equal(true, ((AppendFunction)request.Functions[0]).Vertical));

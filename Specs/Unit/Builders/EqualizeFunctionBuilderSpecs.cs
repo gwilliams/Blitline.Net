@@ -16,7 +16,7 @@ namespace Specs.Unit.Builders
             "When I build an equalize function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithEqualizeFunction(f => f.Build()).Build());
+                .Equalize(f => f.Build()).Build());
 
             "Then the name should be equalize".Observation(() => Assert.Equal("equalize", request.Functions[0].Name));
 

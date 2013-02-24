@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build an photograph function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithPhotographFunction(f => f.WithAngle(2).Build()).Build());
+                .Photograph(f => f.WithAngle(2).Build()).Build());
 
             "Then the name should be photograph".Observation(() => Assert.Equal("photograph", request.Functions[0].Name));
             "And the angle should be 2".Observation(() => Assert.Equal(2, ((PhotographFunction)request.Functions[0]).Angle));

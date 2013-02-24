@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
             "When I build a rotate function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithRotateFunction(f => f.WithAmount(10).Build()).Build());
+                .Rotate(f => f.WithAmount(10).Build()).Build());
 
             "Then the name should be rotate".Observation(() => Assert.Equal("rotate", request.Functions[0].Name));
             "And the amount should be 10".Observation(() => Assert.Equal(10, ((RotateFunction)request.Functions[0]).Amount));

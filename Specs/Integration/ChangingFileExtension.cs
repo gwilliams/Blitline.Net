@@ -24,7 +24,7 @@ namespace Specs.Integration
                                      .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                      .WithSourceImageUri(
                                          new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                     .WithCropFunction(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
+                                     .Crop(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
                                                              .SaveAs(
                                                                  s =>
                                                                  s.WithImageIdentifier("file_extension")

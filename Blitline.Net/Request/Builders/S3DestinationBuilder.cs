@@ -12,7 +12,7 @@ namespace Blitline.Net.Request.Builders
             _s3Destination = new S3Destination();
         }
 
-        public S3DestinationBuilder WithBucketName(string bucketName)
+        public S3DestinationBuilder ToBucket(string bucketName)
         {
             _s3Destination.Bucket = bucketName;
             return this;

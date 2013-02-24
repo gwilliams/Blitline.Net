@@ -14,7 +14,7 @@ namespace Specs.Unit.Builders
         {
             Assert.Throws<ArgumentException>(() => BuildA.Request().WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithUnsharpMaskFunction(
+                .UnsharpMask(
                 f => f.WithAmount(1.1m).WithThreshold(0.1m).Build()).Build());
         }
 
@@ -24,7 +24,7 @@ namespace Specs.Unit.Builders
             Assert.Throws<ArgumentException>(() => BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithUnsharpMaskFunction(
+                .UnsharpMask(
                 f => f.WithAmount(0.1m).WithThreshold(1.1m).Build()).Build());
         }
 
@@ -36,7 +36,7 @@ namespace Specs.Unit.Builders
             "When I build a unsharp mask function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithUnsharpMaskFunction(f => f.WithSigma(5m).WithRadius(4m).WithAmount(0.3m).WithThreshold(0.2m).Build()).Build());
+                .UnsharpMask(f => f.WithSigma(5m).WithRadius(4m).WithAmount(0.3m).WithThreshold(0.2m).Build()).Build());
 
             "Then the name should be unsharp_mask".Observation(() => Assert.Equal("unsharp_mask", request.Functions[0].Name));
             "And the sigma should be 5".Observation(() => Assert.Equal(5m, ((UnsharpMaskFunction)request.Functions[0]).Sigma));
@@ -64,7 +64,7 @@ namespace Specs.Unit.Builders
             "When I build a unsharp mask function".Context(() => request = BuildA.Request()
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithUnsharpMaskFunction(f => f.Build()).Build());
+                .UnsharpMask(f => f.Build()).Build());
 
             "Then the name should be unsharp_mask".Observation(() => Assert.Equal("unsharp_mask", request.Functions[0].Name));
             "And the sigma should be 1".Observation(() => Assert.Equal(1m, ((UnsharpMaskFunction)request.Functions[0]).Sigma));
