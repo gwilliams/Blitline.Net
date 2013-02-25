@@ -21,22 +21,9 @@
             }
         }
 
-        public override void Validate() {}
-
         /// <summary>
         /// Whether images are appended vertically(true) or horizontally(false)
         /// </summary>
         public bool Vertical { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="vertical">Whether images are appended vertically(true) or horizontally(false)</param>
-        public AppendFunction(bool vertical)
-        {
-            Vertical = vertical;
-        }
-
-        protected internal AppendFunction() {}
     }
 }

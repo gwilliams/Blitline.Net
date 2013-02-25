@@ -20,16 +20,13 @@ namespace Specs.Integration
             {
                 const string bucketName = "gdoubleu-test-photos";
 
-                request = BuildA.Request()
+                request = BuildA.Request(r => r
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/Gareth+Williams%27s+Resume.pdf"))
                                 .SourceIsMultipageDocument()
-                                .WithResizeToFitFunction(f => f.WithWidth(200).WithHeight(200)
+                                .ResizeToFit(f => f.WithWidth(200).WithHeight(200)
                                     .SaveAs(s => s.WithImageIdentifier("multipage_1")
-                                    .WithS3Destination(s3 => s3.WithBucketName(bucketName).WithKey("multipage.png").Build())
-                                    .Build())
-                                    .Build())
-                                .Build();
+                                    .ToS3(s3 => s3.ToBucket(bucketName).WithKey("multipage.png")))));
             });
 
             "When I process the request".Do(() => response = request.Send());
@@ -47,16 +44,13 @@ namespace Specs.Integration
             {
                 const string bucketName = "gdoubleu-test-photos";
 
-                request = BuildA.Request()
+                request = BuildA.Request(r => r
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/Gareth+Williams%27s+Resume.pdf"))
                                 .SourceIsMultipageDocument(new[] { 1 })
-                                .WithResizeToFitFunction(f => f.WithWidth(200).WithHeight(200)
+                                .ResizeToFit(f => f.WithWidth(200).WithHeight(200)
                                     .SaveAs(s => s.WithImageIdentifier("multipage_2")
-                                    .WithS3Destination(s3 => s3.WithBucketName(bucketName).WithKey("multipage_page.png").Build())
-                                    .Build())
-                                    .Build())
-                                .Build();
+                                    .ToS3(s3 => s3.ToBucket(bucketName).WithKey("multipage_page.png")))));
             });
 
             "When I process the request".Do(() => response = request.Send());

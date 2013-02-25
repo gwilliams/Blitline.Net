@@ -1,26 +1,36 @@
 ﻿using System;
 using Blitline.Net.Builders;
-using Blitline.Net.Request;
 using Blitline.Net.Request.Builders;
 
 namespace Blitline.Net.Functions.Builders
 {
     public abstract class FunctionBuilder<T> : Builder<T>
-        where T : BlitlineFunction
+        where T : BlitlineFunction, new()
     {
-        protected BlitlineFunction Function;
+        protected T Function;
 
-        public FunctionBuilder<T> SaveAs(Func<SaveBuilder, Save> build)
+        protected FunctionBuilder()
         {
-            Function.Save = build(new SaveBuilder());
-            return this;
+            Function = new T();
         }
 
-        public override T Build()
+	    public FunctionBuilder<T> SaveAs(Action<SaveBuilder> build)
         {
-            var o = base.Build();
-            o.Validate();
-            return o;
+		    var saveBuilder = new SaveBuilder();
+		    build(saveBuilder);
+		    Function.Save = saveBuilder.Build();
+			return this;
+        }
+
+        internal override T Build()
+        {
+			BuildImp.Validate();
+            return BuildImp;
+        }
+
+        protected sealed override T BuildImp
+        {
+            get { return Function; }
         }
     }
 }

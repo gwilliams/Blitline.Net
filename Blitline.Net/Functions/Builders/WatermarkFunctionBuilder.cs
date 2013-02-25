@@ -4,44 +4,34 @@ namespace Blitline.Net.Functions.Builders
 {
     public class WatermarkFunctionBuilder : FunctionBuilder<WatermarkFunction>
     {
-        public WatermarkFunctionBuilder()
-        {
-            Function = new WatermarkFunction();
-        }
-
         public WatermarkFunctionBuilder WithText(string text)
         {
-            ((WatermarkFunction) Function).Text = text;
+            BuildImp.Text = text;
             return this;
         }
 
         public WatermarkFunctionBuilder WithGravity(Gravity gravity)
         {
-            ((WatermarkFunction) Function).Gravity = gravity;
+            BuildImp.Gravity = gravity;
             return this;
         }
 
         public WatermarkFunctionBuilder WithPointSize(int pointSize)
         {
-            ((WatermarkFunction) Function).PointSize = pointSize;
+            BuildImp.PointSize = pointSize;
             return this;
         }
 
         public WatermarkFunctionBuilder WithFontFamily(string fontFamily)
         {
-            ((WatermarkFunction) Function).FontFamily = fontFamily;
+            BuildImp.FontFamily = fontFamily;
             return this;
         }
 
         public WatermarkFunctionBuilder WithOpacity(decimal opacity)
         {
-            ((WatermarkFunction) Function).Opacity = opacity;
+            BuildImp.Opacity = opacity;
             return this;
-        }
-
-        protected override WatermarkFunction BuildImp()
-        {
-            return (WatermarkFunction) Function;
         }
     }
 }

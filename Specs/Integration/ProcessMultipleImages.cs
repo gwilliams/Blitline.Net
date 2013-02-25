@@ -18,36 +18,27 @@ namespace Specs.Integration
         public void CanProcessMultipleImages()
         {
             "Given I have multiple images to process".Context(() =>
-            {
-                var bucketName = "gdoubleu-test-photos";
-                _requests = new List<BlitlineRequest>
+	            {
+		            const string bucketName = "gdoubleu-test-photos";
+		            _requests = new List<BlitlineRequest>
                                 {
-                                    BuildA.Request()
+                                    BuildA.Request(r => r
                                         .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                         .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                        .WithScaleFunction(f => f.WithHeight(50).WithWidth(100)
+                                        .Scale(f => f.WithHeight(50).WithWidth(100)
                                                                 .SaveAs(s => s.WithImageIdentifier("first_image")
-                                                                              .WithS3Destination(s3 => s3
-                                                                                          .WithBucketName(bucketName)
-                                                                                          .WithKey("multi-1.png")
-                                                                                          .Build())
-                                                                               .Build())
-                                                                .Build())
-                                        .Build(),
-                                    BuildA.Request()
+                                                                              .ToS3(s3 => s3
+                                                                                          .ToBucket(bucketName).WithKey("123"))))),
+                                    BuildA.Request(r => r
                                         .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                         .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                        .WithScaleFunction(f => f.WithHeight(50).WithWidth(100)
+                                        .Scale(f => f.WithHeight(50).WithWidth(100)
                                                                 .SaveAs(s => s.WithImageIdentifier("second_image")
-                                                                              .WithS3Destination(s3 => s3
-                                                                                          .WithBucketName(bucketName)
-                                                                                          .WithKey("multi-2.png")
-                                                                                          .Build())
-                                                                               .Build())
-                                                                .Build())
-                                        .Build()
+                                                                              .ToS3(s3 => s3
+                                                                                          .ToBucket(bucketName)
+                                                                                          .WithKey("multi-2.png")))))
                                 }.ToArray();
-            });
+	            });
 
             "When I process the request".Do(() => _response = _requests.Send());
 

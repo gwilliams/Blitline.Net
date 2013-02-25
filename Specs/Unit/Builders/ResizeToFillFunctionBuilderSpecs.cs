@@ -15,11 +15,11 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a resize to resize_to_fill function".Context(() => request = BuildA.Request()
+            "When I build a resize to resize_to_fill function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeToFillFunction(f => f.WithWidth(5).WithHeight(2).WithGravity(Gravity.NorthEastGravity)
-                    .OnlyShrinkLarger(true).Build()).Build());
+                .ResizeToFill(f => f.WithWidth(5).WithHeight(2).WithGravity(Gravity.NorthEastGravity)
+                    .OnlyShrinkLarger(true))));
 
             "Then the name should be resize_to_fill".Observation(() => Assert.Equal("resize_to_fill", request.Functions[0].Name));
             "And the width should be 5".Observation(() => Assert.Equal(5, ((ResizeToFillFunction)request.Functions[0]).Width));
@@ -44,10 +44,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a resize to resize_to_fill function".Context(() => request = BuildA.Request()
+            "When I build a resize to resize_to_fill function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeToFillFunction(f => f.WithWidth(5).WithHeight(2).Build()).Build());
+                .ResizeToFill(f => f.WithWidth(5).WithHeight(2))));
 
             "Then the name should be resize_to_fill".Observation(() => Assert.Equal("resize_to_fill", request.Functions[0].Name));
             "And the width should be 5".Observation(() => Assert.Equal(5, ((ResizeToFillFunction)request.Functions[0]).Width));

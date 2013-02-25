@@ -12,11 +12,11 @@ namespace Specs.Unit.Builders
         [Fact]
         public void CanNotBuildAResizeFunctionWithScaleFactorWidthAndHightSet()
         {
-            Assert.Throws<ArgumentException>(() => BuildA.Request()
+            Assert.Throws<ArgumentException>(() => BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeFunction(
-                f => f.WithHeight(10).WithWidth(5).WithScaleFactor(0.4m).Build()).Build());
+                .Resize(
+                f => f.WithHeight(10).WithWidth(5).WithScaleFactor(0.4m))));
         }
 
         [Specification]
@@ -24,10 +24,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a resize function".Context(() => request = BuildA.Request()
+            "When I build a resize function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeFunction(f => f.WithScaleFactor(0.2m).Build()).Build());
+                .Resize(f => f.WithScaleFactor(0.2m))));
 
             "Then the name should be resize".Observation(() => Assert.Equal("resize", request.Functions[0].Name));
             "And the width should be 0".Observation(() => Assert.Equal(0, ((ResizeFunction)request.Functions[0]).Width));
@@ -48,10 +48,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a resize function".Context(() => request = BuildA.Request()
+            "When I build a resize function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeFunction(f => f.WithWidth(5).WithHeight(2).Build()).Build());
+                .Resize(f => f.WithWidth(5).WithHeight(2))));
 
             "Then the name should be resize".Observation(() => Assert.Equal("resize", request.Functions[0].Name));
             "And the width should be 5".Observation(() => Assert.Equal(5, ((ResizeFunction)request.Functions[0]).Width));

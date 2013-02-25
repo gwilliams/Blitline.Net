@@ -14,10 +14,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a sketch function".Context(() => request = BuildA.Request()
+            "When I build a sketch function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithSketchFunction(f => f.WithSigma(5m).WithRadius(2m).WithAngle(2m).Build()).Build());
+                .Sketch(f => f.WithSigma(5m).WithRadius(2m).WithAngle(2m))));
 
             "Then the name should be sketch".Observation(() => Assert.Equal("sketch", request.Functions[0].Name));
             "And the sigma should be 5".Observation(() => Assert.Equal(5m, ((SketchFunction)request.Functions[0]).Sigma));
@@ -40,10 +40,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a sketch function".Context(() => request = BuildA.Request()
+            "When I build a sketch function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithSketchFunction(f => f.Build()).Build());
+                .Sketch()));
 
             "Then the name should be sketch".Observation(() => Assert.Equal("sketch", request.Functions[0].Name));
             "And the sigma should be 0".Observation(() => Assert.Equal(0m, ((SketchFunction)request.Functions[0]).Sigma));

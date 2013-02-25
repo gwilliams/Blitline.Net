@@ -14,11 +14,11 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a resize to resize_to_fit function".Context(() => request = BuildA.Request()
+            "When I build a resize to resize_to_fit function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithResizeToFitFunction(f => f.WithWidth(5).WithHeight(2)
-                    .OnlyShrinkLarger(true).Build()).Build());
+                .ResizeToFit(f => f.WithWidth(5).WithHeight(2)
+                    .OnlyShrinkLarger(true))));
 
             "Then the name should be resize_to_fit".Observation(() => Assert.Equal("resize_to_fit", request.Functions[0].Name));
             "And the width should be 5".Observation(() => Assert.Equal(5, ((ResizeToFitFunction)request.Functions[0]).Width));

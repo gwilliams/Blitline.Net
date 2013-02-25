@@ -31,9 +31,11 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-        public SaveBuilder WithS3Destination(Func<S3DestinationBuilder, S3Destination> build)
+        public SaveBuilder ToS3(Action<S3DestinationBuilder> build)
         {
-            _save.S3Destination = build(new S3DestinationBuilder());
+	        var s3DestinationBuilder = new S3DestinationBuilder();
+	        build(s3DestinationBuilder);
+			_save.S3Destination = s3DestinationBuilder.Build();
             return this;
         }
 
@@ -49,16 +51,15 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-        protected override Save BuildImp()
+        protected override Save BuildImp
         {
-            return _save;
+            get { return _save; }
         }
 
-        public override Save Build()
+        internal override Save Build()
         {
-            var o = BuildImp();
-            o.Validate();
-            return o;
+	        BuildImp.Validate();
+            return BuildImp;
         }
     }
 }

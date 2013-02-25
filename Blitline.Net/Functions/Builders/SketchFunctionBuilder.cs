@@ -2,32 +2,22 @@
 {
     public class SketchFunctionBuilder : FunctionBuilder<SketchFunction>
     {
-        public SketchFunctionBuilder()
-        {
-            Function = new SketchFunction();
-        }
-
         public SketchFunctionBuilder WithSigma(decimal sigma)
         {
-            ((SketchFunction) Function).Sigma = sigma;
+            BuildImp.Sigma = sigma;
             return this;
         }
 
         public SketchFunctionBuilder WithRadius(decimal radius)
         {
-            ((SketchFunction) Function).Radius = radius;
+            BuildImp.Radius = radius;
             return this;
         }
 
         public SketchFunctionBuilder WithAngle(decimal angle)
         {
-            ((SketchFunction) Function).Angle = angle;
+            BuildImp.Angle = angle;
             return this;
-        }
-
-        protected override SketchFunction BuildImp()
-        {
-            return (SketchFunction) Function;
         }
     }
 }

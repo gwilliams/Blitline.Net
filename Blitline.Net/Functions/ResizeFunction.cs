@@ -40,20 +40,5 @@ namespace Blitline.Net.Functions
         public int Width { get; set; }
         public int Height { get; set; }
         public decimal ScaleFactor { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="width">The new width of the image</param>
-        /// <param name="height">The new height of the image</param>
-        /// <param name="scaleFactor">Instead of height and width you can set a scale factor. (eg 0.5 = 50%)</param>
-        public ResizeFunction(int width, int height, decimal scaleFactor = 0.5m)
-        {
-            Width = width;
-            Height = height;
-            ScaleFactor = scaleFactor;
-        }
-
-        protected internal ResizeFunction() {}
     }
 }

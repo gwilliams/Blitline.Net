@@ -14,10 +14,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build an crop function".Context(() => request = BuildA.Request()
+            "When I build an crop function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithCropFunction(f => f.WithDimensions(1,2,3,4).Build()).Build());
+                .Crop(f => f.WithDimensions(1,2,3,4))));
 
             "Then the name should be crop".Observation(() => Assert.Equal("crop", request.Functions[0].Name));
             "And x should be 1".Observation(() => Assert.Equal(1, ((CropFunction)request.Functions[0]).X));

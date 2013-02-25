@@ -12,20 +12,20 @@ namespace Specs.Unit.Builders
         [Fact]
         public void CanNotBuildAnUnsharpMaskFunctionWhenAmountOutOfBounds()
         {
-            Assert.Throws<ArgumentException>(() => BuildA.Request().WithApplicationId("123")
+            Assert.Throws<ArgumentException>(() => BuildA.Request(r => r.WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithUnsharpMaskFunction(
-                f => f.WithAmount(1.1m).WithThreshold(0.1m).Build()).Build());
+                .UnsharpMask(
+                f => f.WithAmount(1.1m).WithThreshold(0.1m))));
         }
 
         [Fact]
         public void CanNotBuildAnUnsharpMaskFunctionWhenThresholdOutOfBounds()
         {
-            Assert.Throws<ArgumentException>(() => BuildA.Request()
+            Assert.Throws<ArgumentException>(() => BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithUnsharpMaskFunction(
-                f => f.WithAmount(0.1m).WithThreshold(1.1m).Build()).Build());
+                .UnsharpMask(
+                f => f.WithAmount(0.1m).WithThreshold(1.1m))));
         }
 
         [Specification]
@@ -33,10 +33,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a unsharp mask function".Context(() => request = BuildA.Request()
+            "When I build a unsharp mask function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithUnsharpMaskFunction(f => f.WithSigma(5m).WithRadius(4m).WithAmount(0.3m).WithThreshold(0.2m).Build()).Build());
+                .UnsharpMask(f => f.WithSigma(5m).WithRadius(4m).WithAmount(0.3m).WithThreshold(0.2m))));
 
             "Then the name should be unsharp_mask".Observation(() => Assert.Equal("unsharp_mask", request.Functions[0].Name));
             "And the sigma should be 5".Observation(() => Assert.Equal(5m, ((UnsharpMaskFunction)request.Functions[0]).Sigma));
@@ -61,10 +61,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a unsharp mask function".Context(() => request = BuildA.Request()
+            "When I build a unsharp mask function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithUnsharpMaskFunction(f => f.Build()).Build());
+                .UnsharpMask()));
 
             "Then the name should be unsharp_mask".Observation(() => Assert.Equal("unsharp_mask", request.Functions[0].Name));
             "And the sigma should be 1".Observation(() => Assert.Equal(1m, ((UnsharpMaskFunction)request.Functions[0]).Sigma));

@@ -2,32 +2,22 @@
 {
     public class ResizeToFitFunctionBuilder : FunctionBuilder<ResizeToFitFunction>
     {
-        public ResizeToFitFunctionBuilder()
-        {
-            Function = new ResizeToFitFunction();
-        }
-
         public ResizeToFitFunctionBuilder WithWidth(int width)
         {
-            ((ResizeToFitFunction) Function).Width = width;
+            BuildImp.Width = width;
             return this;
         }
 
         public ResizeToFitFunctionBuilder WithHeight(int height)
         {
-            ((ResizeToFitFunction) Function).Height = height;
+            BuildImp.Height = height;
             return this;
         }
 
         public ResizeToFitFunctionBuilder OnlyShrinkLarger(bool onlyShrinkLarger)
         {
-            ((ResizeToFitFunction) Function).OnlyShrinkLarger = onlyShrinkLarger;
+            BuildImp.OnlyShrinkLarger = onlyShrinkLarger;
             return this;
-        }
-
-        protected override ResizeToFitFunction BuildImp()
-        {
-            return (ResizeToFitFunction) Function;
         }
     }
 }

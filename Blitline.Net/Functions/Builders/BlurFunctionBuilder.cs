@@ -9,19 +9,14 @@
 
         public BlurFunctionBuilder WithSigma(decimal sigma)
         {
-            ((BlurFunction) Function).Sigma = sigma;
+            BuildImp.Sigma = sigma;
             return this;
         }
 
         public BlurFunctionBuilder WithRadius(decimal radius)
         {
-            ((BlurFunction) Function).Radius = radius;
+            BuildImp.Radius = radius;
             return this;
-        }
-
-        protected override BlurFunction BuildImp()
-        {
-            return (BlurFunction) Function;
         }
     }
 }

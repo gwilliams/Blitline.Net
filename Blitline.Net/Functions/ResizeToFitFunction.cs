@@ -25,8 +25,6 @@ namespace Blitline.Net.Functions
             }
         }
 
-        public override void Validate() {}
-
         /// <summary>
         /// Width of desired image
         /// </summary>
@@ -41,20 +39,5 @@ namespace Blitline.Net.Functions
         /// Don't upsize image
         /// </summary>
         public bool OnlyShrinkLarger { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="width">Width of desired image</param>
-        /// <param name="height">Height of desired image</param>
-        /// <param name="onlyShrinkLarger">Don't upsize image</param>
-        public ResizeToFitFunction(int width, int height, bool onlyShrinkLarger = false)
-        {
-            Width = width;
-            Height = height;
-            OnlyShrinkLarger = onlyShrinkLarger;
-        }
-
-        protected internal ResizeToFitFunction() {}
     }
 }

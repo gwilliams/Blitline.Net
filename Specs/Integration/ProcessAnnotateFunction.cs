@@ -16,25 +16,21 @@ namespace Specs.Integration
         {
             var request = default(BlitlineRequest);
             var response = default(BlitlineResponse);
-            var bucketName = default(string);
 
-            "Given I have a annotate function".Context(() =>
-            {
-                bucketName = "gdoubleu-test-photos";
+	        "Given I have a annotate function".Context(() =>
+		        {
+			        const string bucketName = "gdoubleu-test-photos";
 
-                request = BuildA.Request()
-                                .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
-                                .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                .WithAnnotateFunction(f => f.WithText("Hello")
-                                                        .SaveAs(s => s.WithImageIdentifier("image_identifier")
-                                                                      .WithS3Destination(s3 => s3
-                                                                                  .WithBucketName(bucketName)
-                                                                                  .WithKey("annotate-default.png")
-                                                                                  .Build())
-                                                                       .Build())
-                                                        .Build())
-                                .Build();
-            });
+			        request = BuildA.Request(r => r
+	                            .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
+	                            .WithSourceImageUri(
+		                            new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
+	                            .Annotate(f => f.WithText("Hello")
+													.SaveAs(s => s.WithImageIdentifier("image_identifier")
+																	.ToS3(s3 => s3
+																				.ToBucket(bucketName)
+																				.WithKey("annotate-default.png")))));
+		        });
 
             "When I process the request".Do(() => response = request.Send());
 
@@ -48,29 +44,24 @@ namespace Specs.Integration
         {
             var request = default(BlitlineRequest);
             var response = default(BlitlineResponse);
-            var bucketName = default(string);
 
-            "Given I have a annotate function".Context(() =>
-            {
-                bucketName = "gdoubleu-test-photos";
+	        "Given I have a annotate function".Context(() =>
+		        {
+			        const string bucketName = "gdoubleu-test-photos";
 
-                request = BuildA.Request()
+			        request = BuildA.Request(r => r
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                .WithAnnotateFunction(f => f.WithText("Hello")
+                                .Annotate(f => f.WithText("Hello")
                                     .WithColour("#FFF000")
                                     .WithPointSize(48)
                                     .WithFontFamilty("Arial")
                                     .WithGravity(Gravity.NorthEastGravity)
                                                         .SaveAs(s => s.WithImageIdentifier("image_identifier")
-                                                                      .WithS3Destination(s3 => s3
-                                                                                  .WithBucketName(bucketName)
-                                                                                  .WithKey("annotate-full.png")
-                                                                                  .Build())
-                                                                       .Build())
-                                                        .Build())
-                                .Build();
-            });
+                                                                      .ToS3(s3 => s3
+                                                                                  .ToBucket(bucketName)
+                                                                                  .WithKey("annotate-full.png")))));
+		        });
 
             "When I process the request".Do(() => response = request.Send());
 
