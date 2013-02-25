@@ -2,45 +2,35 @@
 {
     public class VignetteFunctionBuilder : FunctionBuilder<VignetteFunction>
     {
-        public VignetteFunctionBuilder()
-        {
-            Function = new VignetteFunction();
-        }
-
         public VignetteFunctionBuilder WithColour(string colour)
         {
-            ((VignetteFunction) Function).Colour = colour;
+            BuildImp.Colour = colour;
             return this;
         }
         
         public VignetteFunctionBuilder WithPosition(int x, int y)
         {
-            ((VignetteFunction) Function).X = x;
-            ((VignetteFunction) Function).Y = y;
+            BuildImp.X = x;
+            BuildImp.Y = y;
             return this;
         }
 
         public VignetteFunctionBuilder WithThreshold(decimal threshold)
         {
-            ((VignetteFunction) Function).Threshold = threshold;
+            BuildImp.Threshold = threshold;
             return this;
         }
 
         public VignetteFunctionBuilder WithSigma(decimal sigma)
         {
-            ((VignetteFunction) Function).Sigma = sigma;
+            BuildImp.Sigma = sigma;
             return this;
         }
 
         public VignetteFunctionBuilder WithRadius(decimal radius)
         {
-            ((VignetteFunction) Function).Radius = radius;
+            BuildImp.Radius = radius;
             return this;
-        }
-
-        protected override VignetteFunction BuildImp()
-        {
-            return (VignetteFunction) Function;
         }
     }
 }

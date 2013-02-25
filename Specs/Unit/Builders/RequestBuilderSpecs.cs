@@ -17,7 +17,7 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a request".Context(() => request = BuildA.Request()
+            "When I build a request".Context(() => request = BuildA.Request(r => r
                                                               .WithApplicationId("123")
                                                               .FixS3ImageUrl()
                                                               .WaitForS3()
@@ -28,8 +28,7 @@ namespace Specs.Unit.Builders
                                                               .WithHash(Hash.Md5)
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .SourceIsScreenshot()
-                                                              .WithCropFunction(f => f.WithDimensions(1,2,3,4).Build())
-                                                              .Build());
+                                                              .Crop(f => f.WithDimensions(1,2,3,4))));
 
             "Then the request is not null".Observation(() => Assert.NotNull(request));
 
@@ -59,13 +58,11 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a request with sub functions".Context(() => request = BuildA.Request()
+            "When I build a request with sub functions".Context(() => request = BuildA.Request(r => r
                                                               .WithApplicationId("123")
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
-                                                              .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
-                                                                  .WithDeskewFunction(r => r.WithThreshold(0.2m).Build())
-                                                                  .Build())
-                                                              .Build());
+                                                              .Crop(f => f.WithDimensions(1, 2, 3, 4)
+                                                                  .Deskew(d => d.WithThreshold(0.2m)))));
 
             "Then the primary function has 1 sub-function".Observation(
                 () => Assert.Equal(1, request.Functions.First().Functions.Count));
@@ -76,18 +73,15 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a request".Context(() => request = BuildA.Request()
+            "When I build a request".Context(() => request = BuildA.Request(r => r
                                                               .WithApplicationId("123")
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
-                                                              .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
+                                                              .Crop(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
                                                                       .WithExtension(Extension.PNG)
                                                                       .WithQuality(10)
                                                                       .QuantizePng()
-                                                                      .WithInterlaceType(InterlaceType.LineInterlace)
-                                                                      .Build())
-                                                                  .Build())
-                                                              .Build());
+                                                                      .WithInterlaceType(InterlaceType.LineInterlace)))));
 
             "Then the function has a save value".Observation(() => Assert.NotNull(request.Functions.First().Save));
 
@@ -105,21 +99,17 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a request".Context(() => request = BuildA.Request()
+            "When I build a request".Context(() => request = BuildA.Request(r => r
                                                               .WithApplicationId("123")
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
-                                                              .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
+                                                              .Crop(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
                                                                       .WithExtension(Extension.PNG)
                                                                       .WithQuality(10)
-                                                                      .WithS3Destination(s3 => s3.WithBucketName("Bucket")
+                                                                      .ToS3(s3 => s3.ToBucket("Bucket")
                                                                         .WithKey("Key")
                                                                         .WithHeader("1","foo")
-                                                                        .WithHeaders(new Dictionary<string, string>{{"2","bar"}})
-                                                                        .Build())
-                                                                      .Build())
-                                                                  .Build())
-                                                              .Build());
+                                                                        .WithHeaders(new Dictionary<string, string>{{"2","bar"}}))))));
 
             "Then save contains an s3 destination".Observation(() => Assert.NotNull(request.Functions.First().Save.S3Destination));
 
@@ -139,22 +129,18 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a multipage request".Context(() => request = BuildA.Request()
+            "When I build a multipage request".Context(() => request = BuildA.Request(r => r
                                                               .WithApplicationId("123")
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .SourceIsMultipageDocument()
-                                                              .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
+                                                              .Crop(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
                                                                       .WithExtension(Extension.PNG)
                                                                       .WithQuality(10)
-                                                                      .WithS3Destination(s3 => s3.WithBucketName("Bucket")
+                                                                      .ToS3(s3 => s3.ToBucket("Bucket")
                                                                         .WithKey("Key")
                                                                         .WithHeader("1", "foo")
-                                                                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } })
-                                                                        .Build())
-                                                                      .Build())
-                                                                  .Build())
-                                                              .Build());
+                                                                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } }))))));
 
             "Then source type is multipage".Observation(() => Assert.Equal("multi_page", request.SourceType));
         }
@@ -164,22 +150,18 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a multipage with page numbers request".Context(() => request = BuildA.Request()
+            "When I build a multipage with page numbers request".Context(() => request = BuildA.Request(r => r
                                                               .WithApplicationId("123")
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
                                                               .SourceIsMultipageDocument(new[]{1,3})
-                                                              .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
+                                                              .Crop(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
                                                                       .WithExtension(Extension.PNG)
                                                                       .WithQuality(10)
-                                                                      .WithS3Destination(s3 => s3.WithBucketName("Bucket")
+                                                                      .ToS3(s3 => s3.ToBucket("Bucket")
                                                                         .WithKey("Key")
                                                                         .WithHeader("1", "foo")
-                                                                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } })
-                                                                        .Build())
-                                                                      .Build())
-                                                                  .Build())
-                                                              .Build());
+                                                                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } }))))));
 
             "Then source type is multipage".Observation(() => Assert.Equal("multi_page", request.SourceType.Name));
 
@@ -195,21 +177,17 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a request without source type".Context(() => request = BuildA.Request()
+            "When I build a request without source type".Context(() => request = BuildA.Request(r => r
                                                               .WithApplicationId("123")
                                                               .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
-                                                              .WithCropFunction(f => f.WithDimensions(1, 2, 3, 4)
+                                                              .Crop(f => f.WithDimensions(1, 2, 3, 4)
                                                                   .SaveAs(s => s.WithImageIdentifier("image")
                                                                       .WithExtension(Extension.PNG)
                                                                       .WithQuality(10)
-                                                                      .WithS3Destination(s3 => s3.WithBucketName("Bucket")
+                                                                      .ToS3(s3 => s3.ToBucket("Bucket")
                                                                         .WithKey("Key")
                                                                         .WithHeader("1", "foo")
-                                                                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } })
-                                                                        .Build())
-                                                                      .Build())
-                                                                  .Build())
-                                                              .Build());
+                                                                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } }))))));
 
             "Then source type is null".Observation(() => Assert.Null(request.SourceType));
         }

@@ -14,10 +14,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a modulate function".Context(() => request = BuildA.Request()
+            "When I build a modulate function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithModulateFunction(f => f.WithBrightness(2m).WithSaturation(2.0m).WithHue(2.0m).Build()).Build());
+                .Modulate(f => f.WithBrightness(2m).WithSaturation(2.0m).WithHue(2.0m))));
 
             "Then the name should be modulate".Observation(() => Assert.Equal("modulate", request.Functions[0].Name));
             "And the brightness should be 2".Observation(() => Assert.Equal(2.0m, ((ModulateFunction)request.Functions[0]).Brightness));
@@ -40,10 +40,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a median filter function".Context(() => request = BuildA.Request()
+            "When I build a median filter function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithModulateFunction(f => f.Build()).Build());
+                .Modulate()));
 
             "Then the name should be modulate".Observation(() => Assert.Equal("modulate", request.Functions[0].Name));
             "And the brightness should be 1".Observation(() => Assert.Equal(1.0m, ((ModulateFunction)request.Functions[0]).Brightness));

@@ -12,7 +12,7 @@ namespace Blitline.Net.Request.Builders
             _s3Destination = new S3Destination();
         }
 
-        public S3DestinationBuilder WithBucketName(string bucketName)
+        public S3DestinationBuilder ToBucket(string bucketName)
         {
             _s3Destination.Bucket = bucketName;
             return this;
@@ -36,14 +36,14 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-        protected override S3Destination BuildImp()
+        protected override S3Destination BuildImp
         {
-            return _s3Destination;
+            get { return _s3Destination; }
         }
 
-        public override S3Destination Build()
+        internal override S3Destination Build()
         {
-            var o = BuildImp();
+            S3Destination o = BuildImp;
             o.Validate();
             return o;
         }

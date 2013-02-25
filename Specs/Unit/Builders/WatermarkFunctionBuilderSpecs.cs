@@ -15,14 +15,13 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a watermark function".Context(() => request = BuildA.Request()
+            "When I build a watermark function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithWatermarkFunction(f => f.WithText("text").WithGravity(Gravity.NorthEastGravity)
+                .Watermark(f => f.WithText("text").WithGravity(Gravity.NorthEastGravity)
                     .WithPointSize(10)
                     .WithFontFamily("Arial")
-                    .WithOpacity(0.1m)
-                    .Build()).Build());
+                    .WithOpacity(0.1m))));
 
             "Then the name should be watermark".Observation(() => Assert.Equal("watermark", request.Functions[0].Name));
             "And the text should be text".Observation(() => Assert.Equal("text", ((WatermarkFunction)request.Functions[0]).Text));
@@ -49,10 +48,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a watermark function".Context(() => request = BuildA.Request()
+            "When I build a watermark function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithWatermarkFunction(f => f.WithText("text").Build()).Build());
+                .Watermark(f => f.WithText("text"))));
 
             "Then the name should be watermark".Observation(() => Assert.Equal("watermark", request.Functions[0].Name));
             "And the text should be text".Observation(() => Assert.Equal("text", ((WatermarkFunction)request.Functions[0]).Text));

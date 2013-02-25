@@ -4,38 +4,28 @@ namespace Blitline.Net.Functions.Builders
 {
     public class PadResizeToFitFunctionBuilder : FunctionBuilder<PadResizeToFitFunction>
     {
-        public PadResizeToFitFunctionBuilder()
-        {
-            Function = new PadResizeToFitFunction();    
-        }
-
         public PadResizeToFitFunctionBuilder WithWidth(int width)
         {
-            ((PadResizeToFitFunction) Function).Width = width;
+            BuildImp.Width = width;
             return this;
         }
 
         public PadResizeToFitFunctionBuilder WithHeight(int height)
         {
-            ((PadResizeToFitFunction) Function).Height = height;
+            BuildImp.Height = height;
             return this;
         }
 
         public PadResizeToFitFunctionBuilder WithColour(string colour)
         {
-            ((PadResizeToFitFunction) Function).Colour = colour;
+            BuildImp.Colour = colour;
             return this;
         }
 
         public PadResizeToFitFunctionBuilder WithGravity(Gravity gravity)
         {
-            ((PadResizeToFitFunction) Function).Gravity = gravity;
+            BuildImp.Gravity = gravity;
             return this;
-        }
-
-        protected override PadResizeToFitFunction BuildImp()
-        {
-            return (PadResizeToFitFunction) Function;
         }
     }
 }

@@ -21,18 +21,14 @@ namespace Specs.Integration
                 {   
                     bucketName = "gdoubleu-test-photos";
 
-                    request = BuildA.Request()
+                    request = BuildA.Request(r => r
                                     .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                     .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
-                                    .WithCropFunction(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
+                                    .Crop(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
                                                             .SaveAs(s => s.WithImageIdentifier("image_identifier")
-                                                                          .WithS3Destination(s3 => s3
-                                                                                      .WithBucketName(bucketName)
-                                                                                      .WithKey("moi.png")
-                                                                                      .Build())
-                                                                           .Build())
-                                                            .Build())
-                                    .Build();
+                                                                          .ToS3(s3 => s3
+                                                                                      .ToBucket(bucketName)
+                                                                                      .WithKey("moi.png")))));
                 });
 
             "When I process the request".Do(() => response = request.Send());
@@ -52,19 +48,15 @@ namespace Specs.Integration
             "Given I have a blitline request with an s3 destination".Context(() =>
                 {
 
-                    request = BuildA.Request()
+                    request = BuildA.Request(r => r
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
                                 .FixS3ImageUrl()
-                                .WithCropFunction(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
+                                .Crop(f => f.WithDimensions(51, 126, 457 - 126, 382 - 51)
                                                         .SaveAs(s => s.WithImageIdentifier("image_identifier")
-                                                                      .WithS3Destination(s3 => s3
-                                                                                  .WithBucketName(bucketName)
-                                                                                  .WithKey("moi-correct-url.png")
-                                                                                  .Build())
-                                                                       .Build())
-                                                        .Build())
-                                .Build();
+                                                                      .ToS3(s3 => s3
+                                                                                  .ToBucket(bucketName)
+                                                                                  .WithKey("moi-correct-url.png")))));
                 });
 
             "When I process the request".Do(() => response = request.Send());

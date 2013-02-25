@@ -2,8 +2,7 @@
 {
     public abstract class BuilderBase<T>
     {
-        protected abstract T BuildImp();
-
-        public abstract T Build();
+        protected abstract T BuildImp { get; }
+        internal abstract T Build();
     }
 }

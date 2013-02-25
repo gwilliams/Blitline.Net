@@ -70,32 +70,7 @@ namespace Blitline.Net.Functions
             }
         }
 
-        public override void Validate() {}
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="text">Text to display on image</param>
-        /// <param name="x">X offset (defaults to 0)</param>
-        /// <param name="y">Y offset (defaults to 0)</param>
-        /// <param name="colour">Color of text (defaults to '#ffffff')</param>
-        /// <param name="fontFamily">Font of text (defaults to 'Helvetica')</param>
-        /// <param name="pointSize">Size of text (defaults to 32)</param>
-        /// <param name="stroke">Color of stroke (defaults to 'transparent')</param>
-        /// <param name="gravity">Placement of text (defaults to 'CenterGravity')</param>
-        public AnnotateFunction(string text, int x = 0, int y = 0, string colour = "#ffffff", string fontFamily = "Helvetica", int pointSize = 32, string stroke = "transparent", Gravity gravity = Gravity.CenterGrativty)
-        {
-            Text = text;
-            X = x;
-            Y = y;
-            Colour = colour;
-            FontFamily = fontFamily;
-            PointSize = pointSize;
-            Stroke = stroke;
-            Gravity = gravity;
-        }
-
-        protected internal AnnotateFunction()
+	    public AnnotateFunction()
         {
             Colour = "#ffffff";
             FontFamily = "Helvetica";

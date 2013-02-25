@@ -23,20 +23,11 @@
             }
         }
 
-        public override void Validate() {}
-
         public decimal Brightness { get; set; }
         public decimal Saturation { get; set; }
         public decimal Hue { get; set; }
 
-        public ModulateFunction(decimal brightness = 1.0m, decimal saturation = 1.0m, decimal hue = 1.0m)
-        {
-            Brightness = brightness;
-            Saturation = saturation;
-            Hue = hue;
-        }
-
-        protected internal ModulateFunction()
+	    public ModulateFunction()
         {
             Brightness = 1.0m;
             Saturation = 1.0m;

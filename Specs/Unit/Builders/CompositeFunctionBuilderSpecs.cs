@@ -15,13 +15,13 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a composite function".Context(() => request = BuildA.Request()
+            "When I build a composite function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithCompositeFunction(f => f.WithSource("source")
+                .Composite(f => f.WithSource("source")
                 .AsMask(true)
                 .WithPosition(1, 1)
-                .WithCompositeOp(CompositeOps.AddCompositeOp).Build()).Build());
+                .WithCompositeOp(CompositeOps.AddCompositeOp))));
 
             "The the name should be composite".Observation(() => Assert.Equal("composite", request.Functions[0].Name));
             "And the source should be source".Observation(() => Assert.Equal("source", ((CompositeFunction)request.Functions[0]).Source));
@@ -47,10 +47,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a composite function".Context(() => request = BuildA.Request()
+            "When I build a composite function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithCompositeFunction(f => f.WithSource("source").Build()).Build());
+                .Composite(f => f.WithSource("source"))));
 
             "The the name should be composite".Observation(() => Assert.Equal("composite", request.Functions[0].Name));
             "And the source should be source".Observation(() => Assert.Equal("source", ((CompositeFunction)request.Functions[0]).Source));

@@ -15,19 +15,17 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build an annotate function".Context(() => request = BuildA.Request()
+            "When I build an annotate function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithAnnotateFunction(f => f
+                .Annotate(f => f
                     .WithText("Text")
                     .WithPosition(1, 1)
                     .WithColour("ccc")
                     .WithFontFamilty("Arial")
                     .WithPointSize(10)
                     .WithStroke("super")
-                    .WithGravity(Gravity.NorthGravity)
-                    .Build())
-                .Build());
+                    .WithGravity(Gravity.NorthGravity))));
 
             "The the name should be annotate".Observation(() => Assert.Equal("annotate", request.Functions[0].Name));
             "And the text should be set".Observation(() => Assert.Equal("Text", ((AnnotateFunction)request.Functions[0]).Text));
@@ -59,13 +57,11 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build an annotate function".Context(() => request = BuildA.Request()
+            "When I build an annotate function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithAnnotateFunction(f => f
-                    .WithText("Text")
-                    .Build())
-                .Build());
+                .Annotate(f => f
+                    .WithText("Text"))));
 
             "The the name should be annotate".Observation(() => Assert.Equal("annotate", request.Functions[0].Name));
             "And the text should be set".Observation(() => Assert.Equal("Text", ((AnnotateFunction)request.Functions[0]).Text));

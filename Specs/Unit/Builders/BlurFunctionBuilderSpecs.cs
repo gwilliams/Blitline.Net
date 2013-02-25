@@ -14,10 +14,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a blur function".Context(() => request = BuildA.Request()
+            "When I build a blur function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithBlurFunction(f => f.WithSigma(5m).WithRadius(2m).Build()).Build());
+                .Blur(f => f.WithSigma(5m).WithRadius(2m))));
 
             "Then the name should be blur".Observation(() => Assert.Equal("blur", request.Functions[0].Name));
             "And the sigma should be 5".Observation(() => Assert.Equal(5, ((BlurFunction) request.Functions[0]).Sigma));
@@ -38,10 +38,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a blur function".Context(() => request = BuildA.Request()
+            "When I build a blur function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .WithBlurFunction(f => f.Build()).Build());
+                .Blur()));
 
             "Then the name should be blur".Observation(() => Assert.Equal("blur", request.Functions[0].Name));
             "And the sigma should be 1".Observation(() => Assert.Equal(1, ((BlurFunction)request.Functions[0]).Sigma));

@@ -29,8 +29,6 @@ namespace Blitline.Net.Functions
             }
         }
 
-        public override void Validate() {}
-
         /// <summary>
         /// Width of desired image
         /// </summary>
@@ -51,22 +49,7 @@ namespace Blitline.Net.Functions
         /// </summary>
         public bool OnlyShrinkLarger { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="width">Width of desired image</param>
-        /// <param name="height">Height of desired image</param>
-        /// <param name="gravity">Location of crop (defaults to 'CenterGravity')</param>
-        /// <param name="onlyShrinkLarger">Don’t upsize image (defaults to false)</param>
-        public ResizeToFillFunction(int width, int height, Gravity gravity = Gravity.CenterGrativty, bool onlyShrinkLarger = false)
-        {
-            Width = width;
-            Height = height;
-            Gravity = gravity;
-            OnlyShrinkLarger = onlyShrinkLarger;
-        }
-
-        protected internal ResizeToFillFunction()
+	    public ResizeToFillFunction()
         {
             Gravity = Gravity.CenterGrativty;
         }

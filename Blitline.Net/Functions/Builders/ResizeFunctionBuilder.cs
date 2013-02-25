@@ -1,33 +1,25 @@
-﻿namespace Blitline.Net.Functions.Builders
+﻿using System;
+
+namespace Blitline.Net.Functions.Builders
 {
     public class ResizeFunctionBuilder : FunctionBuilder<ResizeFunction>
     {
-        public ResizeFunctionBuilder()
-        {
-            Function = new ResizeFunction();    
-        }
-
         public ResizeFunctionBuilder WithWidth(int width)
         {
-            ((ResizeFunction) Function).Width = width;
+            BuildImp.Width = width;
             return this;
         }
 
         public ResizeFunctionBuilder WithHeight(int height)
         {
-            ((ResizeFunction) Function).Height = height;
+            BuildImp.Height = height;
             return this;
         }
 
         public ResizeFunctionBuilder WithScaleFactor(decimal scaleFactor)
         {
-            ((ResizeFunction) Function).ScaleFactor = scaleFactor;
+            BuildImp.ScaleFactor = scaleFactor;
             return this;
-        }
-
-        protected override ResizeFunction BuildImp()
-        {
-            return (ResizeFunction) Function;
         }
     }
 }

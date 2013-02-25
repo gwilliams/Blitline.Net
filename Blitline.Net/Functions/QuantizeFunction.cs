@@ -23,26 +23,11 @@
             }
         }
 
-        public override void Validate() {}
-
         public int NumberOfColours { get; set; }
         public string ColourSpace { get; set; }
         public bool Dither { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="numberOfColours">Number of colors to reduce to</param>
-        /// <param name="colourSpace">The colorspace to quantize in (defaults to "RGBColorspace")</param>
-        /// <param name="dither">Whether or not to use dithering on the resulting image (defaults to "false")</param>
-        public QuantizeFunction(int numberOfColours, string colourSpace = "RGBColorspace", bool dither = false)
-        {
-            NumberOfColours = numberOfColours;
-            ColourSpace = colourSpace;
-            Dither = dither;
-        }
-
-        protected internal QuantizeFunction()
+	    public QuantizeFunction()
         {
             ColourSpace = "RGBColorspace";
         }

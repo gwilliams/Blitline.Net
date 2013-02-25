@@ -11,20 +11,7 @@
         }
 
         public override object Params { get { return new { angle = Angle}; } }
-        
-        public override void Validate() {}
 
         public int Angle { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="angle">Angle of rotation</param>
-        public PhotographFunction(int angle = 0)
-        {
-            Angle = angle;
-        }
-
-        protected internal PhotographFunction() {}
     }
 }
