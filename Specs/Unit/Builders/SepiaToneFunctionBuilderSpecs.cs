@@ -14,10 +14,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build an sepia tone function".Context(() => request = BuildA.Request()
+            "When I build an sepia tone function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .SepiaTone(f => f.WithThreshold(1).Build()).Build());
+                .SepiaTone(f => f.WithThreshold(1))));
 
             "Then the name should be sepia_tone".Observation(() => Assert.Equal("sepia_tone", request.Functions[0].Name));
             "And the threshold should be 1".Observation(() => Assert.Equal(1, ((SepiaToneFunction)request.Functions[0]).Threshold));

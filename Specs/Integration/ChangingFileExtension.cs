@@ -20,7 +20,7 @@ namespace Specs.Integration
         {
             "Given I have a request which specifies a different file extension".Context(() =>
                 {
-                    _request = BuildA.Request()
+                    _request = BuildA.Request(r => r
                                      .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                      .WithSourceImageUri(
                                          new Uri("https://s3-eu-west-1.amazonaws.com/gdoubleu-test-photos/moi.jpg"))
@@ -28,10 +28,7 @@ namespace Specs.Integration
                                                              .SaveAs(
                                                                  s =>
                                                                  s.WithImageIdentifier("file_extension")
-                                                                  .WithExtension(Extension.PNG)
-                                                                  .Build())
-                                                             .Build())
-                                     .Build();
+                                                                  .WithExtension(Extension.PNG))));
                 });
 
             "When I process the request".Do(() => _response = _request.Send());

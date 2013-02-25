@@ -20,7 +20,7 @@ namespace Specs.Integration
                                                             {
                                                                 const string bucketName = "gdoubleu-test-photos";
 
-                                                                request = BuildA.Request()
+                                                                request = BuildA.Request(r => r
                                 .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                                 .WithSourceImageUri(new Uri("http://www.google.co.uk"))
                                 .SourceIsScreenshot()
@@ -28,11 +28,7 @@ namespace Specs.Integration
                                                         .SaveAs(s => s.WithImageIdentifier("image_identifier")
                                                                       .ToS3(s3 => s3
                                                                                   .ToBucket(bucketName)
-                                                                                  .WithKey("screenshot.png")
-                                                                                  .Build())
-                                                                       .Build())
-                                                        .Build())
-                                .Build();
+                                                                                  .WithKey("screenshot.png")))));
                                                             });
 
             "When I process the request".Do(() => response = request.Send());

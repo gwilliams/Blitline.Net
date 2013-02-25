@@ -90,11 +90,11 @@ namespace Blitline.Net.Request.Builders
             get { return _request; }
         }
 
-        public override BlitlineRequest Build()
+        internal override BlitlineRequest Build()
         {
             BlitlineRequest o = base.Build();
             o.Validate();
             return o;
         }
-    }
+	}
 }

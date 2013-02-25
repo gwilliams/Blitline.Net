@@ -22,8 +22,6 @@
             }
         }
 
-        public override void Validate() {}
-
         /// <summary>
         /// Gaussian sigma of sharpen (defaults to 1.0)
         /// </summary>
@@ -34,18 +32,7 @@
         /// </summary>
         public decimal Radius { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sigma">Gaussian sigma of sharpen (defaults to 1.0)</param>
-        /// <param name="radius">Gaussian radius of shapen (defaults to 0.0)</param>
-        public SharpenFunction(decimal sigma = 1.0m, decimal radius = 0.0m)
-        {
-            Sigma = sigma;
-            Radius = radius;
-        }
-
-        public SharpenFunction()
+	    public SharpenFunction()
         {
             Sigma = 1.0m;
         }

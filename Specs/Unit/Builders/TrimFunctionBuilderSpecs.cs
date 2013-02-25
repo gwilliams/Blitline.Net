@@ -13,10 +13,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build an trim function".Context(() => request = BuildA.Request()
+            "When I build an trim function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .Trim(f => f.Build()).Build());
+                .Trim()));
 
             "Then the name should be trim".Observation(() => Assert.Equal("trim", request.Functions[0].Name));
 

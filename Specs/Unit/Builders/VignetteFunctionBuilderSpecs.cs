@@ -13,10 +13,10 @@ namespace Specs.Unit.Builders
         public void CanNotBuildAVignetteFunctionWhereThresoldOutOfBounds()
         {
             Assert.Throws<ArgumentException>(() =>
-                                             BuildA.Request()
+                                             BuildA.Request(r => r
                                                    .WithApplicationId("123")
                                                    .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                                                   .Vignette(f => f.WithThreshold(2m).Build()).Build());
+                                                   .Vignette(f => f.WithThreshold(2m))));
 
         }
 
@@ -25,11 +25,11 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a vignette function".Context(() => request = BuildA.Request()
+            "When I build a vignette function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .Vignette(f => f.WithColour("ccc").WithPosition(2, 3)
-                    .WithThreshold(0.5m).WithSigma(4m).WithRadius(5m).Build()).Build());
+                    .WithThreshold(0.5m).WithSigma(4m).WithRadius(5m))));
 
             "Then the name should be vignette".Observation(() => Assert.Equal("vignette", request.Functions[0].Name));
 
@@ -59,10 +59,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a vignette function".Context(() => request = BuildA.Request()
+            "When I build a vignette function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .Vignette(f => f.Build()).Build());
+                .Vignette()));
 
             "Then the name should be vignette".Observation(() => Assert.Equal("vignette", request.Functions[0].Name));
 

@@ -28,29 +28,12 @@ namespace Blitline.Net.Functions
             }
         }
 
-        public override void Validate() {}
-
         public int Width { get; set; }
         public int Height { get; set; }
         public string Colour { get; set; }
         public Gravity Gravity { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="width">Output width</param>
-        /// <param name="height">Output height</param>
-        /// <param name="colour">Color for the padding (defaults to "#ffffff")</param>
-        /// <param name="gravity">Location of output relative to padding (defaults to CenterGrativty)</param>
-        public PadResizeToFitFunction(int width, int height, string colour = "#ffffff", Gravity gravity = Gravity.CenterGrativty)
-        {
-            Width = width;
-            Height = height;
-            Colour = colour;
-            Gravity = gravity;
-        }
-
-        public PadResizeToFitFunction()
+	    public PadResizeToFitFunction()
         {
             Colour = "#ffffff";
             Gravity = Gravity.CenterGrativty;

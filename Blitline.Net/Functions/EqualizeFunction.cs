@@ -11,7 +11,5 @@
         }
 
         public override object Params { get { return new {}; } }
-        
-        public override void Validate() {}
     }
 }

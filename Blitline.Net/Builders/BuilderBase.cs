@@ -3,6 +3,6 @@
     public abstract class BuilderBase<T>
     {
         protected abstract T BuildImp { get; }
-        public abstract T Build();
+        internal abstract T Build();
     }
 }

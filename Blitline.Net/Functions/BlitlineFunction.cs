@@ -12,7 +12,9 @@ namespace Blitline.Net.Functions
         [JsonProperty("save")]
         public Save Save { get; set; }
 
-        public abstract void Validate();
+	    public virtual void Validate()
+	    {
+	    }
         
         public void AddFunction(BlitlineFunction function)
         {

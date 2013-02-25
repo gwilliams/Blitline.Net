@@ -14,11 +14,11 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build an contrast stretch channel function".Context(() => request = BuildA.Request()
+            "When I build an contrast stretch channel function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
                 .ContrastStretchChannel(f => f.WithBlackPoint(10)
-                    .WithWhitePoint(5).Build()).Build());
+                    .WithWhitePoint(5))));
 
             "Then the name should be contrast_stretch_channel".Observation(() => Assert.Equal("contrast_stretch_channel", request.Functions[0].Name));
             "And the black point should be 10".Observation(() => Assert.Equal(10, ((ContrastStretchChannelFunction)request.Functions[0]).BlackPoint));

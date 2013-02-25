@@ -14,10 +14,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a quantize function".Context(() => request = BuildA.Request()
+            "When I build a quantize function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .Quantize(f => f.WithNumberOfColours(5).WithColourSpace("colours").Dither(true).Build()).Build());
+                .Quantize(f => f.WithNumberOfColours(5).WithColourSpace("colours").Dither(true))));
 
             "Then the name should be quantize".Observation(() => Assert.Equal("quantize", request.Functions[0].Name));
             "And the number of colours should be 5".Observation(() => Assert.Equal(5, ((QuantizeFunction)request.Functions[0]).NumberOfColours));
@@ -40,10 +40,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a quantize function".Context(() => request = BuildA.Request()
+            "When I build a quantize function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .Quantize(f => f.WithNumberOfColours(5).Build()).Build());
+                .Quantize(f => f.WithNumberOfColours(5))));
 
             "Then the name should be quantize".Observation(() => Assert.Equal("quantize", request.Functions[0].Name));
             "And the number of colours should be 5".Observation(() => Assert.Equal(5, ((QuantizeFunction)request.Functions[0]).NumberOfColours));

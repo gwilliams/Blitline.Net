@@ -2,10 +2,10 @@
 {
     public class MedianFilterFunctionBuilder : FunctionBuilder<MedianFilterFunction>
     {
-        public MedianFilterFunctionBuilder WithRadius(decimal radius)
+        public MedianFilterFunction WithRadius(decimal radius)
         {
             BuildImp.Radius = radius;
-            return this;
+			return BuildImp;
         }
     }
 }

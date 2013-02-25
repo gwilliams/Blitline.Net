@@ -13,10 +13,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build an equalize function".Context(() => request = BuildA.Request()
+            "When I build an equalize function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .Equalize(f => f.Build()).Build());
+                .Equalize()));
 
             "Then the name should be equalize".Observation(() => Assert.Equal("equalize", request.Functions[0].Name));
 

@@ -1,4 +1,6 @@
-﻿namespace Blitline.Net.Functions.Builders
+﻿using System;
+
+namespace Blitline.Net.Functions.Builders
 {
     public class ResizeFunctionBuilder : FunctionBuilder<ResizeFunction>
     {

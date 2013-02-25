@@ -1,6 +1,5 @@
 ﻿using System;
 using Blitline.Net.Builders;
-using Blitline.Net.Request;
 using Blitline.Net.Request.Builders;
 
 namespace Blitline.Net.Functions.Builders
@@ -15,15 +14,17 @@ namespace Blitline.Net.Functions.Builders
             Function = new T();
         }
 
-        public FunctionBuilder<T> SaveAs(Func<SaveBuilder, Save> build)
+	    public FunctionBuilder<T> SaveAs(Action<SaveBuilder> build)
         {
-            Function.Save = build(new SaveBuilder());
-            return this;
+		    var saveBuilder = new SaveBuilder();
+		    build(saveBuilder);
+		    Function.Save = saveBuilder.Build();
+			return this;
         }
 
-        public override T Build()
+        internal override T Build()
         {
-            BuildImp.Validate();
+			BuildImp.Validate();
             return BuildImp;
         }
 

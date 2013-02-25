@@ -14,10 +14,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a sharpen function".Context(() => request = BuildA.Request()
+            "When I build a sharpen function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .Sharpen(f => f.WithSigma(5m).WithRadius(2m).Build()).Build());
+                .Sharpen(f => f.WithSigma(5m).WithRadius(2m))));
 
             "Then the name should be sharpen".Observation(() => Assert.Equal("sharpen", request.Functions[0].Name));
             "And the sigma should be 5".Observation(() => Assert.Equal(5m, ((SharpenFunction)request.Functions[0]).Sigma));
@@ -38,10 +38,10 @@ namespace Specs.Unit.Builders
         {
             BlitlineRequest request = default(BlitlineRequest);
 
-            "When I build a sharpen function".Context(() => request = BuildA.Request()
+            "When I build a sharpen function".Context(() => request = BuildA.Request(r => r
                 .WithApplicationId("123")
                 .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .Sharpen(f => f.Build()).Build());
+                .Sharpen()));
 
             "Then the name should be sharpen".Observation(() => Assert.Equal("sharpen", request.Functions[0].Name));
             "And the sigma should be 1".Observation(() => Assert.Equal(1m, ((SharpenFunction)request.Functions[0]).Sigma));

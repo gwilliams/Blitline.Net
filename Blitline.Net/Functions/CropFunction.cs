@@ -25,8 +25,6 @@ namespace Blitline.Net.Functions
             }
         }
 
-        public override void Validate() {}
-
         /// <summary>
         /// X offset
         /// </summary>
@@ -46,22 +44,5 @@ namespace Blitline.Net.Functions
         /// Height of resulting image
         /// </summary>
         public int Height { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="x">X offset</param>
-        /// <param name="y">Y offset</param>
-        /// <param name="width">Width of resulting image</param>
-        /// <param name="height">Height of resulting image</param>
-        public CropFunction(int x, int y, int width, int height)
-        {
-            X = x;
-            Y = y;
-            Width = width;
-            Height = height;
-        }
-
-        public CropFunction() {}
     }
 }

@@ -11,8 +11,6 @@
         }
 
         public override object @Params { get { return new {sigma = Sigma, radius = Radius}; } }
-        
-        public override void Validate() {}
 
         /// <summary>
         /// Gaussian sigma of blur (defaults to 1.0)
@@ -24,18 +22,7 @@
         /// </summary>
         public decimal Radius { get; set; }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sigma">Gaussian sigma of blur (defaults to 1.0)</param>
-        /// <param name="radius">Gaussian radius of blur (defaults to 0.0)</param>
-        public BlurFunction(decimal sigma, decimal radius)
-        {
-            Sigma = sigma;
-            Radius = radius;
-        }
-
-        public BlurFunction()
+	    public BlurFunction()
         {
             Sigma = 1.0m;
             Radius = 0.0m;
