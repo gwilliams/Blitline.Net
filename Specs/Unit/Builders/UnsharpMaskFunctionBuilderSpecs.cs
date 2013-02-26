@@ -1,13 +1,14 @@
 ﻿using System;
 using Blitline.Net.Builders;
 using Blitline.Net.Functions;
+using Blitline.Net.Functions.Builders;
 using Blitline.Net.Request;
 using SubSpec;
 using Xunit;
 
 namespace Specs.Unit.Builders
 {
-    public class UnsharpMaskFunctionBuilderSpecs
+    public class UnsharpMaskFunctionBuilderSpecs : CanBuildDefaultFunctionBase<UnsharpMaskFunctionBuilder, UnsharpMaskFunction>
     {
         [Fact]
         public void CanNotBuildAnUnsharpMaskFunctionWhenAmountOutOfBounds()
@@ -56,32 +57,30 @@ namespace Specs.Unit.Builders
             });
         }
 
-        [Specification]
-        public void CanBuildAnUnsharpMaskFunctionWithOnlyRequiredValues()
+        #region CanBuildDefaultFunctionBase
+
+        protected override void And()
         {
-            BlitlineRequest request = default(BlitlineRequest);
-
-            "When I build a unsharp mask function".Context(() => request = BuildA.Request(r => r
-                .WithApplicationId("123")
-                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .UnsharpMask()));
-
-            "Then the name should be unsharp_mask".Observation(() => Assert.Equal("unsharp_mask", request.Functions[0].Name));
-            "And the sigma should be 1".Observation(() => Assert.Equal(1m, ((UnsharpMaskFunction)request.Functions[0]).Sigma));
-            "And the radius should be 0".Observation(() => Assert.Equal(0m, ((UnsharpMaskFunction)request.Functions[0]).Radius));
-            "And the amount should be 1".Observation(() => Assert.Equal(1m, ((UnsharpMaskFunction)request.Functions[0]).Amount));
-            "And the threshold should be 0.05".Observation(() => Assert.Equal(0.05m, ((UnsharpMaskFunction)request.Functions[0]).Threshold));
-
-            "And the params should be constructed".Observation(() =>
-            {
-                var p = request.Functions[0].Params;
-                var t = p.GetType();
-
-                Assert.Equal(1m, (decimal)t.GetProperty("sigma").GetValue(p, null));
-                Assert.Equal(0m, (decimal)t.GetProperty("radius").GetValue(p, null));
-                Assert.Equal(1m, (decimal)t.GetProperty("amount").GetValue(p, null));
-                Assert.Equal(0.05m, (decimal)t.GetProperty("threshold").GetValue(p, null));
-            });
+            "And the sigma should be 1".Observation(() => Assert.Equal(1m, _function.Sigma));
+            "And the radius should be 0".Observation(() => Assert.Equal(0m, _function.Radius));
+            "And the amount should be 1".Observation(() => Assert.Equal(1m, _function.Amount));
+            "And the threshold should be 0.05".Observation(() => Assert.Equal(0.05m, _function.Threshold));
         }
+
+        protected override void AssertParams(dynamic t, dynamic p)
+        {
+            Assert.Equal(1m, (decimal) t.GetProperty("sigma").GetValue(p, null));
+            Assert.Equal(0m, (decimal) t.GetProperty("radius").GetValue(p, null));
+            Assert.Equal(1m, (decimal) t.GetProperty("amount").GetValue(p, null));
+            Assert.Equal(0.05m, (decimal) t.GetProperty("threshold").GetValue(p, null));
+        }
+
+        protected override string Name
+        {
+            get { return "unsharp_mask"; }
+        }
+
+        #endregion
+
     }
 }
