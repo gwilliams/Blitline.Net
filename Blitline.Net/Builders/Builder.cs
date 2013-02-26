@@ -48,13 +48,7 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
-		public Builder<T> Blur()
-		{
-			BuildImp.Functions.Add(new BlurFunction());
-			return this;
-		}
-
-		public Builder<T> Composite(Action<CompositeFunctionBuilder> build)
+	    public Builder<T> Composite(Action<CompositeFunctionBuilder> build)
 		{
 			AddFunction<CompositeFunctionBuilder, CompositeFunction>(build);
 			return this;
@@ -90,13 +84,7 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
-		public Builder<T> Equalize()
-		{
-			BuildImp.Functions.Add(new EqualizeFunction());
-			return this;
-		}
-
-		public Builder<T> GammaChannel(Action<GammaChannelFunctionBuilder> build)
+	    public Builder<T> GammaChannel(Action<GammaChannelFunctionBuilder> build)
 		{
 			AddFunction<GammaChannelFunctionBuilder, GammaChannelFunction>(build);
 			return this;
@@ -108,37 +96,19 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
-		public Builder<T> MedianFilter()
-		{
-			BuildImp.Functions.Add(new MedianFilterFunction());
-			return this;
-		}
-
-		public Builder<T> Modulate(Action<ModulateFunctionBuilder> build)
+	    public Builder<T> Modulate(Action<ModulateFunctionBuilder> build)
 		{
 			AddFunction<ModulateFunctionBuilder, ModulateFunction>(build);
 			return this;
 		}
 
-		public Builder<T> Modulate()
-		{
-			BuildImp.Functions.Add(new ModulateFunction());
-			return this;
-		}
-
-		public Builder<T> NoOp(Action<NoOpFunctionBuilder> build)
+	    public Builder<T> NoOp(Action<NoOpFunctionBuilder> build)
 		{
 			AddFunction<NoOpFunctionBuilder, NoOpFunction>(build);
 			return this;
 		}
 
-		public Builder<T> NoOp()
-		{
-			BuildImp.Functions.Add(new NoOpFunction());
-			return this;
-		}
-
-		public Builder<T> PadResizeToFit(Action<PadResizeToFitFunctionBuilder> build)
+	    public Builder<T> PadResizeToFit(Action<PadResizeToFitFunctionBuilder> build)
 		{
 			AddFunction<PadResizeToFitFunctionBuilder, PadResizeToFitFunction>(build);
 			return this;
@@ -198,61 +168,31 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
-		public Builder<T> Sharpen()
-		{
-			BuildImp.Functions.Add(new SharpenFunction());
-			return this;
-		}
-
-		public Builder<T> Sketch(Action<SketchFunctionBuilder> build)
+	    public Builder<T> Sketch(Action<SketchFunctionBuilder> build)
 		{
 			AddFunction<SketchFunctionBuilder, SketchFunction>(build);
 			return this;
 		}
 
-		public Builder<T> Sketch()
-		{
-			BuildImp.Functions.Add(new SketchFunction());
-			return this;
-		}
-
-		public Builder<T> Trim(Action<TrimFunctionBuilder> build)
+	    public Builder<T> Trim(Action<TrimFunctionBuilder> build)
 		{
 			AddFunction<TrimFunctionBuilder, TrimFunction>(build);
 			return this;
 		}
 
-		public Builder<T> Trim()
-		{
-			BuildImp.Functions.Add(new TrimFunction());
-			return this;
-		}
-
-		public Builder<T> UnsharpMask(Action<UnsharpMaskFunctionBuilder> build)
+	    public Builder<T> UnsharpMask(Action<UnsharpMaskFunctionBuilder> build)
 		{
 			AddFunction<UnsharpMaskFunctionBuilder, UnsharpMaskFunction>(build);
 			return this;
 		}
 
-		public Builder<T> UnsharpMask()
-		{
-			BuildImp.Functions.Add(new UnsharpMaskFunction());
-			return this;
-		}
-
-		public Builder<T> Vignette(Action<VignetteFunctionBuilder> build)
+	    public Builder<T> Vignette(Action<VignetteFunctionBuilder> build)
 		{
 			AddFunction<VignetteFunctionBuilder, VignetteFunction>(build);
 			return this;
 		}
 
-		public Builder<T> Vignette()
-		{
-			BuildImp.Functions.Add(new VignetteFunction());
-			return this;
-		}
-
-		public Builder<T> Watermark(Action<WatermarkFunctionBuilder> build)
+	    public Builder<T> Watermark(Action<WatermarkFunctionBuilder> build)
 		{
 			AddFunction<WatermarkFunctionBuilder, WatermarkFunction>(build);
 			return this;

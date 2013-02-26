@@ -1,31 +1,19 @@
-﻿using System;
-using Blitline.Net.Builders;
-using Blitline.Net.Request;
-using SubSpec;
+﻿using Blitline.Net.Functions;
+using Blitline.Net.Functions.Builders;
 using Xunit;
 
 namespace Specs.Unit.Builders
 {
-    public class TrimFunctionBuilderSpecs
+    public class TrimFunctionBuilderSpecs : CanBuildDefaultFunctionBase<TrimFunctionBuilder, TrimFunction>
     {
-        [Specification]
-        public void CanBuildATrimFunction()
+        protected override void AssertParams(dynamic t, dynamic p)
         {
-            BlitlineRequest request = default(BlitlineRequest);
+            Assert.Equal(0, t.GetProperties().Length);
+        }
 
-            "When I build an trim function".Context(() => request = BuildA.Request(r => r
-                .WithApplicationId("123")
-                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .Trim()));
-
-            "Then the name should be trim".Observation(() => Assert.Equal("trim", request.Functions[0].Name));
-
-            "And the params should be constructed".Observation(() =>
-            {
-                var p = request.Functions[0].Params;
-                var t = p.GetType();
-                Assert.Equal(0, t.GetProperties().Length);
-            });
+        protected override string Name
+        {
+            get { return "trim"; }
         }
     }
 }
