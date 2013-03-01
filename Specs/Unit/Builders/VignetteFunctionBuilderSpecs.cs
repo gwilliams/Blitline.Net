@@ -1,13 +1,14 @@
 ﻿using System;
 using Blitline.Net.Builders;
 using Blitline.Net.Functions;
+using Blitline.Net.Functions.Builders;
 using Blitline.Net.Request;
 using SubSpec;
 using Xunit;
 
 namespace Specs.Unit.Builders
 {
-    public class VignetteFunctionBuilderSpecs
+    public class VignetteFunctionBuilderSpecs : CanBuildDefaultFunctionBase<VignetteFunctionBuilder, VignetteFunction>
     {
         [Fact]
         public void CanNotBuildAVignetteFunctionWhereThresoldOutOfBounds()
@@ -54,37 +55,34 @@ namespace Specs.Unit.Builders
             });
         }
 
-        [Specification]
-        public void CanBuildAVignetteFunctionWithOnlyRequiredValues()
+        #region CanBuildDefaultFunctionBase
+
+        protected override void And()
         {
-            BlitlineRequest request = default(BlitlineRequest);
-
-            "When I build a vignette function".Context(() => request = BuildA.Request(r => r
-                .WithApplicationId("123")
-                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-                .Vignette()));
-
-            "Then the name should be vignette".Observation(() => Assert.Equal("vignette", request.Functions[0].Name));
-
-            "And the colour should be #000000".Observation(() => Assert.Equal("#000000", ((VignetteFunction)request.Functions[0]).Colour));
-            "And x should be 10".Observation(() => Assert.Equal(10, ((VignetteFunction)request.Functions[0]).X));
-            "And y should be 10".Observation(() => Assert.Equal(10, ((VignetteFunction)request.Functions[0]).Y));
-            "And the threshold should be 0.05".Observation(() => Assert.Equal(0.05m, ((VignetteFunction)request.Functions[0]).Threshold));
-            "And the sigma should be 10".Observation(() => Assert.Equal(10m, ((VignetteFunction)request.Functions[0]).Sigma));
-            "And the radius should be 0".Observation(() => Assert.Equal(0m, ((VignetteFunction)request.Functions[0]).Radius));
-
-            "And the params should be constructed".Observation(() =>
-            {
-                var p = request.Functions[0].Params;
-                var t = p.GetType();
-
-                Assert.Equal("#000000", t.GetProperty("color").GetValue(p, null).ToString());
-                Assert.Equal(10, (int)t.GetProperty("x").GetValue(p, null));
-                Assert.Equal(10, (int)t.GetProperty("y").GetValue(p, null));
-                Assert.Equal(0.05m, (decimal)t.GetProperty("threshold").GetValue(p, null));
-                Assert.Equal(10m, (decimal)t.GetProperty("sigma").GetValue(p, null));
-                Assert.Equal(0m, (decimal)t.GetProperty("radius").GetValue(p, null));
-            });
+            "And the colour should be #000000".Observation(() => Assert.Equal("#000000", _function.Colour));
+            "And x should be 10".Observation(() => Assert.Equal(10, _function.X));
+            "And y should be 10".Observation(() => Assert.Equal(10, _function.Y));
+            "And the threshold should be 0.05".Observation(() => Assert.Equal(0.05m, _function.Threshold));
+            "And the sigma should be 10".Observation(() => Assert.Equal(10m, _function.Sigma));
+            "And the radius should be 0".Observation(() => Assert.Equal(0m, _function.Radius));
         }
+
+        protected override void AssertParams(dynamic t, dynamic p)
+        {
+            Assert.Equal("#000000", t.GetProperty("color").GetValue(p, null).ToString());
+            Assert.Equal(10, (int) t.GetProperty("x").GetValue(p, null));
+            Assert.Equal(10, (int) t.GetProperty("y").GetValue(p, null));
+            Assert.Equal(0.05m, (decimal) t.GetProperty("threshold").GetValue(p, null));
+            Assert.Equal(10m, (decimal) t.GetProperty("sigma").GetValue(p, null));
+            Assert.Equal(0m, (decimal) t.GetProperty("radius").GetValue(p, null));
+        }
+
+        protected override string Name
+        {
+            get { return "vignette"; }
+        }
+
+        #endregion
+
     }
 }
