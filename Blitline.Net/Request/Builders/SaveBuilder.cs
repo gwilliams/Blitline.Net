@@ -39,6 +39,14 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
+        public SaveBuilder ToAzure(Action<AzureDestinationBuilder> build)
+        {
+            var azureDestinationBuilder = new AzureDestinationBuilder();
+            build(azureDestinationBuilder);
+            _save.AzureDestination = azureDestinationBuilder.Build();
+            return this;
+        }
+
         public SaveBuilder WithInterlaceType(InterlaceType interlaceType)
         {
             _save.Interlace = interlaceType.ToString();

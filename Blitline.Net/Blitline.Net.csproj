@@ -113,7 +113,9 @@
     <Compile Include="ParamOptions\Gravity.cs" />
     <Compile Include="IBlitlineApi.cs" />
     <Compile Include="ParamOptions\InterlaceType.cs" />
+    <Compile Include="Request\AzureDestination.cs" />
     <Compile Include="Request\BlitlineRequestExtensions.cs" />
+    <Compile Include="Request\Builders\AzureDestinationBuilder.cs" />
     <Compile Include="Request\Builders\RequestBuilder.cs" />
     <Compile Include="Request\BlitlineRequest.cs" />
     <Compile Include="Extension.cs" />
