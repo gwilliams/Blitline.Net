@@ -4,6 +4,17 @@ using Newtonsoft.Json;
 
 namespace Blitline.Net.Request
 {
+    public class PreProcess
+    {
+        
+    }
+
+    public class MoveOriginal
+    {
+        [JsonProperty("s3_destination")]
+        public S3Destination S3Destination { get; set; }
+    }
+
     public class BlitlineRequest : Function
     {
         [JsonProperty("application_id")]
@@ -24,6 +35,9 @@ namespace Blitline.Net.Request
         public bool ExtendedMetaData { get; set; }
         [JsonProperty("src_type")]
         public dynamic SourceType { get; set; }
+
+        [JsonProperty("pre_process")]
+        public PreProcess PreProcess { get; set; }
 
         /// <summary>
         /// Blitline returns an image url such as http://s3.amazonaws.com/gdoubleu-test-photos/annotate-default.png
