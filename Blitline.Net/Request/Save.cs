@@ -1,6 +1,5 @@
 using System;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace Blitline.Net.Request
 {
@@ -12,6 +11,8 @@ namespace Blitline.Net.Request
         public int Quality { get; set; }
         [JsonProperty("s3_destination")]
         public S3Destination S3Destination { get; set; }
+        [JsonProperty("azure_destination")]
+        public AzureDestination AzureDestination { get; set; }
         [JsonProperty("extension")]
         [JsonConverter(typeof(ExtensionConverter))]
         public Extension Extension { get; set; }
@@ -28,6 +29,7 @@ namespace Blitline.Net.Request
         public void Validate()
         {
             if(string.IsNullOrEmpty(ImageIdentifier)) throw new ArgumentNullException("ImageIdentifier", "Image identifier is required");
+            if (S3Destination != null && AzureDestination != null) throw new NotSupportedException("Cannot set both S3Destinatio and AzureDestination");
         }
     }
 }
