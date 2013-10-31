@@ -13,6 +13,8 @@ namespace Blitline.Net.Request
         public S3Destination S3Destination { get; set; }
         [JsonProperty("azure_destination")]
         public AzureDestination AzureDestination { get; set; }
+        [JsonProperty("ftp_destination")]
+        public FtpDestination FtpDestination { get; set; }
         [JsonProperty("extension")]
         [JsonConverter(typeof(ExtensionConverter))]
         public Extension Extension { get; set; }
