@@ -125,6 +125,31 @@ namespace Specs.Unit.Builders
         }
 
         [Specification]
+        public void CanBuildARequestWithAnAzureDestination()
+        {
+            BlitlineRequest request = default(BlitlineRequest);
+
+            "When I build a request".Context(() => request = BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                .Crop(c => c.WithDimensions(1, 2, 3, 4)
+                    .SaveAs(s => s.WithImageIdentifier("image")
+                    .WithExtension(Extension.PNG)
+                    .WithQuality(10)
+                    .ToAzure(f => f.WithAccountName("azureaccount")
+                        .WithSharedAccessSignature("sharedaccesssignature")
+                        )
+                    )
+                )));
+
+            "Then save contains an azure destination".Observation(() => Assert.NotNull(request.Functions.First().Save.AzureDestination));
+
+            "And the account name should be azureaccount".Observation(() => Assert.Equal("azureaccount", request.Functions.First().Save.AzureDestination.AccountName));
+
+            "And the shared access signature should be sharedaccesssignature".Observation(() => Assert.Equal("sharedaccesssignature", request.Functions.First().Save.AzureDestination.SharedAccessSignature));
+        }
+
+        [Specification]
         public void CanBuildARequestWithAnFtpDestination()
         {
             BlitlineRequest request = default(BlitlineRequest);
