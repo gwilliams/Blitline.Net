@@ -11,7 +11,7 @@ namespace Specs.Integration
 {
     public class ProcessAnnotateFunction
     {
-        [Specification]
+        [Specification(Skip = "Integration")]
         public void CanProcessAnAnnotateFunctionWithOnlyRequiredValues()
         {
             var request = default(BlitlineRequest);
@@ -39,7 +39,7 @@ namespace Specs.Integration
             "And there should be no error reported".Observation(() => Assert.Null(response.Results.Error));
         }
 
-        [Specification]
+        [Specification(Skip = "Integration")]
         public void CanProcessAnAnnotateFunction()
         {
             var request = default(BlitlineRequest);

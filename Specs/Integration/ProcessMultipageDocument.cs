@@ -10,7 +10,7 @@ namespace Specs.Integration
 {
     public class ProcessMultipageDocument
     {
-        [Specification]
+        [Specification(Skip = "Integration")]
         public void CanProcessAMultipageDocument()
         {
             var request = default(BlitlineRequest);
@@ -34,7 +34,7 @@ namespace Specs.Integration
             "Then the s3 url should not be empty".Observation(() => Assert.NotEmpty(response.Results.Images.First().S3Url));
         }
 
-        [Specification]
+        [Specification(Skip = "Integration")]
         public void CanProcessAMultipageDocumentWithSpecificPages()
         {
             var request = default(BlitlineRequest);
