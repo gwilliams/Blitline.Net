@@ -31,7 +31,20 @@ namespace Blitline.Net.Request
         public void Validate()
         {
             if(string.IsNullOrEmpty(ImageIdentifier)) throw new ArgumentNullException("ImageIdentifier", "Image identifier is required");
-            if (S3Destination != null && AzureDestination != null) throw new NotSupportedException("Cannot set both S3Destination and AzureDestination");
+
+            if(GetCurrentSaveDestinationCounts() > 1) throw new NotSupportedException("Only one save destination is currently supported");
+
+        }
+
+        private int GetCurrentSaveDestinationCounts()
+        {
+            var count = 0;
+
+            if (S3Destination != null) count++;
+            if (AzureDestination != null) count++;
+            if (FtpDestination != null) count++;
+
+            return count;
         }
     }
 }
