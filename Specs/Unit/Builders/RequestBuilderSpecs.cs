@@ -125,6 +125,40 @@ namespace Specs.Unit.Builders
         }
 
         [Specification]
+        public void CanBuildARequestWithAnFtpDestination()
+        {
+            BlitlineRequest request = default(BlitlineRequest);
+
+            "When I build a request".Context(() => request = BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                .Crop(c => c.WithDimensions(1, 2, 3, 4)
+                    .SaveAs(s => s.WithImageIdentifier("image")
+                    .WithExtension(Extension.PNG)
+                    .WithQuality(10)
+                    .ToFtp(f => f.WithServer("ftp://ftp.foo.com")
+                        .WithUser("bob")
+                        .WithPassword("smith")
+                        .WithFileName("bar.gif")
+                        .WithDirectory("/images"))
+                        )
+                    )
+                ));
+
+            "Then the save contains an ftp destination".Observation(() => Assert.NotNull(request.Functions.First().Save.FtpDestination));
+
+            "And the ftp server is ftp://ftp.foo.com".Observation(() => Assert.Equal("ftp://ftp.foo.com", request.Functions.First().Save.FtpDestination.Server));
+
+            "And the ftp user is bob".Observation(() => Assert.Equal("bob", request.Functions.First().Save.FtpDestination.User));
+
+            "And the ftp password is smith".Observation(() => Assert.Equal("smith", request.Functions.First().Save.FtpDestination.Password));
+
+            "And the ftp filename is bar.gif".Observation(() => Assert.Equal("bar.gif", request.Functions.First().Save.FtpDestination.FileName));
+
+            "And the ftp directory is /images".Observation(() => Assert.Equal("/images", request.Functions.First().Save.FtpDestination.Directory));
+        }
+        
+        [Specification]
         public void CanBuildAMultipageRequest()
         {
             BlitlineRequest request = default(BlitlineRequest);
