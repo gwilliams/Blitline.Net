@@ -13,6 +13,8 @@ namespace Blitline.Net.Request
         public S3Destination S3Destination { get; set; }
         [JsonProperty("azure_destination")]
         public AzureDestination AzureDestination { get; set; }
+        [JsonProperty("ftp_destination")]
+        public FtpDestination FtpDestination { get; set; }
         [JsonProperty("extension")]
         [JsonConverter(typeof(ExtensionConverter))]
         public Extension Extension { get; set; }
@@ -29,7 +31,20 @@ namespace Blitline.Net.Request
         public void Validate()
         {
             if(string.IsNullOrEmpty(ImageIdentifier)) throw new ArgumentNullException("ImageIdentifier", "Image identifier is required");
-            if (S3Destination != null && AzureDestination != null) throw new NotSupportedException("Cannot set both S3Destinatio and AzureDestination");
+
+            if(GetCurrentSaveDestinationCounts() > 1) throw new NotSupportedException("Only one save destination is currently supported");
+
+        }
+
+        private int GetCurrentSaveDestinationCounts()
+        {
+            var count = 0;
+
+            if (S3Destination != null) count++;
+            if (AzureDestination != null) count++;
+            if (FtpDestination != null) count++;
+
+            return count;
         }
     }
 }

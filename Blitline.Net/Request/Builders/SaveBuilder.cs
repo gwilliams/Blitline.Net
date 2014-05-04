@@ -47,6 +47,14 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
+        public SaveBuilder ToFtp(Action<FtpDestinationBuilder> build)
+        {
+            var ftpDestinationBuilder = new FtpDestinationBuilder();
+            build(ftpDestinationBuilder);
+            _save.FtpDestination = ftpDestinationBuilder.Build();
+            return this;
+        }
+
         public SaveBuilder WithInterlaceType(InterlaceType interlaceType)
         {
             _save.Interlace = interlaceType.ToString();

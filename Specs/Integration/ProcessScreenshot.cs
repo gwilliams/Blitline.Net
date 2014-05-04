@@ -10,7 +10,7 @@ namespace Specs.Integration
 {
     public class ProcessScreenshot
     {
-        [Specification]
+        [Specification(Skip = "Integration")]
         public void CanProcessAScreenShot()
         {
             var request = default(BlitlineRequest);

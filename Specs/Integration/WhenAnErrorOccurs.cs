@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Blitline.Net;
+﻿using Blitline.Net;
 using Blitline.Net.Functions;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
@@ -14,7 +13,7 @@ namespace Specs.Integration
 		BlitlineResponse _response = default(BlitlineResponse);
 		BlitlineRequest _request = default(BlitlineRequest);
 
-		[Specification]
+        [Specification(Skip = "Integration")]
 		public void ShouldGenerateAnError()
 		{
 			"Give I have an incomplete request".Context(() =>

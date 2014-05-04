@@ -10,7 +10,7 @@ namespace Specs.Integration
 {
     public class SavingToS3
     {
-        [Specification]
+        [Specification(Skip = "Integration")]
         public void CanSaveToS3Bucket()
         {
             var request = default(BlitlineRequest);
@@ -38,7 +38,7 @@ namespace Specs.Integration
             "And the s3 url should contain the bucket name".Observation(() => Assert.Contains(bucketName, response.Results.Images.First().S3Url));
         }
 
-        [Specification]
+        [Specification(Skip = "Integration")]
         public void CanSaveToS3BucketAndFixUrl()
         {
             var request = default(BlitlineRequest);

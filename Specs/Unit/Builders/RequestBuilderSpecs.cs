@@ -125,6 +125,65 @@ namespace Specs.Unit.Builders
         }
 
         [Specification]
+        public void CanBuildARequestWithAnAzureDestination()
+        {
+            BlitlineRequest request = default(BlitlineRequest);
+
+            "When I build a request".Context(() => request = BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                .Crop(c => c.WithDimensions(1, 2, 3, 4)
+                    .SaveAs(s => s.WithImageIdentifier("image")
+                    .WithExtension(Extension.PNG)
+                    .WithQuality(10)
+                    .ToAzure(f => f.WithAccountName("azureaccount")
+                        .WithSharedAccessSignature("sharedaccesssignature")
+                        )
+                    )
+                )));
+
+            "Then save contains an azure destination".Observation(() => Assert.NotNull(request.Functions.First().Save.AzureDestination));
+
+            "And the account name should be azureaccount".Observation(() => Assert.Equal("azureaccount", request.Functions.First().Save.AzureDestination.AccountName));
+
+            "And the shared access signature should be sharedaccesssignature".Observation(() => Assert.Equal("sharedaccesssignature", request.Functions.First().Save.AzureDestination.SharedAccessSignature));
+        }
+
+        [Specification]
+        public void CanBuildARequestWithAnFtpDestination()
+        {
+            BlitlineRequest request = default(BlitlineRequest);
+
+            "When I build a request".Context(() => request = BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                .Crop(c => c.WithDimensions(1, 2, 3, 4)
+                    .SaveAs(s => s.WithImageIdentifier("image")
+                    .WithExtension(Extension.PNG)
+                    .WithQuality(10)
+                    .ToFtp(f => f.WithServer("ftp://ftp.foo.com")
+                        .WithUser("bob")
+                        .WithPassword("smith")
+                        .WithFileName("bar.gif")
+                        .WithDirectory("/images"))
+                        )
+                    )
+                ));
+
+            "Then the save contains an ftp destination".Observation(() => Assert.NotNull(request.Functions.First().Save.FtpDestination));
+
+            "And the ftp server is ftp://ftp.foo.com".Observation(() => Assert.Equal("ftp://ftp.foo.com", request.Functions.First().Save.FtpDestination.Server));
+
+            "And the ftp user is bob".Observation(() => Assert.Equal("bob", request.Functions.First().Save.FtpDestination.User));
+
+            "And the ftp password is smith".Observation(() => Assert.Equal("smith", request.Functions.First().Save.FtpDestination.Password));
+
+            "And the ftp filename is bar.gif".Observation(() => Assert.Equal("bar.gif", request.Functions.First().Save.FtpDestination.FileName));
+
+            "And the ftp directory is /images".Observation(() => Assert.Equal("/images", request.Functions.First().Save.FtpDestination.Directory));
+        }
+        
+        [Specification]
         public void CanBuildAMultipageRequest()
         {
             BlitlineRequest request = default(BlitlineRequest);
@@ -190,6 +249,89 @@ namespace Specs.Unit.Builders
                                                                         .WithHeaders(new Dictionary<string, string> { { "2", "bar" } }))))));
 
             "Then source type is null".Observation(() => Assert.Null(request.SourceType));
+        }
+
+        [Fact]
+        public void CannotBuildARequestWithS3AndAzureSaveDestinations()
+        {
+            Assert.Throws<NotSupportedException>(() => BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                .Crop(f => f.WithDimensions(1, 2, 3, 4)
+                .SaveAs(s => s.WithImageIdentifier("image")
+                    .WithExtension(Extension.PNG)
+                    .WithQuality(10)
+                    .ToS3(s3 => s3.ToBucket("Bucket")
+                        .WithKey("Key")
+                        .WithHeader("1", "foo")
+                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } }))
+                    .ToAzure(a => a
+                        .WithAccountName("azureAccount")
+                        .WithSharedAccessSignature("sharedkey"))))));
+        }
+
+        [Fact]
+        public void CannotBuildARequestWithS3AndFtpSaveDestinations()
+        {
+            Assert.Throws<NotSupportedException>(() => BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                .Crop(f => f.WithDimensions(1, 2, 3, 4)
+                .SaveAs(s => s.WithImageIdentifier("image")
+                    .WithExtension(Extension.PNG)
+                    .WithQuality(10)
+                    .ToS3(s3 => s3.ToBucket("Bucket")
+                        .WithKey("Key")
+                        .WithHeader("1", "foo")
+                        .WithHeaders(new Dictionary<string, string> { { "2", "bar" } }))
+                    .ToFtp(a => a
+                        .WithDirectory("directory")
+                        .WithFileName("filename")
+                        .WithPassword("password")
+                        .WithServer("server")
+                        .WithUser("user"))))));
+        }
+
+        [Fact]
+        public void CannotBuildARequestWithAzureAndFtpSaveDestinations()
+        {
+            Assert.Throws<NotSupportedException>(() => BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                .Crop(f => f.WithDimensions(1, 2, 3, 4)
+                .SaveAs(s => s.WithImageIdentifier("image")
+                    .WithExtension(Extension.PNG)
+                    .WithQuality(10)
+                    .ToAzure(a => a
+                        .WithAccountName("azureAccount")
+                        .WithSharedAccessSignature("sharedkey"))
+                    .ToFtp(a => a
+                        .WithDirectory("directory")
+                        .WithFileName("filename")
+                        .WithPassword("password")
+                        .WithServer("server")
+                        .WithUser("user"))))));
+        }
+
+        [Fact]
+        public void CannotBuildARequestWithoutASaveImageIdentifier()
+        {
+            Assert.Throws<ArgumentNullException>(() => BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                .Crop(f => f.WithDimensions(1, 2, 3, 4)
+                .SaveAs(s => s
+                    .WithExtension(Extension.PNG)
+                    .WithQuality(10)
+                    .ToAzure(a => a
+                        .WithAccountName("azureAccount")
+                        .WithSharedAccessSignature("sharedkey"))
+                    .ToFtp(a => a
+                        .WithDirectory("directory")
+                        .WithFileName("filename")
+                        .WithPassword("password")
+                        .WithServer("server")
+                        .WithUser("user"))))));
         }
     }
 }

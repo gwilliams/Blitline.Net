@@ -12,7 +12,7 @@ namespace Specs.Integration
 {
 	public class ProcessScaleFunction
 	{
-		[Specification]
+        [Specification(Skip = "Integration")]
 		public void CanProcessAScaleFunctionWithJustScaleFactor()
 		{
 			var request = default(BlitlineRequest);
@@ -37,7 +37,7 @@ namespace Specs.Integration
 			"Then the s3 url should not be empty".Observation(() => Assert.NotEmpty(response.Results.Images.First().S3Url));
 		}
 
-		[Specification]
+        [Specification(Skip = "Integration")]
 		public void CanProcessAScaleFunctionWithJustHeightAndWidth()
 		{
 			var request = default(BlitlineRequest);
