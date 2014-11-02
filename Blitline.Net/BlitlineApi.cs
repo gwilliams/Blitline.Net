@@ -4,6 +4,7 @@ using System.Net.Http;
 using Blitline.Net.Request;
 using Blitline.Net.Response;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace Blitline.Net
 {
@@ -13,35 +14,35 @@ namespace Blitline.Net
         
         public BlitlineResponse ProcessImages(BlitlineRequest blitlineRequest)
         {
-            var payload = JsonConvert.SerializeObject(blitlineRequest);
-            
-            using (var client = new HttpClient())
-            {
-                var result = client.PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string>{{"json", payload}}));
-                var o = result.Result.Content.ReadAsStringAsync().Result;
-                var response = JsonConvert.DeserializeObject<BlitlineResponse>(o);
-
-                var correctS3BucketList = FixS3Urls(new[]{blitlineRequest});
-                if (correctS3BucketList.Any()) response.FixS3Urls(correctS3BucketList);
-
-                return response;
-            }
+            return ProcessImagesAsync(new[]{blitlineRequest}).Result;
         }
 
         public BlitlineBatchResponse ProcessImages(IEnumerable<BlitlineRequest> blitlineRequests)
+        {
+            return ProcessImagesAsync(blitlineRequests).Result;
+        }
+
+        public async Task<BlitlineResponse> ProcessImagesAsync(BlitlineRequest blitlineRequest)
+        {
+            var r = await ProcessImagesAsync(new[] {blitlineRequest});
+            return (BlitlineResponse) r;
+        }
+
+        public async Task<BlitlineBatchResponse> ProcessImagesAsync(IEnumerable<BlitlineRequest> blitlineRequests)
         {
             var payload = JsonConvert.SerializeObject(blitlineRequests.ToArray());
 
             using (var client = new HttpClient())
             {
-                var result = client.PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
-                var o = result.Result.Content.ReadAsStringAsync().Result;
-                var response = JsonConvert.DeserializeObject<BlitlineBatchResponse>(o);
+                HttpResponseMessage result = await client.PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
+                var o = result.Content.ReadAsStringAsync().Result;
+
+                var response = await JsonConvert.DeserializeObjectAsync<BlitlineBatchResponse>(o);
 
                 var correctS3BucketList = FixS3Urls(blitlineRequests);
-                if(correctS3BucketList.Any()) response.FixS3Urls(correctS3BucketList);
-                
-                return response;
+                if (correctS3BucketList.Any()) response.FixS3Urls(correctS3BucketList);
+
+                return response;    
             }
         }
 

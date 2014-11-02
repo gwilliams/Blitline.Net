@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Blitline.Net.Response;
+using System.Threading.Tasks;
 
 namespace Blitline.Net.Request
 {
@@ -7,14 +8,26 @@ namespace Blitline.Net.Request
     {
         public static BlitlineResponse Send(this BlitlineRequest request)
         {
-            var api = new BlitlineApi();
-            return api.ProcessImages(request);
+            return request.SendAsync().Result;
         }
 
         public static BlitlineBatchResponse Send(this IEnumerable<BlitlineRequest> requests)
         {
+            return requests.SendAsync().Result;
+        }
+
+        public static async Task<BlitlineResponse> SendAsync(this BlitlineRequest request)
+        {
             var api = new BlitlineApi();
-            return api.ProcessImages(requests);
+            var response = await api.ProcessImagesAsync(request);
+            return response;
+        }
+        
+        public static async Task<BlitlineBatchResponse> SendAsync(this IEnumerable<BlitlineRequest> requests)
+        {
+            var api = new BlitlineApi();
+            var response = await api.ProcessImagesAsync(requests);
+            return response;
         }
     }
 }

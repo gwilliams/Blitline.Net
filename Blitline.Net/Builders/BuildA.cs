@@ -12,5 +12,6 @@ namespace Blitline.Net.Builders
 			action(requestBuilder);
 			return requestBuilder.Build();
 		}
+
     }
 }
