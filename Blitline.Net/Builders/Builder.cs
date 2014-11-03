@@ -42,6 +42,30 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> AutoEnhance(Action<AutoEnhanceFunctionBuilder> build)
+        {
+            AddFunction<AutoEnhanceFunctionBuilder, AutoEnhanceFunction>(build);
+            return this;
+        }
+
+        public Builder<T> AutoGamma(Action<AutoGammaFunctionBuilder> build)
+        {
+            AddFunction<AutoGammaFunctionBuilder, AutoGammaFunction>(build);
+            return this;
+        }
+
+        public Builder<T> AutoLevel(Action<AutoLevelFunctionBuilder> build)
+        {
+            AddFunction<AutoLevelFunctionBuilder, AutoLevelFunction>(build);
+            return this;
+        }
+
+        public Builder<T> BackgroundColor(Action<BackgroundColorFunctionBuilder> build)
+        {
+            AddFunction<BackgroundColorFunctionBuilder, BackgroundColorFunction>(build);
+            return this;
+        }
+
 		public Builder<T> Blur(Action<BlurFunctionBuilder> build)
 		{
 			AddFunction<BlurFunctionBuilder, BlurFunction>(build);

@@ -10,10 +10,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Specs</RootNamespace>
     <AssemblyName>Specs</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,6 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>169</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -82,6 +85,9 @@
     <Compile Include="Unit\BlitlineResponseSpecs.cs" />
     <Compile Include="Unit\Builders\AnnotateFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\AppendFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\AutoEnhanceFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\AutoGammaFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\AutoLevelFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\BlurFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\CanBuildDefaultFunctionBase.cs" />
     <Compile Include="Unit\Builders\CompositeFunctionBuilderSpecs.cs" />

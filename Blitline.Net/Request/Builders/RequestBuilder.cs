@@ -96,5 +96,7 @@ namespace Blitline.Net.Request.Builders
             o.Validate();
             return o;
         }
-	}
+
+        
+    }
 }
