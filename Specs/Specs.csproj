@@ -94,6 +94,7 @@
     <Compile Include="Unit\Builders\ContrastFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ContrastStrecthChannelFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\CropFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\CropToSquareFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\DeskewFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\EqualizeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />

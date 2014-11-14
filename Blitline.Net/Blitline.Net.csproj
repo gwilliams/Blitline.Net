@@ -72,6 +72,7 @@
     <Compile Include="Functions\Builders\ContrastFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ContrastStretchChannelFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\CropFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\CropToSquareFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\DeskewFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\FunctionBuilder.cs" />
     <Compile Include="Functions\AnnotateFunction.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Functions\CompositeFunction.cs" />
     <Compile Include="Functions\ContrastFunction.cs" />
     <Compile Include="Functions\ContrastStretchChannelFunction.cs" />
+    <Compile Include="Functions\CropToSquareFunction.cs" />
     <Compile Include="Functions\DeskewFunction.cs" />
     <Compile Include="Functions\EqualizeFunction.cs" />
     <Compile Include="Functions\GammaChannelFunction.cs" />

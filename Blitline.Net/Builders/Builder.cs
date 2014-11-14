@@ -96,6 +96,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> CropToSquare(Action<CropToSquareFunctionBuilder> build)
+        {
+            AddFunction<CropToSquareFunctionBuilder, CropToSquareFunction>(build);
+            return this;
+        }
+
 		public Builder<T> Deskew(Action<DeskewFunctionBuilder> build)
 		{
 			AddFunction<DeskewFunctionBuilder, DeskewFunction>(build);
