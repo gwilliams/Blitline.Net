@@ -84,6 +84,7 @@
     <Compile Include="Functions\BlurFunction.cs" />
     <Compile Include="Functions\Builders\EqualizeFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\GammaChannelFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\GrayColorspaceFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\MedianFilterFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ModulateFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\NoOpFunctionBuilder.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Functions\EnhanceFunction.cs" />
     <Compile Include="Functions\EqualizeFunction.cs" />
     <Compile Include="Functions\GammaChannelFunction.cs" />
+    <Compile Include="Functions\GrayColorspaceFunction.cs" />
     <Compile Include="Functions\MedianFilterFunction.cs" />
     <Compile Include="Functions\ModulateFunction.cs" />
     <Compile Include="Functions\NoOpFunction.cs" />

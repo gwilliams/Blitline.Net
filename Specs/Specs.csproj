@@ -102,6 +102,7 @@
     <Compile Include="Unit\Builders\EnhanceFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\EqualizeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\GrayColorspaceFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />

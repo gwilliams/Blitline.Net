@@ -144,6 +144,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> GrayColorspace(Action<GrayColorspaceFunctionBuilder> build)
+        {
+            AddFunction<GrayColorspaceFunctionBuilder, GrayColorspaceFunction>(build);
+            return this;
+        }
+
 		public Builder<T> MedianFilter(Action<MedianFilterFunctionBuilder> build)
 		{
 			AddFunction<MedianFilterFunctionBuilder, MedianFilterFunction>(build);
