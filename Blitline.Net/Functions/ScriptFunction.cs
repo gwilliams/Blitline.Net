@@ -1,4 +1,4 @@
-using Blitline.Net.ParamOptions;
+using System;
 
 namespace Blitline.Net.Functions
 {
@@ -13,10 +13,18 @@ namespace Blitline.Net.Functions
         }
 
         /// <summary>
-        /// Bash string that will execute on the server
+        /// String representation of a bash file that will execute on the server (requires NO 'executable' or 'files)
         /// </summary>
         public string BashString { get; set; }
+
+        /// <summary>
+        /// Extra files to download before the script is run (requires 'executable')
+        /// </summary>
         public string Files { get; set; }
+
+        /// <summary>
+        /// Command line to run script (requires 'files')
+        /// </summary>
         public string Executable { get; set; }
 
         public override object Params 
