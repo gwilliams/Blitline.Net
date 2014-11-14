@@ -228,6 +228,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> Script(Action<ScriptFunctionBuilder> build)
+        {
+            AddFunction<ScriptFunctionBuilder, ScriptFunction>(build);
+            return this;
+        }
+
 		public Builder<T> SepiaTone(Action<SepiaToneFunctionBuilder> build)
 		{
 			AddFunction<SepiaToneFunctionBuilder, SepiaToneFunction>(build);

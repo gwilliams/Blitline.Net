@@ -1,6 +1,6 @@
 namespace Blitline.Net.Functions.Builders
 {
-    public class ScriptFunctionBuilder : FunctionBuilder<ScaleFunction>
+    public class ScriptFunctionBuilder : FunctionBuilder<ScriptFunction>
     {
         public ScriptFunctionBuilder WithBashString(string bashString)
         {

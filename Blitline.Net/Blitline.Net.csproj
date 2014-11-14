@@ -98,6 +98,7 @@
     <Compile Include="Functions\Builders\ResizeToFitFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\RotateFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ScaleFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\ScriptFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\SepiaToneFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\SharpenFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\SketchFunctionBuilder.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Functions\ResizeToFillFunction.cs" />
     <Compile Include="Functions\RotateFunction.cs" />
     <Compile Include="Functions\ScaleFunction.cs" />
+    <Compile Include="Functions\ScriptFunction.cs" />
     <Compile Include="Functions\SepiaToneFunction.cs" />
     <Compile Include="Functions\SharpenFunction.cs" />
     <Compile Include="Functions\SketchFunction.cs" />
