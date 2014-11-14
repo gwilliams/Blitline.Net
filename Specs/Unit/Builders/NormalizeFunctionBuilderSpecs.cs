@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Specs.Unit.Builders
 {
-    public class NoOpFunctionBuilderSpecs : CanBuildDefaultFunctionBase<NoOpFunctionBuilder, NoOpFunction>
+    public class NormalizeFunctionBuilderSpecs : CanBuildDefaultFunctionBase<NormalizeFunctionBuilder, NormalizeFunction>
     {
         protected override void AssertParams(dynamic t, dynamic p)
         {
@@ -13,7 +13,7 @@ namespace Specs.Unit.Builders
 
         protected override string Name
         {
-            get { return "no_op"; }
+            get { return "normalize"; }
         }
     }
 }

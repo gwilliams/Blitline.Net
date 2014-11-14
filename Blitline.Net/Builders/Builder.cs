@@ -156,6 +156,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> Normalize(Action<NormalizeFunctionBuilder> build)
+        {
+            AddFunction<NormalizeFunctionBuilder, NormalizeFunction>(build);
+            return this;
+        }
+
 	    public Builder<T> PadResizeToFit(Action<PadResizeToFitFunctionBuilder> build)
 		{
 			AddFunction<PadResizeToFitFunctionBuilder, PadResizeToFitFunction>(build);

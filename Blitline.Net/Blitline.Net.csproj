@@ -86,6 +86,7 @@
     <Compile Include="Functions\Builders\MedianFilterFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ModulateFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\NoOpFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\NormalizeFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\PadResizeToFitFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\PhotographFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\QuantizeFunctionBuilder.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Functions\MedianFilterFunction.cs" />
     <Compile Include="Functions\ModulateFunction.cs" />
     <Compile Include="Functions\NoOpFunction.cs" />
+    <Compile Include="Functions\NormalizeFunction.cs" />
     <Compile Include="Functions\PadResizeToFitFunction.cs" />
     <Compile Include="Functions\PhotographFunction.cs" />
     <Compile Include="Functions\QuantizeFunction.cs" />

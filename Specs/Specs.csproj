@@ -104,6 +104,7 @@
     <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\NormalizeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\PadResizeToFitFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\PhotographFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\QuantizeFunctionBuilderSpecs.cs" />
