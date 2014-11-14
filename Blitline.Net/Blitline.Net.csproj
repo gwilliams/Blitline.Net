@@ -77,6 +77,7 @@
     <Compile Include="Functions\Builders\DensityFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\DeskewFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\DespeckleFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\EnhanceFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\FunctionBuilder.cs" />
     <Compile Include="Functions\AnnotateFunction.cs" />
     <Compile Include="Functions\AppendFunction.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Functions\DensityFunction.cs" />
     <Compile Include="Functions\DeskewFunction.cs" />
     <Compile Include="Functions\DespeckleFunction.cs" />
+    <Compile Include="Functions\EnhanceFunction.cs" />
     <Compile Include="Functions\EqualizeFunction.cs" />
     <Compile Include="Functions\GammaChannelFunction.cs" />
     <Compile Include="Functions\MedianFilterFunction.cs" />

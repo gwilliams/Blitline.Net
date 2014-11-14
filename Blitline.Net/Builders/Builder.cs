@@ -132,6 +132,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> Enhance(Action<EnhanceFunctionBuilder> build)
+        {
+            AddFunction<EnhanceFunctionBuilder, EnhanceFunction>(build);
+            return this;
+        }
+
 	    public Builder<T> GammaChannel(Action<GammaChannelFunctionBuilder> build)
 		{
 			AddFunction<GammaChannelFunctionBuilder, GammaChannelFunction>(build);

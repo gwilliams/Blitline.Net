@@ -99,6 +99,7 @@
     <Compile Include="Unit\Builders\DensitypFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\DeskewFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\DespeckleunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\EnhanceFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\EqualizeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
