@@ -13,7 +13,7 @@ namespace Specs.Unit.Builders
 
         protected override string Name
         {
-            get { return "GrayColorspace"; }
+            get { return "gray_colorspace"; }
         }
     }
 }
