@@ -85,15 +85,19 @@
     <Compile Include="Unit\BlitlineResponseSpecs.cs" />
     <Compile Include="Unit\Builders\AnnotateFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\AppendFunctionBuilderSpecs.cs" />
+<<<<<<< HEAD
     <Compile Include="Unit\Builders\AutoEnhanceFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\AutoGammaFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\AutoLevelFunctionBuilderSpecs.cs" />
+=======
+>>>>>>> origin/master
     <Compile Include="Unit\Builders\BlurFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\CanBuildDefaultFunctionBase.cs" />
     <Compile Include="Unit\Builders\CompositeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ContrastFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ContrastStrecthChannelFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\CropFunctionBuilderSpecs.cs" />
+<<<<<<< HEAD
     <Compile Include="Unit\Builders\CropToSquareFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\DeleteProfileFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\DensitypFunctionBuilderSpecs.cs" />
@@ -107,6 +111,14 @@
     <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\NormalizeFunctionBuilderSpecs.cs" />
+=======
+    <Compile Include="Unit\Builders\DeskewFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\EqualizeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />
+>>>>>>> origin/master
     <Compile Include="Unit\Builders\PadResizeToFitFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\PhotographFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\QuantizeFunctionBuilderSpecs.cs" />
