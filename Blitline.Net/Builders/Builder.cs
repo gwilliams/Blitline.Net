@@ -102,6 +102,12 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> DeleteProfile(Action<DeleteProfileFunctionBuilder> build)
+        {
+            AddFunction<DeleteProfileFunctionBuilder, DeleteProfileFunction>(build);
+            return this;
+        }
+
 		public Builder<T> Deskew(Action<DeskewFunctionBuilder> build)
 		{
 			AddFunction<DeskewFunctionBuilder, DeskewFunction>(build);
