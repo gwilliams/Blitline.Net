@@ -26,7 +26,7 @@ namespace Specs.Unit.Builders
                 {
                     var p = request.Functions[0].Params;
                     var t = p.GetType();
-                    Assert.Equal(300, t.GetProperty("density").GetValue(p, null));
+                    Assert.Equal(300, t.GetProperty("dpi").GetValue(p, null));
                 });
         }
     }

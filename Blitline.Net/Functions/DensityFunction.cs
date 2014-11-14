@@ -14,7 +14,7 @@ namespace Blitline.Net.Functions
 
         public override dynamic Params
         {
-            get { throw new NotImplementedException(); }
+            get { return new {dpi = Dpi}; }
         }
 
         /// <summary>

@@ -107,6 +107,12 @@ namespace Blitline.Net.Builders
             AddFunction<DeleteProfileFunctionBuilder, DeleteProfileFunction>(build);
             return this;
         }
+        
+		public Builder<T> Deskew(Action<DeskewFunctionBuilder> build)
+		{
+			AddFunction<DeskewFunctionBuilder, DeskewFunction>(build);
+			return this;
+		}
 
         public Builder<T> Density(Action<DensityFunctionBuilder> build)
         {
@@ -119,12 +125,6 @@ namespace Blitline.Net.Builders
             AddFunction<DespeckleFunctionBuilder, DespeckleFunction>(build);
             return this;
         }
-
-		public Builder<T> Deskew(Action<DeskewFunctionBuilder> build)
-		{
-			AddFunction<DeskewFunctionBuilder, DeskewFunction>(build);
-			return this;
-		}
 
 		public Builder<T> Equalize(Action<EqualizeFunctionBuilder> build)
 		{
