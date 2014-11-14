@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -85,28 +85,18 @@
     <Compile Include="Unit\BlitlineResponseSpecs.cs" />
     <Compile Include="Unit\Builders\AnnotateFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\AppendFunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\AutoEnhanceFunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\AutoGammaFunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\AutoLevelFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\BlurFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\CanBuildDefaultFunctionBase.cs" />
     <Compile Include="Unit\Builders\CompositeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ContrastFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ContrastStrecthChannelFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\CropFunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\CropToSquareFunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\DeleteProfileFunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\DensitypFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\DeskewFunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\DespeckleunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\EnhanceFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\EqualizeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\GrayColorspaceFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />
-    <Compile Include="Unit\Builders\NormalizeFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\PadResizeToFitFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\PhotographFunctionBuilderSpecs.cs" />
     <Compile Include="Unit\Builders\QuantizeFunctionBuilderSpecs.cs" />
