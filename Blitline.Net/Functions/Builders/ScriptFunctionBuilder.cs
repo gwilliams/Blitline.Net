@@ -7,5 +7,17 @@ namespace Blitline.Net.Functions.Builders
             BuildImp.BashString = bashString;
             return this;
         }
+
+        public ScriptFunctionBuilder WithFiles(string files)
+        {
+            BuildImp.Files = files;
+            return this;
+        }
+
+        public ScriptFunctionBuilder WithExecutable(string executable)
+        {
+            BuildImp.Executable = executable;
+            return this;
+        }
     }
 }
