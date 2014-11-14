@@ -126,6 +126,12 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+        public Builder<T> Ellipse(Action<EllipseFunctionBuilder> build)
+        {
+            AddFunction<EllipseFunctionBuilder, EllipseFunction>(build);
+            return this;
+        }
+
 		public Builder<T> Equalize(Action<EqualizeFunctionBuilder> build)
 		{
 			AddFunction<EqualizeFunctionBuilder, EqualizeFunction>(build);
