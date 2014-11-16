@@ -15,7 +15,14 @@ namespace Blitline.Net.Functions
 		{
 			get 
 			{
-				return new {};
+				return new 
+				{
+					x = X,
+					y = Y,
+					width = Width,
+					height = Height,
+					amount = Amount
+				};
 			}
 		}
 
