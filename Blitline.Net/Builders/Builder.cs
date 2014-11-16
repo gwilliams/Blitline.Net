@@ -276,6 +276,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+		public Builder<T> Stegano(Action<SteganoFunctionBuilder> build)
+		{
+			AddFunction<SteganoFunctionBuilder, SteganoFunction>(build);
+			return this;
+		}
+
 	    public Builder<T> Trim(Action<TrimFunctionBuilder> build)
 		{
 			AddFunction<TrimFunctionBuilder, TrimFunction>(build);

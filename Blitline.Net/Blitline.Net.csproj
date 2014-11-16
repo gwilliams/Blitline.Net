@@ -175,6 +175,8 @@
     <Compile Include="Functions\Builders\PixelateFunctionBuilder.cs" />
     <Compile Include="Functions\ResampleFunction.cs" />
     <Compile Include="Functions\Builders\ResampleFunctionBuilder.cs" />
+    <Compile Include="Functions\SteganoFunction.cs" />
+    <Compile Include="Functions\Builders\SteganoFunctionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
