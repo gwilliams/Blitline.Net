@@ -2,6 +2,7 @@
 
 namespace Blitline.Net.Functions.Builders
 {
+
     public class ResizeFunctionBuilder : FunctionBuilder<ResizeFunction>
     {
         public ResizeFunctionBuilder WithWidth(int width)

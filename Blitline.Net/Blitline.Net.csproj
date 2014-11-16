@@ -173,6 +173,8 @@
     <Compile Include="Functions\Builders\LineFunctionBuilder.cs" />
     <Compile Include="Functions\PixelateFunction.cs" />
     <Compile Include="Functions\Builders\PixelateFunctionBuilder.cs" />
+    <Compile Include="Functions\ResampleFunction.cs" />
+    <Compile Include="Functions\Builders\ResampleFunctionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
