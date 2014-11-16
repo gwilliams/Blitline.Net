@@ -42,6 +42,30 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> AutoEnhance(Action<AutoEnhanceFunctionBuilder> build)
+        {
+            AddFunction<AutoEnhanceFunctionBuilder, AutoEnhanceFunction>(build);
+            return this;
+        }
+
+        public Builder<T> AutoGamma(Action<AutoGammaFunctionBuilder> build)
+        {
+            AddFunction<AutoGammaFunctionBuilder, AutoGammaFunction>(build);
+            return this;
+        }
+
+        public Builder<T> AutoLevel(Action<AutoLevelFunctionBuilder> build)
+        {
+            AddFunction<AutoLevelFunctionBuilder, AutoLevelFunction>(build);
+            return this;
+        }
+
+        public Builder<T> BackgroundColor(Action<BackgroundColorFunctionBuilder> build)
+        {
+            AddFunction<BackgroundColorFunctionBuilder, BackgroundColorFunction>(build);
+            return this;
+        }
+
 		public Builder<T> Blur(Action<BlurFunctionBuilder> build)
 		{
 			AddFunction<BlurFunctionBuilder, BlurFunction>(build);
@@ -72,11 +96,41 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> CropToSquare(Action<CropToSquareFunctionBuilder> build)
+        {
+            AddFunction<CropToSquareFunctionBuilder, CropToSquareFunction>(build);
+            return this;
+        }
+
+        public Builder<T> DeleteProfile(Action<DeleteProfileFunctionBuilder> build)
+        {
+            AddFunction<DeleteProfileFunctionBuilder, DeleteProfileFunction>(build);
+            return this;
+        }
+        
 		public Builder<T> Deskew(Action<DeskewFunctionBuilder> build)
 		{
 			AddFunction<DeskewFunctionBuilder, DeskewFunction>(build);
 			return this;
 		}
+
+        public Builder<T> Density(Action<DensityFunctionBuilder> build)
+        {
+            AddFunction<DensityFunctionBuilder, DensityFunction>(build);
+            return this;
+        }
+
+        public Builder<T> Despeckle(Action<DespeckleFunctionBuilder> build)
+        {
+            AddFunction<DespeckleFunctionBuilder, DespeckleFunction>(build);
+            return this;
+        }
+
+        public Builder<T> Ellipse(Action<EllipseFunctionBuilder> build)
+        {
+            AddFunction<EllipseFunctionBuilder, EllipseFunction>(build);
+            return this;
+        }
 
 		public Builder<T> Equalize(Action<EqualizeFunctionBuilder> build)
 		{
@@ -84,9 +138,33 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> Enhance(Action<EnhanceFunctionBuilder> build)
+        {
+            AddFunction<EnhanceFunctionBuilder, EnhanceFunction>(build);
+            return this;
+        }
+
 	    public Builder<T> GammaChannel(Action<GammaChannelFunctionBuilder> build)
 		{
 			AddFunction<GammaChannelFunctionBuilder, GammaChannelFunction>(build);
+			return this;
+		}
+
+        public Builder<T> GrayColorspace(Action<GrayColorspaceFunctionBuilder> build)
+        {
+            AddFunction<GrayColorspaceFunctionBuilder, GrayColorspaceFunction>(build);
+            return this;
+        }
+
+		public Builder<T> ImmagaSmartCrop(Action<ImaggaSmartCropFunctionBuilder> build)
+		{
+			AddFunction<ImaggaSmartCropFunctionBuilder, ImaggaSmartCropFunction>(build);
+			return this;
+		}
+
+		public Builder<T> Line(Action<LineFunctionBuilder> build)
+		{
+			AddFunction<LineFunctionBuilder, LineFunction>(build);
 			return this;
 		}
 
@@ -108,6 +186,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> Normalize(Action<NormalizeFunctionBuilder> build)
+        {
+            AddFunction<NormalizeFunctionBuilder, NormalizeFunction>(build);
+            return this;
+        }
+
 	    public Builder<T> PadResizeToFit(Action<PadResizeToFitFunctionBuilder> build)
 		{
 			AddFunction<PadResizeToFitFunctionBuilder, PadResizeToFitFunction>(build);
@@ -120,9 +204,27 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+		public Builder<T> Pixelate(Action<PixelateFunctionBuilder> build)
+		{
+			AddFunction<PixelateFunctionBuilder, PixelateFunction>(build);
+			return this;
+		}
+
 		public Builder<T> Quantize(Action<QuantizeFunctionBuilder> build)
 		{
 			AddFunction<QuantizeFunctionBuilder, QuantizeFunction>(build);
+			return this;
+		}
+
+		public Builder<T> Rectangle(Action<RectangleFunctionBuilder> build)
+		{
+			AddFunction<RectangleFunctionBuilder, RectangleFunction>(build);
+			return this;
+		}
+
+		public Builder<T> Resample(Action<ResampleFunctionBuilder> build)
+		{
+			AddFunction<ResampleFunctionBuilder, ResampleFunction>(build);
 			return this;
 		}
 
@@ -156,6 +258,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+        public Builder<T> Script(Action<ScriptFunctionBuilder> build)
+        {
+            AddFunction<ScriptFunctionBuilder, ScriptFunction>(build);
+            return this;
+        }
+
 		public Builder<T> SepiaTone(Action<SepiaToneFunctionBuilder> build)
 		{
 			AddFunction<SepiaToneFunctionBuilder, SepiaToneFunction>(build);
@@ -171,6 +279,12 @@ namespace Blitline.Net.Builders
 	    public Builder<T> Sketch(Action<SketchFunctionBuilder> build)
 		{
 			AddFunction<SketchFunctionBuilder, SketchFunction>(build);
+			return this;
+		}
+
+		public Builder<T> Stegano(Action<SteganoFunctionBuilder> build)
+		{
+			AddFunction<SteganoFunctionBuilder, SteganoFunction>(build);
 			return this;
 		}
 

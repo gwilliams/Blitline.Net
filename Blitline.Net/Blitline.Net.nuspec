@@ -2,13 +2,13 @@
 <package>
   <metadata>
     <id>Blitline.Net</id>
-    <version>0.5.0</version>
+    <version>0.6.0</version>
     <authors>Gareth Williams</authors>
     <owners>Gareth Williams</owners>
     <projectUrl>https://github.com/gwilliams/Blitline.Net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A .Net wrapper for the Blitline Image Processing API</description>
-	<releaseNotes>Added very basic async support</releaseNotes>
+	<releaseNotes>Added a bunch of missing functions</releaseNotes>
     <tags>Blitline</tags>
   </metadata>
 </package>

@@ -1,6 +1,8 @@
-﻿namespace Blitline.Net.Functions.Builders
+﻿using System;
+
+namespace Blitline.Net.Functions.Builders
 {
-    public class SketchFunctionBuilder : FunctionBuilder<SketchFunction>
+	public class SketchFunctionBuilder : FunctionBuilder<SketchFunction>
     {
         public SketchFunctionBuilder WithSigma(decimal sigma)
         {

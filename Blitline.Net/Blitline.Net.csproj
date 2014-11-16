@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5C68792D-01BC-4E32-90F0-F397A8E321C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -57,23 +55,39 @@
     <Compile Include="BlitlineApi.cs" />
     <Compile Include="Builders\BuildA.cs" />
     <Compile Include="Builders\Builder.cs" />
+    <Compile Include="Functions\AutoEnhanceFunction.cs" />
+    <Compile Include="Functions\AutoGammaFunction.cs" />
+    <Compile Include="Functions\AutoLevelFunction.cs" />
+    <Compile Include="Functions\BackgroundColorFunction.cs" />
     <Compile Include="Functions\Builders\AnnotateFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\AppendFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\AutoEnhanceFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\AutoGammaFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\AutoLevelFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\BackgroundColorFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\BlurFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\CompositeFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ContrastFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ContrastStretchChannelFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\CropFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\CropToSquareFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\DeleteProfileFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\DensityFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\DeskewFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\DespeckleFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\EllipseFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\EnhanceFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\FunctionBuilder.cs" />
     <Compile Include="Functions\AnnotateFunction.cs" />
     <Compile Include="Functions\AppendFunction.cs" />
     <Compile Include="Functions\BlurFunction.cs" />
     <Compile Include="Functions\Builders\EqualizeFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\GammaChannelFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\GrayColorspaceFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\MedianFilterFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ModulateFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\NoOpFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\NormalizeFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\PadResizeToFitFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\PhotographFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\QuantizeFunctionBuilder.cs" />
@@ -82,6 +96,7 @@
     <Compile Include="Functions\Builders\ResizeToFitFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\RotateFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\ScaleFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\ScriptFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\SepiaToneFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\SharpenFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\SketchFunctionBuilder.cs" />
@@ -89,15 +104,24 @@
     <Compile Include="Functions\Builders\UnsharpMaskFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\VignetteFunctionBuilder.cs" />
     <Compile Include="Functions\Builders\WatermarkFunctionBuilder.cs" />
+    <Compile Include="Functions\CaptionFunction.cs" />
     <Compile Include="Functions\CompositeFunction.cs" />
     <Compile Include="Functions\ContrastFunction.cs" />
     <Compile Include="Functions\ContrastStretchChannelFunction.cs" />
+    <Compile Include="Functions\CropToSquareFunction.cs" />
+    <Compile Include="Functions\DeleteProfileFunction.cs" />
+    <Compile Include="Functions\DensityFunction.cs" />
     <Compile Include="Functions\DeskewFunction.cs" />
+    <Compile Include="Functions\DespeckleFunction.cs" />
+    <Compile Include="Functions\EllipseFunction.cs" />
+    <Compile Include="Functions\EnhanceFunction.cs" />
     <Compile Include="Functions\EqualizeFunction.cs" />
     <Compile Include="Functions\GammaChannelFunction.cs" />
+    <Compile Include="Functions\GrayColorspaceFunction.cs" />
     <Compile Include="Functions\MedianFilterFunction.cs" />
     <Compile Include="Functions\ModulateFunction.cs" />
     <Compile Include="Functions\NoOpFunction.cs" />
+    <Compile Include="Functions\NormalizeFunction.cs" />
     <Compile Include="Functions\PadResizeToFitFunction.cs" />
     <Compile Include="Functions\PhotographFunction.cs" />
     <Compile Include="Functions\QuantizeFunction.cs" />
@@ -105,6 +129,7 @@
     <Compile Include="Functions\ResizeToFillFunction.cs" />
     <Compile Include="Functions\RotateFunction.cs" />
     <Compile Include="Functions\ScaleFunction.cs" />
+    <Compile Include="Functions\ScriptFunction.cs" />
     <Compile Include="Functions\SepiaToneFunction.cs" />
     <Compile Include="Functions\SharpenFunction.cs" />
     <Compile Include="Functions\SketchFunction.cs" />
@@ -141,6 +166,19 @@
     <Compile Include="Request\Builders\S3DestinationBuilder.cs" />
     <Compile Include="Request\Builders\SaveBuilder.cs" />
     <Compile Include="Builders\BuilderBase.cs" />
+    <Compile Include="Functions\ImaggaSmartCropFunction.cs" />
+    <Compile Include="Functions\Builders\ImaggaSmartCropFunctionBuilder.cs" />
+    <Compile Include="ParamOptions\LineCap.cs" />
+    <Compile Include="Functions\LineFunction.cs" />
+    <Compile Include="Functions\Builders\LineFunctionBuilder.cs" />
+    <Compile Include="Functions\PixelateFunction.cs" />
+    <Compile Include="Functions\Builders\PixelateFunctionBuilder.cs" />
+    <Compile Include="Functions\ResampleFunction.cs" />
+    <Compile Include="Functions\Builders\ResampleFunctionBuilder.cs" />
+    <Compile Include="Functions\SteganoFunction.cs" />
+    <Compile Include="Functions\Builders\SteganoFunctionBuilder.cs" />
+    <Compile Include="Functions\RectangleFunction.cs" />
+    <Compile Include="Functions\Builders\RectangleFunctionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

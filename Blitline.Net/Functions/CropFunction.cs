@@ -1,3 +1,5 @@
+using Blitline.Net.ParamOptions;
+
 namespace Blitline.Net.Functions
 {
     /// <summary>
@@ -20,7 +22,9 @@ namespace Blitline.Net.Functions
                                x = X,
                                y = Y,
                                width = Width,
-                               height = Height
+                               height = Height,
+                               preserve_aspect_if_smaller = PreserveAspectIfSmaller,
+                               gravity = Gravity
                            };
             }
         }
@@ -44,5 +48,20 @@ namespace Blitline.Net.Functions
         /// Height of resulting image
         /// </summary>
         public int Height { get; set; }
+
+        /// <summary>
+        /// If source image is smaller than target size, crop smaller image to still be same aspect ratio
+        /// </summary>
+        public bool PreserveAspectIfSmaller { get; set; }
+
+        /// <summary>
+        /// Sets the starting gravity of where the x,y will offset from
+        /// </summary>
+        public Gravity Gravity { get; set; }
+
+        public CropFunction()
+        {
+            Gravity = Gravity.CenterGrativty;
+        }
     }
 }

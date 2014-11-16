@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1DC2E7D0-CD07-4050-A690-0A59B89117EC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Specs</RootNamespace>
+    <AssemblyName>Specs</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>169</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.8\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\packages\xunit.extensions.1.9.1\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.runner.msbuild">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.msbuild.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.runner.tdnet">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.tdnet.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.runner.utility">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.runner.utility.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Integration\ChangingFileExtension.cs" />
+    <Compile Include="Integration\ProcessAnnotateFunction.cs" />
+    <Compile Include="Integration\ProcessMultipageDocument.cs" />
+    <Compile Include="Integration\ProcessMultipleImages.cs" />
+    <Compile Include="Integration\ProcessScaleFunction.cs" />
+    <Compile Include="Integration\ProcessScreenshot.cs" />
+    <Compile Include="Integration\SavingToS3.cs" />
+    <Compile Include="Integration\WhenAnErrorOccurs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubSpec\SubSpec.cs" />
+    <Compile Include="SubSpec\SubSpec.Thesis.cs" />
+    <Compile Include="SubSpec\SubSpecUtils.cs" />
+    <Compile Include="Unit\BlitlineResponseSpecs.cs" />
+    <Compile Include="Unit\Builders\AnnotateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\AppendFunctionBuilderSpecs.cs" />
+<<<<<<< HEAD
+    <Compile Include="Unit\Builders\AutoEnhanceFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\AutoGammaFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\AutoLevelFunctionBuilderSpecs.cs" />
+=======
+>>>>>>> origin/master
+    <Compile Include="Unit\Builders\BlurFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\CanBuildDefaultFunctionBase.cs" />
+    <Compile Include="Unit\Builders\CompositeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ContrastFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ContrastStrecthChannelFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\CropFunctionBuilderSpecs.cs" />
+<<<<<<< HEAD
+    <Compile Include="Unit\Builders\CropToSquareFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\DeleteProfileFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\DensitypFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\DeskewFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\DespeckleunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\EnhanceFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\EqualizeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\GrayColorspaceFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\NormalizeFunctionBuilderSpecs.cs" />
+=======
+    <Compile Include="Unit\Builders\DeskewFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\EqualizeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\GammaChannelFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\MedianFilterFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ModulateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\NoOpFunctionBuilderSpecs.cs" />
+>>>>>>> origin/master
+    <Compile Include="Unit\Builders\PadResizeToFitFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\PhotographFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\QuantizeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\RequestBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ResizeFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ResizeToFillFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ResizeToFitFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\RotateFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\ScaleFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\SepiaToneFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\SharpenFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\SketchFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\TrimFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\UnsharpMaskFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\VignetteFunctionBuilderSpecs.cs" />
+    <Compile Include="Unit\Builders\WatermarkFunctionBuilderSpecs.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Blitline.Net\Blitline.Net.csproj">
+      <Project>{5C68792D-01BC-4E32-90F0-F397A8E321C4}</Project>
+      <Name>Blitline.Net</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SubSpec\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

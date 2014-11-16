@@ -1,4 +1,6 @@
-﻿namespace Blitline.Net.Functions.Builders
+﻿using Blitline.Net.Functions.Builders;
+
+namespace Blitline.Net.Functions.Builders
 {
     public class QuantizeFunctionBuilder : FunctionBuilder<QuantizeFunction>
     {
@@ -20,4 +22,6 @@
             return this;
         }
     }
+
+
 }

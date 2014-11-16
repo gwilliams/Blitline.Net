@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Dynamic;
+using Blitline.Net.Functions;
 
 namespace Blitline.Net.Functions
 {
@@ -41,4 +42,5 @@ namespace Blitline.Net.Functions
         public int Height { get; set; }
         public decimal ScaleFactor { get; set; }
     }
+
 }

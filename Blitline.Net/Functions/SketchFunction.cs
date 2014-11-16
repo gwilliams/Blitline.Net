@@ -1,4 +1,7 @@
-﻿namespace Blitline.Net.Functions
+﻿using Blitline.Net.Functions;
+using System;
+
+namespace Blitline.Net.Functions
 {
     /// <summary>
     /// Simulates a pencil sketch.
@@ -38,4 +41,5 @@
         /// </summary>
         public decimal Angle { get; set; }
     }
-}
+
+ }

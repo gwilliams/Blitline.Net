@@ -1,4 +1,6 @@
-﻿namespace Blitline.Net.Functions
+﻿using Blitline.Net.Functions;
+
+namespace Blitline.Net.Functions
 {
     /// <summary>
     /// Analyzes the colors within a reference image and chooses a fixed number of colors to represent the image
@@ -32,4 +34,5 @@
             ColourSpace = "RGBColorspace";
         }
     }
+
 }
