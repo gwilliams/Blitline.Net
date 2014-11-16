@@ -12,7 +12,7 @@ namespace Blitline.Net.Functions.Builders
 			BuildImp.EndX = endX;
 			BuildImp.EndX = endY;
 
-			return this.
+			return this;
 		}
 
 		public RectangleFunctionBuilder WithStrokeColor(string color)
