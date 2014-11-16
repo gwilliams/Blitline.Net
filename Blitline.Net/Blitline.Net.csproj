@@ -168,6 +168,9 @@
     <Compile Include="Builders\BuilderBase.cs" />
     <Compile Include="Functions\ImaggaSmartCropFunction.cs" />
     <Compile Include="Functions\Builders\ImaggaSmartCropFunctionBuilder.cs" />
+    <Compile Include="ParamOptions\LineCap.cs" />
+    <Compile Include="Functions\LineFunction.cs" />
+    <Compile Include="Functions\Builders\LineFunctionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

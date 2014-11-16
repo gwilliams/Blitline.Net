@@ -162,6 +162,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+		public Builder<T> Line(Action<LineFunctionBuilder> build)
+		{
+			AddFunction<LineFunctionBuilder, LineFunction>(build);
+			return this;
+		}
+
 		public Builder<T> MedianFilter(Action<MedianFilterFunctionBuilder> build)
 		{
 			AddFunction<MedianFilterFunctionBuilder, MedianFilterFunction>(build);

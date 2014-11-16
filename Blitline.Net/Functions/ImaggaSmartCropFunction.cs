@@ -1,9 +1,9 @@
 using System.Text.RegularExpressions;
 using System;
+using Blitline.Net.Functions;
 
 namespace Blitline.Net.Functions
 {
-
 	public class ImaggaSmartCropFunction : BlitlineFunction
 	{
 		public override string Name 
@@ -39,4 +39,5 @@ namespace Blitline.Net.Functions
 				throw new ArgumentException ("Resolution should be height and width separated by lowecase 'x'");
 		}
 	}
+
 }
