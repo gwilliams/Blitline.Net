@@ -1,4 +1,7 @@
-﻿namespace Blitline.Net.Functions
+﻿using System.Text.RegularExpressions;
+using System;
+
+namespace Blitline.Net.Functions
 {
     /// <summary>
     /// Equalizes an image (Auto-adjust image).
@@ -12,4 +15,5 @@
 
         public override object Params { get { return new {}; } }
     }
+
 }

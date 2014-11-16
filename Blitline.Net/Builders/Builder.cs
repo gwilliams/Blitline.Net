@@ -156,6 +156,12 @@ namespace Blitline.Net.Builders
             return this;
         }
 
+		public Builder<T> ImmagaSmartCrop(Action<ImagaSmartCropFunctionBuilder> build)
+		{
+			AddFunction<ImagaSmartCropFunctionBuilder, ImaggaSmartCropFunction>(build);
+			return this;
+		}
+
 		public Builder<T> MedianFilter(Action<MedianFilterFunctionBuilder> build)
 		{
 			AddFunction<MedianFilterFunctionBuilder, MedianFilterFunction>(build);

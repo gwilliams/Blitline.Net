@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5C68792D-01BC-4E32-90F0-F397A8E321C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -168,6 +166,8 @@
     <Compile Include="Request\Builders\S3DestinationBuilder.cs" />
     <Compile Include="Request\Builders\SaveBuilder.cs" />
     <Compile Include="Builders\BuilderBase.cs" />
+    <Compile Include="Functions\ImaggaSmartCropFunction.cs" />
+    <Compile Include="Functions\Builders\ImaggaSmartCropFunctionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
