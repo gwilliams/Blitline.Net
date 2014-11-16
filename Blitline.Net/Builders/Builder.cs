@@ -156,9 +156,9 @@ namespace Blitline.Net.Builders
             return this;
         }
 
-		public Builder<T> ImmagaSmartCrop(Action<ImagaSmartCropFunctionBuilder> build)
+		public Builder<T> ImmagaSmartCrop(Action<ImaggaSmartCropFunctionBuilder> build)
 		{
-			AddFunction<ImagaSmartCropFunctionBuilder, ImaggaSmartCropFunction>(build);
+			AddFunction<ImaggaSmartCropFunctionBuilder, ImaggaSmartCropFunction>(build);
 			return this;
 		}
 
