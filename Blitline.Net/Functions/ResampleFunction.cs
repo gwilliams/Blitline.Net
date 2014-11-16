@@ -4,7 +4,6 @@ using Blitline.Net.Functions;
 
 namespace Blitline.Net.Functions
 {
-
 	/// <summary>
 	/// Resample the image to a new resolution
 	/// </summary>

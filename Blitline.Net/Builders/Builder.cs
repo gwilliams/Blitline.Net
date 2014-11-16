@@ -216,6 +216,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+		public Builder<T> Rectangle(Action<RectangleFunctionBuilder> build)
+		{
+			AddFunction<RectangleFunctionBuilder, RectangleFunction>(build);
+			return this;
+		}
+
 		public Builder<T> Resample(Action<ResampleFunctionBuilder> build)
 		{
 			AddFunction<ResampleFunctionBuilder, ResampleFunction>(build);

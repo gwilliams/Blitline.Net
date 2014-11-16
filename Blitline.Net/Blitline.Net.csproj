@@ -177,6 +177,8 @@
     <Compile Include="Functions\Builders\ResampleFunctionBuilder.cs" />
     <Compile Include="Functions\SteganoFunction.cs" />
     <Compile Include="Functions\Builders\SteganoFunctionBuilder.cs" />
+    <Compile Include="Functions\RectangleFunction.cs" />
+    <Compile Include="Functions\Builders\RectangleFunctionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
