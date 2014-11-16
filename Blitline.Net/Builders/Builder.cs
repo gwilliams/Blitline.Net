@@ -204,6 +204,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+		public Builder<T> Pixelate(Action<PixelateFunctionBuilder> build)
+		{
+			AddFunction<PixelateFunctionBuilder, PixelateFunction>(build);
+			return this;
+		}
+
 		public Builder<T> Quantize(Action<QuantizeFunctionBuilder> build)
 		{
 			AddFunction<QuantizeFunctionBuilder, QuantizeFunction>(build);

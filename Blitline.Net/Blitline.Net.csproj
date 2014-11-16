@@ -171,6 +171,8 @@
     <Compile Include="ParamOptions\LineCap.cs" />
     <Compile Include="Functions\LineFunction.cs" />
     <Compile Include="Functions\Builders\LineFunctionBuilder.cs" />
+    <Compile Include="Functions\PixelateFunction.cs" />
+    <Compile Include="Functions\Builders\PixelateFunctionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
