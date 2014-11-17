@@ -3,7 +3,7 @@ Blitline.Net
 
 A simple .net wrapper for the [Blitline API](http://www.blitline.com)
 
-New Usage - Simple
+Usage - Simple
 ------------
 
 ```
@@ -16,25 +16,34 @@ namespace Blitline.Net.Test
     {
         public void BuildRequest()
         {
-            var response = BuildA.Request()
-                .WithApplicationId("API_KEY")
-                .WithSourceImageUri(new Uri("http://IMAGE_URL"))
-                .WithResizeToFitFunction(f => f.WithWidth(100).WithHeight(100)
-                    .SaveAs(s => s.WithImageIdentifier("image_identifier")
-                    .WithS3Destination(s3 => s3
-                      .WithBucketName("bucket-name")
-                      .WithKey("some-image-name.png")
-                      .Build())
-                    .Build())
-                .Build())
-                .Build()
+            var response = BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
+                .Crop(f => 
+					f.WithDimensions(1,2,3,4)
+					.WithGravity(Gravity.NorthEastGravity)
+					.PreserveAspectIfSmaller()
+				))
                 .Send();
+        }
+        
+        public async void BuildRequestAsync()
+        {
+            var response = BuildA.Request(r => r
+                .WithApplicationId("123")
+                .WithSourceImageUri(new Uri("http://foo.bar.gif"))
+                .Crop(f => 
+					f.WithDimensions(1,2,3,4)
+					.WithGravity(Gravity.NorthEastGravity)
+					.PreserveAspectIfSmaller()
+				))
+                .SendAsync();
         }
     }
 }
 ```
 
-New Usage - Advanced
+Usage - Multiple Functions
 -------------
 ```
 using Blitline.Net.Builders;
@@ -46,61 +55,28 @@ namespace Blitline.Net.Test
     {
         public void BuildRequest()
         {
-            var response = BuildA.Request()
-                .WithApplicationId("API_KEY")
-                .WithSourceImageUri(new Uri("http://IMAGE_URL"))
-                .WithResizeToFitFunction(f => f.WithWidth(100).WithHeight(100)
-                    .SaveAs(s => s.WithImageIdentifier("resized_image")
-                    .WithS3Destination(s3 => s3
-                      .WithBucketName("bucket-name")
-                      .WithKey("resized-image.png")
-                      .Build())
-                    .Build())
-                    .WithCropFunction(cf => cf.WithDimensions(1,2,3,4)
-                        .SaveAs(cs => cs.WithImageIdentifier("cropped_image")
-                        .WithS3Destination(cs3 => cs3
-                            .WithBucketName("bucket-name")
-                            .WithKey("cropped-image.png")
-                            .Build())
-                        .Build())
-                    .Build())
-                .Build())
-                .Build()
-                .Send();
+            var response = BuildA.Request(r => 
+				r.WithApplicationId("123")
+				.WithSourceImageUri(new Uri("http://foo.bar.gif"))
+				.Crop(c => 
+				    c.WithDimensions(1, 2, 3, 4)
+				    .WithGravity(Gravity.NorthEastGravity))
+				.Watermark(w => 
+				    w.WithText("Watermarked")))
+				.Send ();
         }
-    }
-}
-```
-
-Old Simple Usage
-------------
-
-```
-using Blitline.Net;
-using Blitline.Net.Functions;
-using Blitline.Net.Request;
-using Blitline.Net.Response;
-
-namespace Blitline.Net.Test
-{
-    public class Test
-    {
-        public void BuildRequest()
+        
+        public aysnc void BuildRequestAsync()
         {
-        	var client = new BlitlineApi();
-        	var request = new BlitlineRequest("API_KEY", "IMAGE_URL");
-
-        	var resizeFunction = new ResizeToFitFunction(100, 100)
-        	{
-        		Save = new Save
-        		{
-        			ImageIdentifier = "test_image"
-        		}
-        	};
-
-        	request.AddFunction(resizeFunction);
-
-        	var response = client.ProcessImages(request);
+            var response = BuildA.Request(r => 
+				r.WithApplicationId("123")
+				.WithSourceImageUri(new Uri("http://foo.bar.gif"))
+				.Crop(c => 
+				    c.WithDimensions(1, 2, 3, 4)
+				    .WithGravity(Gravity.NorthEastGravity))
+				.Watermark(w => 
+				    w.WithText("Watermarked")))
+				.SendAsync();
         }
     }
 }
@@ -111,28 +87,6 @@ Extending
 You can add any missing functions by simply inheriting from BlitlineFunction - This will not work with the new usage
 
 ```
-public abstract class BlitlineFunction
-{
-    [JsonProperty("name")]
-    public abstract string Name { get; }
-    [JsonProperty("params")]
-    public abstract object @Params { get; protected set; }
-    [JsonProperty("save")]
-    public Save Save { get; set; }
-    [JsonProperty("functions")]
-    public ICollection<BlitlineFunction> Functions { get; set; }
-
-    protected BlitlineFunction()
-    {
-        Functions = new Collection<BlitlineFunction>();
-    }
-
-    public void AddFunction(BlitlineFunction function)
-    {
-        Functions.Add(function);
-    }
-}
-
 public class MyTestFunction : BlitlineFunction
 {
     public override string Name
