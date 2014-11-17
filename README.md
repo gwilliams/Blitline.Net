@@ -82,24 +82,4 @@ namespace Blitline.Net.Test
 }
 ```
 
-Extending
----------
-You can add any missing functions by simply inheriting from BlitlineFunction - This will not work with the new usage
-
-```
-public class MyTestFunction : BlitlineFunction
-{
-    public override string Name
-    {
-        get { return "my_test_function"; }
-    }
-
-    public override object Params { get; protected set; }
-
-    public MyTestFunction()
-    {
-        @Params = new { foo = 1, bar = 2 };
-    }
-}
-```
 Released under the Simple Public License (SimPL 2.0): http://opensource.org/licenses/SimPL-2.0
