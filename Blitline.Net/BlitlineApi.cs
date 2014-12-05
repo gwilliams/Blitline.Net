@@ -37,8 +37,8 @@ namespace Blitline.Net
                 HttpResponseMessage result = await client.PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
                 var o = result.Content.ReadAsStringAsync().Result;
 
-                var response = await JsonConvert.DeserializeObjectAsync<BlitlineBatchResponse>(o);
-
+				var response = await Task.Factory.StartNew (() => JsonConvert.DeserializeObject<BlitlineBatchResponse>(o));
+		
                 var correctS3BucketList = FixS3Urls(blitlineRequests);
                 if (correctS3BucketList.Any()) response.FixS3Urls(correctS3BucketList);
 
