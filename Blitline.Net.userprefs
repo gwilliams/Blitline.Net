@@ -1,6 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Blitline.Net/BlitlineApi.cs">
+    <Files>
+      <File FileName="Blitline.Net/BlitlineApi.cs" Line="112" Column="112" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name=".nuget" expanded="True" />
+          <Node name="Blitline.Net" expanded="True">
+            <Node name="Packages" expanded="True">
+              <Node name="Newtonsoft.Json" selected="True" />
+            </Node>
+          </Node>
+          <Node name="Specs" expanded="True">
+            <Node name="Packages" expanded="True" />
+            <Node name="Unit" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
