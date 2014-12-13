@@ -14,7 +14,7 @@ namespace Specs.Integration
         BlitlineBatchResponse _response = default(BlitlineBatchResponse);
         BlitlineRequest[] _requests = default(BlitlineRequest[]);
 
-        [Specification(Skip = "Integration")]
+        [Specification]
         public void CanProcessMultipleImages()
         {
             "Given I have multiple images to process".Context(() =>

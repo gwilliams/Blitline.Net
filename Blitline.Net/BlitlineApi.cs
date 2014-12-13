@@ -14,7 +14,7 @@ namespace Blitline.Net
         
         public BlitlineResponse ProcessImages(BlitlineRequest blitlineRequest)
         {
-            return ProcessImagesAsync(new[]{blitlineRequest}).Result;
+            return ProcessImagesAsync(blitlineRequest).Result;
         }
 
         public BlitlineBatchResponse ProcessImages(IEnumerable<BlitlineRequest> blitlineRequests)
@@ -25,25 +25,28 @@ namespace Blitline.Net
         public async Task<BlitlineResponse> ProcessImagesAsync(BlitlineRequest blitlineRequest)
         {
             var r = await ProcessImagesAsync(new[] {blitlineRequest});
-            return (BlitlineResponse) r;
+            return new BlitlineResponse
+                {
+                    Results = r.Results.First()
+                };
         }
 
         public async Task<BlitlineBatchResponse> ProcessImagesAsync(IEnumerable<BlitlineRequest> blitlineRequests)
         {
-            var payload = JsonConvert.SerializeObject(blitlineRequests.ToArray());
+            var requests = blitlineRequests.ToList();
+            var payload = JsonConvert.SerializeObject(requests.ToArray());
 
-            using (var client = new HttpClient())
-            {
-                HttpResponseMessage result = await client.PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
-                var o = result.Content.ReadAsStringAsync().Result;
+            var correctS3BucketList = FixS3Urls(requests);
 
-				var response = await Task.Factory.StartNew (() => JsonConvert.DeserializeObject<BlitlineBatchResponse>(o));
-		
-                var correctS3BucketList = FixS3Urls(blitlineRequests);
-                if (correctS3BucketList.Any()) response.FixS3Urls(correctS3BucketList);
+            var postResult = await (new HttpClient()).PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
 
-                return response;    
-            }
+            var o = await postResult.Content.ReadAsStringAsync();
+
+            var response = await Task.Factory.StartNew(() => JsonConvert.DeserializeObject<BlitlineBatchResponse>(o));
+
+            if (correctS3BucketList.Any()) response.FixS3Urls(correctS3BucketList);
+
+            return response;
         }
 
         private Dictionary<string, string> FixS3Urls(IEnumerable<BlitlineRequest> blitlineRequests)

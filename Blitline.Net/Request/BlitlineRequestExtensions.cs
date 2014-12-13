@@ -16,10 +16,10 @@ namespace Blitline.Net.Request
             return requests.SendAsync().Result;
         }
 
-        public static async Task<BlitlineResponse> SendAsync(this BlitlineRequest request)
+        public static Task<BlitlineResponse> SendAsync(this BlitlineRequest request)
         {
             var api = new BlitlineApi();
-            var response = await api.ProcessImagesAsync(request);
+            var response = api.ProcessImagesAsync(request);
             return response;
         }
         

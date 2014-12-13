@@ -13,7 +13,7 @@ namespace Specs.Integration
 		BlitlineResponse _response = default(BlitlineResponse);
 		BlitlineRequest _request = default(BlitlineRequest);
 
-        [Specification(Skip = "Integration")]
+        [Specification]
 		public void ShouldGenerateAnError()
 		{
 			"Give I have an incomplete request".Context(() =>

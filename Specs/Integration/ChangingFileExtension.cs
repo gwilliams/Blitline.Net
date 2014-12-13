@@ -14,7 +14,7 @@ namespace Specs.Integration
         BlitlineResponse _response = default(BlitlineResponse);
         BlitlineRequest _request = default(BlitlineRequest);
 
-        [Specification(Skip = "Integration")]
+        [Specification]
         public void CanChangeImageFileExtension()
         {
             "Given I have a request which specifies a different file extension".Context(() =>
