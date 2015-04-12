@@ -17,11 +17,11 @@ namespace Specs.Unit.Builders
 			"When I build an append function".Context(() => request = BuildA.Request(r => r
 			    .WithApplicationId("123")
 			    .WithSourceImageUri(new Uri("http://foo.bar.gif"))
-				.Append(f => f.AppendVeritically(true).WithOtherImages (new Uri("http://foo.jpg"), new Uri("http://bar.jpg")))));
+				.Append(f => f.AppendVeritically(true).WithOtherImages (new Uri("http://com/foo.jpg"), new Uri("http://com/bar.jpg")))));
 
             "Then the name should be append".Observation(() => Assert.Equal("append", request.Functions[0].Name));
             "And the vertical should be true".Observation(() => Assert.Equal(true, ((AppendFunction)request.Functions[0]).Vertical));
-			"And the other_images should be set".Observation (() => Assert.Equal ("http://foo.jpg,http://bar.jpg", ((AppendFunction)request.Functions [0]).OtherImages));
+			"And the other_images should be set".Observation (() => Assert.Equal ("http://com/foo.jpg,http://com/bar.jpg", ((AppendFunction)request.Functions [0]).OtherImages));
 
             "And the params should be constructed".Observation(() =>
                 {
