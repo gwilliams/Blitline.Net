@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Blitline.Net.Builders;
 using Blitline.Net.Functions;
 using Blitline.Net.ParamOptions;

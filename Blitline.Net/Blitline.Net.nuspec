@@ -2,13 +2,19 @@
 <package>
   <metadata>
     <id>Blitline.Net</id>
-    <version>0.6.1</version>
+    <version>0.6.2</version>
     <authors>Gareth Williams</authors>
     <owners>GDoubleU Ltd</owners>
     <projectUrl>https://github.com/gdoubleultd/Blitline.Net</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <dependencies>
+        <dependency id="Microsoft.Bcl" version="1.1.9" />
+        <dependency id="Microsoft.Bcl.Build" version="1.1.21" />
+        <dependency id="Microsoft.Net.Http" version="2.2.28" />
+        <dependency id="Newtonsoft.Json" version="6.0.6" />
+    </dependencies>
     <description>A .Net wrapper for the Blitline Image Processing API</description>
-	<releaseNotes>Path fix for 0.6.0. Fixes response type when processing one request.</releaseNotes>
+    <releaseNotes>Added support for other_images functionality on the Append function</releaseNotes>
     <tags>Blitline</tags>
   </metadata>
 </package>
