@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using System;
 using Blitline.Net.Functions;
+using System.Dynamic;
 
 namespace Blitline.Net.Functions
 {

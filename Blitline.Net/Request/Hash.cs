@@ -9,6 +9,10 @@ namespace Blitline.Net.Request
         [JsonProperty("crc32")]
         Crc32,
         [JsonProperty("sha256")]
-        Sha256
+        Sha256,
+		[JsonProperty("phash_dct")]
+		PhashDct,
+		[JsonProperty("phash_mh")]
+		PhashMh
     }
 }

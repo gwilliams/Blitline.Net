@@ -162,9 +162,26 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+		public Builder<T> Level (Action<LevelFunctionBuilder> build)
+		{
+			AddFunction<LevelFunctionBuilder, LevelFunction>(build);
+			return this;
+		}
+
+		public Builder<T> Levelize (Action<LevelizeFunctionBuilder> build)
+		{
+			AddFunction<LevelizeFunctionBuilder, LevelizeFunction> (build);
+			return this;
+		}
+
 		public Builder<T> Line(Action<LineFunctionBuilder> build)
 		{
 			AddFunction<LineFunctionBuilder, LineFunction>(build);
+			return this;
+		}
+
+		public Builder<T> LiquidRescale (Action<LiquidRescaleFunctionBuilder> build) {
+			AddFunction<LiquidRescaleFunctionBuilder, LiquidRescaleFunction> (build);
 			return this;
 		}
 
@@ -191,6 +208,12 @@ namespace Blitline.Net.Builders
             AddFunction<NormalizeFunctionBuilder, NormalizeFunction>(build);
             return this;
         }
+
+		public Builder<T> Pad (Action<PadFunctionBuilder> build)
+		{
+			AddFunction<PadFunctionBuilder, PadFunction> (build);
+			return this;
+		}
 
 	    public Builder<T> PadResizeToFit(Action<PadResizeToFitFunctionBuilder> build)
 		{
@@ -288,6 +311,12 @@ namespace Blitline.Net.Builders
 			return this;
 		}
 
+		public Builder<T> Tile (Action<TileFunctionBuilder> build)
+		{
+			AddFunction<TileFunctionBuilder, TileFunction> (build);
+			return this;
+		}
+		                                 
 	    public Builder<T> Trim(Action<TrimFunctionBuilder> build)
 		{
 			AddFunction<TrimFunctionBuilder, TrimFunction>(build);

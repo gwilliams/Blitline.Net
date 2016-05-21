@@ -181,6 +181,16 @@
     <Compile Include="Functions\Builders\SteganoFunctionBuilder.cs" />
     <Compile Include="Functions\RectangleFunction.cs" />
     <Compile Include="Functions\Builders\RectangleFunctionBuilder.cs" />
+    <Compile Include="Functions\LevelFunction.cs" />
+    <Compile Include="Functions\LevelizeFunction.cs" />
+    <Compile Include="Functions\Builders\LevelFunctionBuilder.cs" />
+    <Compile Include="Functions\Builders\LevelizeFunctionBuilder.cs" />
+    <Compile Include="Functions\LiquidRescaleFunction.cs" />
+    <Compile Include="Functions\Builders\LiquidRescaleFunctionBuilder.cs" />
+    <Compile Include="Functions\PadFunction.cs" />
+    <Compile Include="Functions\Builders\PadFunctionBuilder.cs" />
+    <Compile Include="Functions\TileFunction.cs" />
+    <Compile Include="Functions\Builders\TileFunctionBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
