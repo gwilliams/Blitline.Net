@@ -103,7 +103,13 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
-		public RequestBuilder SourceIsMultipageDocument(IList<int> pages)
+		public RequestBuilder BurstPdf ()
+		{
+			_request.SourceType = "burst_pdf";
+			return this;
+		}
+
+        public RequestBuilder SourceIsMultipageDocument(IList<int> pages)
         {
             _request.SourceType = new MultiPageSourceType {Pages = pages};
             return this;

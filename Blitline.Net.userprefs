@@ -1,11 +1,9 @@
 ﻿<Properties StartupItem="TestApp/TestApp.csproj">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Blitline.Net/Request/Builders/RequestBuilder.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Specs/Unit/Builders/RequestBuilderSpecs.cs">
     <Files>
-      <File FileName="Blitline.Net/Functions/PadFunction.cs" Line="26" Column="7" />
-      <File FileName="Blitline.Net/Functions/Builders/PadFunctionBuilder.cs" Line="24" Column="20" />
-      <File FileName="Blitline.Net/Builders/Builder.cs" Line="183" Column="79" />
-      <File FileName="Blitline.Net/Request/BlitlineRequest.cs" Line="24" Column="30" />
-      <File FileName="Blitline.Net/Request/Builders/RequestBuilder.cs" Line="109" Column="1" />
+      <File FileName="Blitline.Net/Request/BlitlineRequest.cs" Line="28" Column="36" />
+      <File FileName="Blitline.Net/Request/Builders/RequestBuilder.cs" Line="98" Column="10" />
+      <File FileName="Specs/Unit/Builders/RequestBuilderSpecs.cs" Line="37" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,15 +11,19 @@
           <Node name="Blitline.Net" expanded="True">
             <Node name="Blitline.Net" expanded="True">
               <Node name="Builders" expanded="True" />
-              <Node name="Functions" expanded="True" />
+              <Node name="Functions" expanded="True">
+                <Node name="Builders" expanded="True" />
+              </Node>
               <Node name="Request" expanded="True">
-                <Node name="Builders" expanded="True">
-                  <Node name="RequestBuilder.cs" selected="True" />
-                </Node>
+                <Node name="Builders" expanded="True" />
               </Node>
             </Node>
             <Node name="Specs" expanded="True">
-              <Node name="Integration" expanded="True" />
+              <Node name="Unit" expanded="True">
+                <Node name="Builders" expanded="True">
+                  <Node name="RequestBuilderSpecs.cs" selected="True" />
+                </Node>
+              </Node>
             </Node>
             <Node name="TestApp" expanded="True" />
           </Node>

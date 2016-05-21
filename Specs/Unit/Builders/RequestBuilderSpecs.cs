@@ -20,7 +20,6 @@ namespace Specs.Unit.Builders
             "When I build a request".Context(() => request = BuildA.Request(r => r
                                                               .WithApplicationId("123")
                                                               .FixS3ImageUrl()
-                                                              .WaitForS3()
                                                               .ContentTypeAsJson()
                                                               .SuppressAutoOrientation()
                                                               .WithPostbackUri(new Uri("http://www.bar.com/"))
@@ -35,8 +34,6 @@ namespace Specs.Unit.Builders
             "And the application id is 123".Observation(() => Assert.Equal("123", request.ApplicationId));
 
             "And the source image is http://www.foo.com/bar.gif".Observation(() => Assert.Equal("http://www.foo.com/bar.gif", request.SourceImage));
-
-            "And wait for s3 is true".Observation(() => Assert.Equal(true, request.WaitForS3));
 
             "And content type as json is true".Observation(() => Assert.True(request.ContentTypeJson));
 
