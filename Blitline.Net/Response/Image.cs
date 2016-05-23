@@ -8,5 +8,7 @@ namespace Blitline.Net.Response
         public string ImageIdentifier { get; set; }
         [JsonProperty("s3_url")]
         public string S3Url { get; set; }
+		[JsonProperty ("azure_url")]
+		public string AzureUrl { get; set; }
     }
 }
