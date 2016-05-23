@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Blitline.Net</id>
-    <version>0.6.3</version>
+    <version>0.6.4</version>
     <authors>Gareth Williams</authors>
     <owners>GDoubleU Ltd</owners>
     <projectUrl>https://github.com/gdoubleultd/Blitline.Net</projectUrl>
@@ -14,7 +14,7 @@
         <dependency id="Newtonsoft.Json" version="6.0.6" />
     </dependencies>
     <description>A .Net wrapper for the Blitline Image Processing API</description>
-    <releaseNotes>Added Level, Levelize, LiquidRescale, Pad and Tile functions. Added extra hash requst params.</releaseNotes>
+    <releaseNotes>Added azure_url to the Image response</releaseNotes>
     <tags>Blitline</tags>
   </metadata>
 </package>
