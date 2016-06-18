@@ -1,9 +1,39 @@
 ﻿using System;
 using Blitline.Net.Builders;
+using Blitline.Net.Functions;
 using Blitline.Net.Request;
+using Blitline.Net;
+using Blitline.Net.Functions.Builders;
 
 namespace TestApp
 {
+	public class MyFunction : BlitlineFunction
+	{
+		public int Age { get; set; }
+		public override string Name {
+			get {
+				return "MyFunction";
+			}
+		}
+
+		public override dynamic Params {
+			get {
+				return new {
+					age = Age
+				};
+			}
+		}
+	}
+
+	public class MyFunctionBuilder : FunctionBuilder<MyFunction>
+	{
+		public MyFunctionBuilder WithAge (int age)
+		{
+			BuildImp.Age = age;
+			return this;
+		}
+	}
+
 	class MainClass
 	{
 		public static void Main (string [] args)
@@ -16,7 +46,7 @@ namespace TestApp
 			var request = BuildA.Request (r => r
 										  .WithApplicationId (applicationKey)
 										  .WithSourceImageUri (new Uri (sourceImage))
-
+			                              .AddFunction<MyFunctionBuilder, MyFunction> (x => x.WithAge (123))
 			                              .Crop (f => f.WithGravity(Blitline.Net.ParamOptions.Gravity.NorthGravity).SaveAs (s => s.WithImageIdentifier (imageIdentifier).ToS3 (s3 => s3.ToBucket (bucketName).WithKey ("annotate-default.png")))));
 
 			var response = request.Send();

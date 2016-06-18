@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Blitline.Net</id>
-    <version>0.6.5</version>
+    <version>0.6.6</version>
     <authors>Gareth Williams</authors>
     <owners>GDoubleU Ltd</owners>
     <projectUrl>https://github.com/gdoubleultd/Blitline.Net</projectUrl>
@@ -14,7 +14,7 @@
         <dependency id="Newtonsoft.Json" version="6.0.6" />
     </dependencies>
     <description>A .Net wrapper for the Blitline Image Processing API</description>
-    <releaseNotes>Added azure_url to the Image response</releaseNotes>
+    <releaseNotes>You can now supply a version to the Blitline API. Exposed the internal AddFunction method to allow users to add functions that might not be implemented already.</releaseNotes>
     <tags>Blitline</tags>
   </metadata>
 </package>

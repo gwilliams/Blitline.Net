@@ -20,7 +20,7 @@ namespace Blitline.Net.Builders
 			return BuildImp;
 		}
 
-		private void AddFunction<TBuilder, TFunction>(Action<TBuilder> build)
+		public Builder<T> AddFunction<TBuilder, TFunction>(Action<TBuilder> build)
 			where TFunction : BlitlineFunction, new()
 			where TBuilder : FunctionBuilder<TFunction>, new()
 		{
@@ -28,6 +28,7 @@ namespace Blitline.Net.Builders
 			build(builder);
 			TFunction function = builder.Build();
 			BuildImp.Functions.Add(function);
+			return this;
 		}
 
 		public Builder<T> Annotate(Action<AnnotateFunctionBuilder> build)
