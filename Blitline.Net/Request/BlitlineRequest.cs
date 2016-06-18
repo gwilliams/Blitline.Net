@@ -33,6 +33,8 @@ namespace Blitline.Net.Request
 		public bool IncludeIptc { get; set; }
 		[JsonProperty ("get_exif")]
 		public bool GetExif { get; set; }
+		[JsonProperty("v")]
+	        public double Version { get; set; }
 
         /// <summary>
         /// Blitline returns an image url such as http://s3.amazonaws.com/gdoubleu-test-photos/annotate-default.png

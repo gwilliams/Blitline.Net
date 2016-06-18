@@ -60,6 +60,12 @@ namespace Blitline.Net.Request.Builders
             _request.Hash = hash;
             return this;
         }
+        
+        public RequestBuilder WithVersion(double version)
+        {
+            _request.Version = version;
+            return this;
+        }
 
 		public RequestBuilder GetExif ()
 		{
