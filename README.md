@@ -82,4 +82,51 @@ namespace Blitline.Net.Test
 }
 ```
 
+Custom Functions
+------------
+If a function that you require isn't available, you can now add your own and use the AddFunction<TBuilder,TFunction> method
+
+```
+public class MyFunction : BlitlineFunction
+{
+	public int Age { get; private set; }
+	public override string Name { get { return "My Function"; }
+	public override dynamic Params 
+	{
+		get 
+		{
+			return new {
+				age = Age
+			};
+		}
+	}
+}
+
+public class MyFunctionBuilder : FunctionBuilder<MyFunction>
+{
+	public MyFunctionBuilder WithAge(int age)
+	{
+		BuildImp.Age = age;
+		return this;
+	}
+}
+
+public class BlitlineTest
+{
+	public static void Main (string [] args)
+	{
+		var request = BuildA.Request (r => r
+						  .WithApplicationId ("appId")
+						  .WithSourceImageUri (new Uri ("imageUrl"))
+		                              .AddFunction<MyFunctionBuilder, MyFunction> (x => x.WithAge (123)
+		                              .SaveAs (s => s.WithImageIdentifier (imageIdentifier)
+		                              .ToS3 (s3 => s3.ToBucket (bucketName)
+		                              .WithKey ("annotate-default.png")))));
+
+		var response = request.Send();
+		Console.Read();
+	}
+}
+```
+
 Released under the Simple Public License (SimPL 2.0): http://opensource.org/licenses/SimPL-2.0
