@@ -36,6 +36,8 @@ namespace Blitline.Net.Request
 		[JsonProperty("v")]
 	    public double Version { get; set; }
 
+        public bool UseHttps { get; set; }
+
         /// <summary>
         /// Blitline returns an image url such as http://s3.amazonaws.com/gdoubleu-test-photos/annotate-default.png
         /// This generally throws an error when accessing the image, with a PermanentRedirect error stating

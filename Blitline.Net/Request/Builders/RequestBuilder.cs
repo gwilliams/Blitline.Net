@@ -121,6 +121,12 @@ namespace Blitline.Net.Request.Builders
             return this;
         }
 
+        public RequestBuilder UseHttps()
+        {
+            _request.UseHttps = true;
+            return this;
+        }
+
         protected override BlitlineRequest BuildImp
         {
             get { return _request; }

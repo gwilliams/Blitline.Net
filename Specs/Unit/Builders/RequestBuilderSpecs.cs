@@ -48,6 +48,23 @@ namespace Specs.Unit.Builders
             "And the source type is screen_shot_url".Observation(() => Assert.Equal("screen_shot_url", request.SourceType));
 
             "And there is 1 function".Observation(() => Assert.Equal(1, request.Functions.Count));
+
+            "And UseHttps is false".Observation(() => Assert.False(request.UseHttps));
+        }
+
+        [Specification]
+        public void CanBuildARequestUsingHttps()
+        {
+            BlitlineRequest request = default(BlitlineRequest);
+
+            "When I build a request with sub functions".Context(() => request = BuildA.Request(r => r
+                                                              .WithApplicationId("123")
+                                                              .UseHttps()
+                                                              .WithSourceImageUri(new Uri("http://www.foo.com/bar.gif"))
+                                                              .Crop(f => f.WithDimensions(1, 2, 3, 4)
+                                                                  .Deskew(d => d.WithThreshold(0.2m)))));
+
+            "Then UseHttps is true".Observation(() => Assert.True(request.UseHttps));
         }
 
         [Specification]

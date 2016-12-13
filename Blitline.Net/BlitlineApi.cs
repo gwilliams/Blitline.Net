@@ -10,7 +10,7 @@ namespace Blitline.Net
 {
     public class BlitlineApi : IBlitlineApi
     {
-        const string RootUrl = "http://api.blitline.com/job";
+        const string RootUrl = "://api.blitline.com/job";
         
         public BlitlineResponse ProcessImages(BlitlineRequest blitlineRequest)
         {
@@ -38,7 +38,9 @@ namespace Blitline.Net
 
             var correctS3BucketList = FixS3Urls(requests);
 
-            var postResult = await (new HttpClient()).PostAsync(RootUrl, new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
+            var urlPrefix = requests.Any(x => x.UseHttps) ? "https" : "http";
+
+            var postResult = await (new HttpClient()).PostAsync($"{urlPrefix}{RootUrl}", new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
 
             var o = await postResult.Content.ReadAsStringAsync();
 
