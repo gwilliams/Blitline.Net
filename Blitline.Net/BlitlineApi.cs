@@ -39,8 +39,8 @@ namespace Blitline.Net
             var correctS3BucketList = FixS3Urls(requests);
 
             var urlPrefix = requests.Any(x => x.UseHttps) ? "https" : "http";
-
-            var postResult = await (new HttpClient()).PostAsync($"{urlPrefix}{RootUrl}", new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
+            var url = string.Format("{0}{1}", urlPrefix, RootUrl);
+            var postResult = await (new HttpClient()).PostAsync(url, new FormUrlEncodedContent(new Dictionary<string, string> { { "json", payload } }));
 
             var o = await postResult.Content.ReadAsStringAsync();
 
