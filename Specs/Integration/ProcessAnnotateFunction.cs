@@ -15,7 +15,7 @@ namespace Specs.Integration
         public async void CanProcessAnnotationFunctionAsync()
         {
             const string bucketName = "gdoubleu-test-photos";
-
+            
             var request = BuildA.Request(r => r
                         .WithApplicationId("a5KqkemeX2RttyYdkOrdug")
                         .WithSourceImageUri(
